@@ -1,0 +1,22 @@
+@mixin txt {
+    font-size: rem(15);
+    line-height: rem(20);
+    @include phone {
+        font-size: rem(14)
+    }
+}
+
+@mixin txt_regular {
+    @include txt;
+    font-weight: 400;
+}
+
+@mixin txt_medium {
+    @include txt;
+    font-weight: 500;
+}
+
+@mixin txt_semibold {
+    @include txt;
+    font-weight: 600;
+}

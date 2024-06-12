@@ -1,0 +1,17 @@
+// mixins 
+@mixin font-face($name, $file, $weight: 400, $style: normal) {
+	@font-face {
+		font-family: "#{$name}";
+		font-display: swap;
+		font-weight: $weight;
+		font-style: $style;
+		src: local("#{$name}"),	url("../fonts/#{$file}.woff2") format("woff2"),	url("../fonts/#{$file}.woff") format("woff");
+	}
+}
+
+@include font-face("Inter", "Inter-Light", 300);
+@include font-face("Inter", "Inter-Regular", 400);
+@include font-face("Inter", "Inter-Medium", 500);
+@include font-face("Inter", "Inter-SemiBold", 600);
+@include font-face("Inter", "Inter-Bold", 700);
+@include font-face("Inter", "Inter-Black", 900);

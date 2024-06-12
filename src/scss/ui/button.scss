@@ -1,0 +1,28 @@
+.button {
+    border-radius: rem(35);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: rem(14);
+    padding: rem(22) rem(30);
+    span {
+        @include txt_medium;
+        font-size: rem(15);
+        font-weight: 500;
+        line-height: calc(20 / 15);
+    }
+    &--primary {
+        background-color: $primary-color;
+        color: $white;
+        transition: background-color 0.2s ease 0s;
+        @include ishover {
+            background-color: $darkred;
+        }
+    }
+    @include phone {
+        padding: rem(18) rem(24);
+        span {
+            font-size: rem(14);
+        }
+    }
+}

@@ -1,0 +1,62 @@
+.form {
+    &__control {
+        position: relative;
+        &--error {
+            .form__input {
+                outline: rem(2) solid $primary-color;
+            }
+        }
+    }
+    &__input { 
+        background-color: rgba($color: $white, $alpha: 0.05);
+        border-radius: rem(35);
+        padding: rem(22) rem(30);
+        color: rgba($color: $white, $alpha: 0.55);
+        @include txt_medium;
+        width: 100%;
+        &::placeholder {
+            color: inherit;
+        }
+    }
+    &__textarea {
+        box-sizing: content-box;
+        color: rgba($color: $white, $alpha: 0.55);
+        @include txt_medium;
+        padding: 0;
+        width: 100%;
+        height: calc(rem(20) * 2);
+        max-height: rem(280);
+        resize: none;
+        outline: none;
+        overflow: hidden; // ??????? не понял почему сработало;
+        &--hidden {
+            pointer-events: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 0;
+            height: 0;
+            width: 100%;
+            opacity: 0;
+            visibility: hidden;
+            overflow: hidden; // нужно для скрытия скроллбара и корректной ширины
+        }
+    }
+    &__submit {
+        justify-content: center;
+    }
+    &__agreement {
+        font-size: rem(12);
+        font-weight: 400;
+        line-height: calc(20 / 12);
+        opacity: 0.5;
+    }
+    @include phone {
+        &__input {
+            padding: rem(18) rem(22);
+        }
+        &__agreement {
+            line-height: 1rem;
+        }
+    }
+}

@@ -1,0 +1,173 @@
+{% macro MenuColumn(column) %}
+    <div class="footer__menu-column column {{ 'column--main' if column.main }}">
+        <div class="column__header">
+            <h6 class="column__title">{{ column.title }}</h6>
+            <svg class="column__arrow">
+                <use xlink:href="#arrow"></use>
+            </svg>
+        </div>
+        <div class="column__body">
+            <ul class="column__menu">
+                {% for menu_item in column.menu %}
+                    <li class="column__menu-item">
+                        <a href="#" class="column__menu-link">{{ menu_item.label }}</a>
+                    </li>
+                {% endfor %}
+            </ul> 
+        </div>
+    </div>
+{% endmacro %}
+
+<footer class="footer">
+    <div class="footer__container container">
+        <div class="footer__content">
+            <div class="footer__main-info">
+                <a href="" class="footer__logo logo">
+                    <img class="logo__icon" src="images/logo-icon.svg" alt="" class="logo__icon">
+                    <img class="logo__title" src="images/logo-title.svg" alt="">
+                    <img class="logo__subtitle" src="images/logo-subtitle.svg" alt="">
+                </a>
+                <div class="footer__contacts">
+                    <div class="footer__contacts-row">
+                        <a href="tel:89765432100" class="footer__phone">8 (976) 543 21 00</a>
+                        <div class="footer__operating-mode">Пн - Пт с 08:00 до 20:00</div>
+                    </div>
+                    <div class="footer__contacts-row">
+                        <a href="mailto:mail@example.com" class="footer__mail">mail@example.com</a>
+                        <div class="footer__address">Республика Татарстан, г. Казань, ул. Баумана, 1</div>
+                    </div>
+                </div>
+                <ul class="footer__socials">
+                    <li class="footer__social-item">
+                        <a href="#" class="footer__social-link footer__social-link--vk">
+                            <svg><use xlink:href="#vk"></use></svg>
+                        </a>
+                    </li>
+                    <li class="footer__social-item">
+                        <a href="#" class="footer__social-link footer__social-link--whatsapp">
+                            <svg><use xlink:href="#whatsapp"></use></svg>
+                        </a>
+                    </li>
+                    <li class="footer__social-item">
+                        <a href="#" class="footer__social-link footer__social-link--telegram">
+                            <svg><use xlink:href="#telegram"></use></svg>
+                        </a>
+                    </li>
+                    <li class="footer__social-item">
+                        <a href="#" class="footer__social-link footer__social-link--youtube">
+                            <svg><use xlink:href="#youtube"></use></svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer__menu">
+                {% set columns = [
+                    {
+                        title: "Компания",
+                        main: true,
+                        menu: [
+                            { label: "О клинике", link: "" },
+                            { label: "Цены", link: "" },
+                            { label: "Акции", link: "" },
+                            { label: "Отзывы", link: "" },
+                            { label: "Контакты", link: "" }
+                        ]
+                    },
+                    {
+                        title: "Госпитализация",
+                        menu: [
+                            { label: "Забор анализов", link: "" },
+                            { label: "Скорая медицинская помощь", link: "" },
+                            { label: "Капельницы и уколы", link: "" },
+                            { label: "Госпитализация", link: "" },
+                            { label: "Забор анализов", link: "" },
+                            { label: "Скорая медицинская помощь", link: "" },
+                            { label: "Забор анализов", link: ""}
+                        ]
+                    },
+                    {
+                        title: "Перевозка больных",
+                        menu: [
+                            { label: "Забор анализов", link: "" },
+                            { label: "Скорая медицинская помощь", link: "" },
+                            { label: "Капельницы и уколы", link: "" },
+                            { label: "Госпитализация", link: "" },
+                            { label: "Забор анализов", link: "" },
+                            { label: "Скорая медицинская помощь", link: "" },
+                            { label: "Забор анализов", link: ""}
+                        ]
+                    },
+                    {
+                        title: "Врач на дом",
+                        menu: [
+                            { label: "Забор анализов", link: "" },
+                            { label: "Скорая медицинская помощь", link: "" },
+                            { label: "Капельницы и уколы", link: "" },
+                            { label: "Госпитализация", link: "" },
+                            { label: "Забор анализов", link: "" },
+                            { label: "Скорая медицинская помощь", link: "" },
+                            { label: "Забор анализов", link: ""}
+                        ]
+                    },
+                    {
+                        title: "Госпитализация",
+                        menu: [
+                            { label: "Забор анализов", link: "" },
+                            { label: "Скорая медицинская помощь", link: "" },
+                            { label: "Капельницы и уколы", link: "" },
+                            { label: "Госпитализация", link: "" },
+                            { label: "Забор анализов", link: "" },
+                            { label: "Скорая медицинская помощь", link: "" }
+                        ]
+                    },
+                    {
+                        title: "Перевозка больных",
+                        menu: [
+                            { label: "Забор анализов", link: "" },
+                            { label: "Скорая медицинская помощь", link: "" },
+                            { label: "Капельницы и уколы", link: "" },
+                            { label: "Госпитализация", link: "" },
+                            { label: "Забор анализов", link: "" },
+                            { label: "Скорая медицинская помощь", link: "" }
+                        ]
+                    },
+                    {
+                        title: "Врач на дом",
+                        menu: [
+                            { label: "Забор анализов", link: "" },
+                            { label: "Скорая медицинская помощь", link: "" },
+                            { label: "Капельницы и уколы", link: "" },
+                            { label: "Госпитализация", link: "" },
+                            { label: "Забор анализов", link: "" },
+                            { label: "Скорая медицинская помощь", link: "" },
+                            { label: "Капельницы и уколы", link: ""}
+                        ]
+                    },
+                    {
+                        title: "Забор анализов",
+                        menu: [
+                            { label: "Забор анализов", link: "" },
+                            { label: "Скорая медицинская помощь", link: "" },
+                            { label: "Капельницы и уколы", link: "" },
+                            { label: "Госпитализация", link: "" },
+                            { label: "Забор анализов", link: "" }
+                        ]
+                    }
+                ] %}
+                {% for column in columns %}
+                    {{ MenuColumn(column) }}
+                {% endfor %}
+            </div>
+            <div class="footer__copyrights">
+                <a href="#">Политика обработки данных</a>
+                <a href="#">Правовая информация</a>
+                <a href="#">Рекомендации Минздрава</a>
+                <div>© 2010 - 2023, ООО «РЕСЕТ»</div>
+                <a href="https://aaccent.ru" target="_blank">
+                    <img src="images/aaccent-logo.svg" alt="">  
+                </a>
+            </div>
+        </div>
+        <div class="footer__footer">Имеются противопоказания. Необходима консультация специалиста</div>
+    </div>
+</footer>

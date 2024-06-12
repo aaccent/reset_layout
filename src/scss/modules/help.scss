@@ -1,0 +1,243 @@
+.step {
+    background-color: $white;
+    border-radius: calc(40 / 377 * 100%) / calc(40 / 460 * 100%);
+    aspect-ratio: calc(377 / 460);
+    padding: calc(20 / 377 * 100%) calc(32 / 377 * 100%);
+    padding: rem(20) rem(32);
+    display: flex;
+    flex-direction: column;
+    &__number {
+        color: $grey;
+        font-size: rem(148);
+        @include adaptive-value(font-size, 92, 148, 1280, $container-width);
+        font-weight: 400;
+        line-height: calc(150 / 148);
+        letter-spacing: -0.03em;
+        opacity: 0.25;
+        &:not(:last-child) {
+            margin-bottom: auto;
+        }
+    }
+    &__name {
+        font-size: rem(24);
+        font-weight: 500;
+        line-height: calc(30 / 24);
+        letter-spacing: -0.02em;
+        &:not(:last-child) {
+            margin-bottom: rem(15);
+        }
+    }
+    &__desc {
+        color: $grey;
+        @include txt_regular;
+        a {
+            color: $primary-color;
+            white-space: nowrap;
+        }
+    }
+    @include phone {
+        border-radius: rem(20);
+        padding: rem(15) rem(25) rem(20);
+        &__number {
+            line-height: 0.98;
+        }
+        &__name {
+            font-size: rem(18);
+            &:not(:last-child) {
+                margin-bottom: rem(10);
+            }
+        }
+        &__desc {
+            font-size: rem(14);
+        }
+    }
+}
+
+.help {
+    background-color: #F5F5F5;
+    display: flex;
+    flex-direction: column;
+    gap: rem(160);
+    @include adaptive-value(gap, 70, 160, 576, $container-width);
+    &__how-steps {
+        .swiper-slide {
+            margin-top: rem(41);
+            position: relative;
+            &::before {
+                border-top: rem(1) solid #D8E2E5;
+                border-right: rem(1) solid #D8E2E5;
+                border-bottom: none;
+                content: "";
+                position: absolute;
+                top: rem(-41);
+                left: rem(-2);
+                width: calc(100% + rem(4));
+                height: rem(15);
+            }
+            &:first-child {
+                &::before {
+                    border-top-left-radius: rem(25);
+                    border-left: rem(1) solid #D8E2E5;
+                    left: 0;
+                    width: calc(100% + rem(2));
+                }
+            }
+            
+            &:nth-last-child(1) {
+                &::before {
+                    border-top-right-radius: rem(25);
+                    border-right: rem(1) solid #D8E2E5;
+                    left: auto;
+                    right: 0;
+                    width: calc(100% + rem(2));
+                }
+            }
+        }
+    }
+    &__step {
+        
+    }
+    &__when {
+        .section__title {
+            &:not(:last-child) {
+                // margin-bottom: rem(40)
+                margin-bottom: calc(40 / 58 * 1em);
+            }
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr calc(752 / 1520 * 100%);
+            grid-auto-flow: row;
+            column-gap: rem(80);
+            column-gap: calc(80 / 1520 * 100%);
+        }
+    }
+
+    &__when-desc {
+        grid-column: 1 / 2;
+        @include txt_regular;
+        &:not(:last-child) {
+            // margin-bottom: rem(90);
+            margin-bottom: calc(90 / 1520 * 100%);
+        }
+    }
+
+    &__when-cases {
+        grid-column: 1 / 2;
+    }
+
+    &__when-case {
+        background-image: url(../images/dots.svg);
+        background-position: left center;
+        background-repeat: no-repeat;
+        border-bottom: rem(1) solid #D8E2E5;
+        display: flex;
+        align-items: center;
+        gap: rem(25);
+        padding: rem(20) rem(20) rem(20) rem(39);
+        & > span {
+            @include txt_semibold;
+            text-transform: uppercase;
+        }
+        a {
+            color: $primary-color;
+            display: flex;
+            align-items: center;
+            gap: rem(8);
+            @include txt_medium;
+            svg {
+                width: rem(6);
+                height: rem(6);
+            }
+        }
+        &:first-child {
+            border-top: rem(1) solid #D8E2E5;
+        }
+    }
+
+    &__when-image {
+        background-color: #E3E9EB;
+        border-radius: rem(40);
+        border-radius: calc(40 / 752 * 100%) calc(40 / 650 * 100%);
+        grid-column: 2 / 3;
+        grid-row: 1 / 4;
+        align-self: center;
+        height: 100%;
+        max-height: rem(650);
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    }
+    @include tablet {
+        &__how-steps {
+            margin-left: -20px;
+            margin-right: -20px;
+        }
+        &__how-step {
+            width: rem(380);
+        }
+        &__when {
+            .container {
+                grid-template-columns: 1fr;
+                // max-width: rem(860);
+            }
+        }
+        &__when-title {
+            margin-top: rem(50);
+        }
+        &__when-image {
+            grid-row: span 1;
+            grid-column: span 1;
+            justify-self: center;
+            width: 80%;
+            aspect-ratio: calc(340 / 290);
+            max-width: rem(620);
+            order: -1;
+        }
+    }
+    @include phone {
+        &__how-steps {
+            .swiper-slide {
+                margin-top: rem(25);
+                &::before {
+                    top: -25px;
+                    height: rem(10);
+                }
+            }
+        }
+        &__how-step {
+            width: rem(310);
+        }
+        &__when-title {
+            margin-top: rem(30);
+            &:not(:last-child) {
+                margin-bottom: rem(25);
+            }
+        }
+        &__when-desc {
+            font-size: rem(14);
+            &:not(:last-child) {
+                margin-bottom: rem(20);
+            }
+        }
+        &__when-case {
+            background-size: rem(12) rem(12);
+            padding: rem(15) rem(24);
+            span {
+                font-size: rem(13);
+            }
+            a {
+                font-size: rem(14);
+            }
+        }
+        &__when-image {
+            border-radius: rem(20);
+            width: 100%;
+            max-width: rem(480);
+        }
+    }
+}

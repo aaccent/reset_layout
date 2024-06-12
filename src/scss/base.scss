@@ -1,0 +1,139 @@
+:root {
+    // --init-width: 1920;
+    // --init-width_units: calc(var(--init-width) * 1px);
+    // @media screen and (min-width: 1920px) {
+    //     --screen-diff: calc((100vw - var(--init-width_units))/var(--init-width));
+    //     --font-size: calc(16px + 16 * var(--screen-diff));
+    // }
+}
+
+// @function calc-between-width($width-start, $value-start, $width-end, $value-end)
+//     @return calc(#{$value-start} * 1px + (#{$value-end} - #{$value-start}) * (100vw - #{$width-start} * 1px) / (#{$width-end} - #{$width-start}))
+
+// calc-between-width(1600, 16, 1920, 19.2)
+
+// .container {
+//     background: rgba(0,0,0,0.8);
+//     backdrop-filter: saturate(180%) blur(10px);
+// }
+
+// body {
+//     // font grows 1px for every 100px of viewport width
+//     font-size: calc(16px + 1vw);
+//     // leading grows along with font,
+//     // with an additional 0.1em + 0.5px per 100px of the viewport
+//     line-height: calc(1.1em + 0.5vw);
+// }
+
+
+body {
+    background-color: #F5F5F5;
+    color: $text-color;
+    font-family: "Inter", "sans-serif";
+    &._lock, &.body_lock {
+        height: 100%;
+        overflow: hidden;
+    }
+}
+
+
+.container {
+    --padding-x: 5rem;
+    margin: 0 auto;
+    padding: 0 var(--padding-x, rem(80));
+    @include adaptive-value(--padding-x, 20, 80, 992, $container-width);
+    width: 100%;
+    max-width: rem($container-width);
+}
+
+.section {
+    --padding-y: 10rem;
+    padding: var(--padding-y, 10rem) 0;
+    @include adaptive-value(--padding-y, 70, 160, 768, $container-width);
+    &__header {
+        &:not(:last-child) {
+            margin-bottom: rem(55);
+        }
+    }
+    &__title {
+        font-size: rem(58);
+        @include adaptive-value(font-size, 32, 58, 768, $container-width);
+        font-weight: 500;
+        line-height: calc(60 / 58);
+        letter-spacing: -0.03em;
+        max-width: rem(826);
+        span {
+            color: $grey
+        }
+    }
+    &--light {
+        background-color: $white;
+    }
+    &--dark {
+        background: linear-gradient(180deg, #0d1b1f 0%, #111d26 100%);
+        color: $white;
+    }
+    @include gap {
+        &__header {
+            &:not(:last-child) {
+                margin-bottom: rem(25);
+            }
+        }
+    }
+}
+
+.swiper-controls {
+    display: flex;
+    justify-content: center;
+    gap: rem(10);
+    .swiper-button-prev,
+    .swiper-button-next {
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: static;
+        margin: 0;
+        width: rem(65);
+        height: rem(65);
+        transition: background-color 0.2s ease 0s;
+        &::after {
+            content: none
+        }
+        svg {
+            width: rem(8);
+            height: rem(13);
+        }
+    }
+}
+
+.swiper-pagination-bullets {
+    display: flex;
+    justify-content: center;
+    padding: 0 rem(20);
+    @media screen and (min-width: 769px) {
+        display: none;
+    }
+}
+
+.swiper-pagination-bullet {
+    background-color: $white;
+    border-radius: rem(40);
+    flex-basis: rem(60);
+    width: auto;
+    height: 4px;
+    opacity: 0.25;
+    @include phone {
+        flex-basis: rem(40);
+        height: rem(2);
+    }
+}
+
+.swiper-pagination-bullet-active {
+    background-color: $white;
+    opacity: 1;
+}
+
+._aaccent {
+    color: $grey;
+}

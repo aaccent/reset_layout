@@ -1,0 +1,220 @@
+.call-us {
+    background: linear-gradient(180deg, #0d1b1f 0%, #111d26 100%);
+    color: $white;
+    &__body {
+        .container {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            grid-template-rows: auto auto auto;
+            column-gap: calc(252 / 1520 * 100%);
+            column-gap: rem(252);
+            @include adaptive-value(column-gap, 50, 252, 992, $container-width);
+            justify-content: space-between;
+        }
+    }
+    &__title, &__info, &__services {
+        grid-column: 1 / 2;
+    }
+    &__title {
+        &:not(:last-child) {
+            margin-bottom: rem(55);
+        }
+    }
+    &__info {
+        display: grid;
+        grid-template-columns: auto auto;
+        align-items: center;
+        column-gap: rem(25);
+        max-width: rem(535);
+        &:not(:last-child) {
+            margin-bottom: rem(40);
+        }
+    }
+
+    &__phone {
+        border: rem(1) dashed rgba($color: $white, $alpha: 0.25);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: rem(65);
+        height: rem(65);
+        svg {
+            width: rem(19);
+            height: rem(19);
+        }
+    }
+
+    &__info-text {
+        font-size: rem(24);
+        font-weight: 500;
+        line-height: calc(30 / 24);
+        letter-spacing: -0.02em;
+        ._aacent {
+            color: $grey;
+        }
+    }
+
+    &__info-phone {
+        color: $grey;
+        white-space: nowrap;
+    }
+
+    &__services {
+        border-top: rem(1) solid rgba($color: $white, $alpha: 0.15);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: rem(15) rem(25);
+        padding-top: rem(40);
+    }
+
+    &__service {
+        background-image: url(../images/cross.svg);
+        background-position: left center;
+        background-repeat: no-repeat;
+        @include txt_semibold;
+        padding-left: rem(35);
+        text-transform: uppercase;
+    }
+
+    &__form {
+        background-color: rgba($color: #0D191F, $alpha: 0.85);
+        border-radius: rem(40);
+        grid-column: 2 / 3;
+        grid-row: 1 / 4;
+        align-self: self-start;
+        padding: rem(40);
+        width: rem(497);
+        .form__title {
+            font-size: rem(24);
+            font-weight: 500;
+            line-height: calc(30 / 24);
+            letter-spacing: -0.02em;
+            &:not(:last-child) {
+                margin-bottom: rem(30);
+            }
+        }
+        .form__control {
+            &:not(:last-child) {
+                margin-bottom: rem(20);
+            }
+        }
+        .form__submit {
+            width: 100%;
+            &:not(:last-child) {
+                margin-bottom: rem(25);
+            }
+        }
+        .form__agreement {
+            max-width: rem(345);
+        }
+    }
+    @include desktop {
+        &__body {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+        &__services {
+            max-width: rem(860);
+            &:not(:last-child) {
+                margin-bottom: rem(60);
+            }
+        }
+        &__form {
+            grid-row: auto;
+            grid-column: 1 / 2;
+            justify-self: center;
+            width: 100%;
+            max-width: rem(640);
+            .form__title {
+                font-size: rem(32);
+            }
+        }
+    }
+    @include gap {
+        &__services {
+            grid-template-columns: 1fr;
+        }
+        &__form {
+            .form__title {
+                font-size: rem(28);
+            }
+        }
+    }
+    @include phone {
+        &__title, &__info {
+            &:not(:last-child) {
+                margin-bottom: rem(25)
+            }
+        }
+        &__info {
+            justify-content: start;
+            gap: rem(20);
+        }
+        &__phone {
+            width: rem(55);
+            height: rem(55);
+        }
+        &__info-text {
+            font-size: rem(18);
+            line-height: calc(25 / 18);
+            max-width: rem(260);
+            // ._aacent {display: none;}
+        }
+        &__services {
+            gap: rem(10);
+            padding-top: rem(25);
+            &:not(:last-child) {
+                margin-bottom: rem(40)
+            }
+        }
+        &__service {
+            background-size: rem(16) rem(16);
+            padding-left: rem(28);
+        }
+        &__form {
+            border-radius: rem(20);
+            padding: rem(25);
+            .form__title {
+                font-size: rem(18);
+                line-height: calc(25 / 18);
+                &:not(:last-child) {
+                    margin-bottom: rem(20)
+                }
+            }
+            .form__control {
+                &:not(:last-child) {
+                    margin-bottom: rem(15)
+                }
+            }
+            .form__submit {
+                &:not(:last-child) {
+                    margin-bottom: rem(20);
+                }
+            }
+            .form__agreement {
+                font-size: rem(12);
+            }
+        }
+    }
+}
+
+.form {
+
+    &__title {
+    }
+
+    &__control {
+    }
+
+    &__input {
+    }
+
+    &__submit {
+    }
+
+    &__agreement {
+    }
+}

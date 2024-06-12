@@ -1,0 +1,16 @@
+@mixin ishover {
+    @media screen and (any-hover: hover) {
+        &:hover {
+            @content
+        }
+    }
+};
+
+@mixin adaptive-value($property, $min_value, $max_value, $min_width, $max_width) {
+    @media screen and (max-width: #{$max_width}px) and (min-width: #{$min_width}px) {
+        #{$property}: calc(#{$min_value}px + #{$max_value - $min_value} * (100vw - #{$min_width}px) / (#{$max_width} - #{$min_width}))
+    }
+    @media screen and (max-width: #{$min_width}px) {
+        #{$property}: #{$min_value}px
+    }
+}

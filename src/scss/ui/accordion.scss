@@ -1,0 +1,86 @@
+.accordion {
+    background-color: #F7F1F1;
+    border-radius: rem(20);
+    padding: rem(30) rem(35);
+    transition: background-color 0.2s ease 0s;
+
+    &__header {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: rem(24);
+    }
+
+    &__title {
+        font-size: rem(20);
+        font-weight: 500;
+        line-height: calc(30 / 20);
+        letter-spacing: -0.02em;
+        transition: color 0.2s ease 0s;;
+    }
+
+    &__button {
+        position: relative;
+        width: rem(20);
+        height: rem(20);
+        &::before, &::after {
+            background-color: $primary-color;
+            border-radius: rem(10);
+            content: "";
+            position: absolute;
+            top: calc(50% - rem(1));
+            left: 0;
+            width: 100%;
+            height: rem(2);
+            transition: opacity 0.1s ease 0s, transform 0.2s ease 0s;
+        }
+        &::after {
+            transform: rotate(90deg);
+        }
+    }
+
+    &__body {
+        height: 0;
+        overflow: hidden;
+        transition: height 0.4s ease 0s;
+    }
+
+    &__text {
+        margin: rem(30) 0 0;
+    }
+    
+    &--open {
+        .accordion__button {
+            &::before {
+                opacity: 0;
+                transform: rotate(-90deg);
+            }
+            &::after {
+                transform: rotate(0);
+            }
+        }
+    }
+    @include ishover {
+        background-color: #F4E8E8;
+        .accordion__header {
+            color: $primary-color;
+        }
+    }
+    @include phone {
+        border-radius: rem(10);
+        padding: rem(20);
+        &__title {
+            font-size: rem(16);
+            line-height: calc(20 / 16);
+        }
+        &__button {
+            flex-shrink: 0;
+            width: rem(16);
+            height: rem(16);
+        }
+        &__text {
+            margin-top: rem(20)
+        }
+    }
+}

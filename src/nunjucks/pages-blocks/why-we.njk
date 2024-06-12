@@ -1,0 +1,71 @@
+{% macro Advantage(name, index) %}
+    <article class="why-we__advantage-item advantage">
+        <span class="advantage__icon">
+            <svg>
+                <use xlink:href="#advantage-0{{ index }}"></use>
+            </svg>
+        </span>
+        <h4 class="advantage__name">{{ name }}</h4>
+    </article>
+{% endmacro %}
+
+<section class="why-we section section--dark">
+    <div class="why-we__ellipse">
+    </div>
+    <div class="why-we__container container">
+        <div class="why-we__content">
+            <h2 class="why-we__title section__title">Почему выбирают услуги <span>нашей скорой помощи<span></h2>
+            <div class="why-we__desc">
+                <div class="why-we__desc-icon"></div>
+                <p>Наша компания гарантирует быстрый выезд скорой медицинской помощи в любое время суток. Мы понимаем, что в экстренных ситуациях каждая секунда на счету, и наша цель — обеспечить вам необходимую помощь как можно скорее.</p>
+            </div>
+            <div class="why-we__advantages">
+                {% set advantages = [
+                    "Опытные врачи разных специализаций",
+                    "10 новых автомобилей с современным оборудованием",
+                    "Срочная подача скорой помощи",
+                    "Опытные врачи разных специализаций",
+                    "Полезный комплекс выездных услуг",
+                    "Доступная стоимость, вызов от 3000 ₽"
+                ] %}
+                {% for advantage in advantages %}
+                    {{ Advantage(advantage, loop.index) }}
+                {% endfor %}
+            </div>
+        </div>
+        <aside class="why-we__aside">
+            <div class="order-call">
+                <div class="order-call__inner-wrapper">
+                    <div class="order-call__icon">
+                        <svg>
+                            <use xlink:href="#why-we-aside"></use>
+                        </svg>
+                    </div>
+                    <div class="order-call__content">
+                        <h3 class="order-call__title">Закажите обратный звонок и мы <span>перезвоним вам моментально!</span></h3>
+                        <form actions="#" method="POST" name="" class="order-call__form form">
+                            <div class="form__control">
+                                <input type="text" class="form__input form__input--required" name="name" placeholder="Ваше имя" autocomplete="off">
+                            </div>
+                            <div class="form__control">
+                                <input type="tel" class="form__input form__input--required" name="phone" placeholder="+7 (999)-999-99-99" autocomplete="off">
+                            </div>
+                            <button class="form__submit button button--primary" type="submit">
+                                <span>Заказать звонок</span>
+                            </button>
+                            <p class="form__agreement">Нажимая на кнопку «Заказать звонок» вы соглашаетесьс политикой конфиденциальности сайта</p>
+                        </form>
+                    </div>
+                    <div class="order-call__vector">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="890" height="312" viewBox="0 0 890 312" fill="none">
+                            <path d="M46 265.203C49.9144 247.197 61.4561 231.422 71.1914 216.08C78.9701 203.82 86.6389 191.414 96.7327 180.882C112.814 164.101 133.042 150.844 153.483 140.016C195.99 117.497 244.738 105.107 292.736 104.118C314.882 103.661 337.316 103.572 359.353 106.077C385.914 109.097 412.197 115.038 438.426 120.072C458.54 123.933 482.505 130.234 503.224 126.09C511.719 124.391 519.02 118.142 525.966 113.355C539.62 103.945 553.195 94.495 567.182 85.5741C607.745 59.7032 650.889 47.6101 698.807 46.2475C747.303 44.8685 795.358 49.4012 843.308 56.1142" stroke="white" stroke-opacity="0.05" stroke-width="92" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="order-call__image">
+                    <img src="images/phone.svg" alt="">
+                </div>
+            </div>
+        </aside>
+    </div>
+</section>

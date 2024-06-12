@@ -1,0 +1,224 @@
+.popup {
+    background-color: rgba($color: $black, $alpha: 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease 0s;
+    z-index: 15;
+    &__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1.5rem;
+        min-height: 100%;
+    }
+
+    &__content {
+        --padding: 5rem;
+        background-color: $white;
+        border-radius: rem(40);
+        padding: calc(0.9375 * var(--padding, 5rem)) var(--padding, 5rem) var(--padding, 5rem);;
+        @include adaptive-value(--padding, 40, 80, 768, 992);
+        position: relative;
+        max-width: rem(890);
+        width: 100%;
+        transform: scale(0.4);
+        transition: all 0.3s ease 0s;
+    }
+    &__close { 
+        position: absolute;
+        top: rem(10);
+        right: rem(10);
+        padding: 1.25rem;
+        &::after, &::before {
+            background-color: $primary-color;
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: rem(16);
+            height: rem(2)
+        }
+        &::before {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        &::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+    }
+    &__header {
+        &:not(:last-child) {
+            margin-bottom: rem(50);
+        }
+    }
+    &__title {
+        font-size: rem(42);
+        font-weight: 500;
+        line-height: calc(45 / 42);
+        letter-spacing: -0.03em;
+        &:not(:last-child) {
+            margin-bottom: rem(25);
+        }
+    }
+    &__desc {
+        color: $grey;
+        @include txt_regular;
+    }
+    &__form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: rem(20);
+        align-items: center;
+        .form__input {
+            background-color: #F5F5F5;
+            color: $grey;
+        }
+        .form__agreement {
+            color: $grey;
+            max-width: 480px;
+        }
+    }
+    &--open {
+        opacity: 1;
+        visibility: visible;
+        .popup__content {
+            transform: scale(1);
+        }
+    }
+    &--certificate {
+        .popup__container {
+            position: relative;
+        }
+        .popup__content {
+            background-color: transparent;
+            border-radius: 0;
+            padding: 0;
+            width: auto;
+            min-width: 0;
+        }
+
+        .popup__close {
+            &::after, &::before {
+                background-color: $white;
+            }
+        }
+
+        @media screen and (min-width: 577px) {
+            .popup__content {
+                position: static;
+                transform: none;
+            }
+            .popup__image {
+                transform: scale(0.4);
+                transition: all 0.3s ease 0s;
+            }
+            &.popup--open {
+                .popup__image {
+                    transform: scale(1);
+                }
+            }
+        }
+    }
+    &--cases {
+        .popup__container {
+            justify-content: flex-end;
+            padding: 0;
+        }
+        .popup__content {
+            border-radius: 0;
+            padding: rem(75) rem(50);
+            align-self: stretch;
+            max-width: rem(788);
+            transform: translate3d(100%, 0, 0);
+        }
+        &.popup--open {
+            .popup__content {
+                transform: translate3d(0, 0, 0);
+            }
+        }
+        @include gap {
+            .popup__content {
+                padding: rem(40);
+            }
+        }
+        @include phone {
+            .popup__content {
+                padding: rem(20);
+            }
+            .popup__header {
+                width: calc(100% - rem(40));
+            }
+            .popup__title {
+                font-size: rem(24);
+            }
+            .popup__close {
+                background-color: transparent;
+                border-radius: 0;
+                padding: rem(10);
+                top: rem(24);
+                right: rem(20);
+                bottom: auto;
+                width: auto;
+                height: auto;
+                &::after, &::before {
+                    background-color: $primary-color;
+                }
+            }
+        }
+    }
+    @include gap {
+        &__form {
+            grid-template-columns: 1fr;
+        }
+    }
+    @include phone {
+        &__container {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        &__content {
+            border-radius: rem(20);
+        }
+        &__inner-wrapper {
+            padding: rem(25);
+        }
+        &__close {
+            background-color: rgba($color: $white, $alpha: 0.15);
+            border-radius: 50%;
+            padding: 0;
+            width: rem(50);
+            height: rem(50);
+            top: auto;
+            right: 0;
+            bottom: calc(100% + rem(15));
+            &::before, &::after {
+                background-color: $white;
+                width: rem(14);
+                height: rem(1.5);
+            }
+        }
+        &__header {
+            &:not(:last-child) {
+                margin-bottom: rem(25);
+            }
+        }
+        &__title {
+            font-size: rem(32);
+            line-height: calc(35 / 32);
+            &:not(:last-child) {
+                margin-bottom: rem(15);
+            }
+        }
+        &__form {
+            gap: rem(15);
+            .form__agreement {
+                margin-top: rem(5);
+            }
+        }
+    }
+}

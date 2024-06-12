@@ -1,0 +1,271 @@
+{% macro Submenu(items) %}
+    <div class="header__submenu submenu">
+        <div class="submenu__backdrop"></div>
+        <div class="submenu__content">
+            <div class="container">
+                <div class="submenu__wrapper">
+                    <ul class="header__submenu-list submenu__list">
+                        {% for item in items %}
+                        <li class="submenu__list-item">
+                            <span>{{ item.category }}</span>
+                            <div class="submenu__services">
+                                <div class="submenu__services-cols">
+                                    <ul class="submenu__services-list">
+                                        {% for service in item.services.firstColumn %}
+                                            <li class="submenu__service-item">
+                                                <a href="#" class="submenu__service-link">{{ service }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                    <ul class="submenu__services-list">
+                                        {% for service in item.services.secondColumn %}
+                                            <li class="submenu__service-item">
+                                                <a href="#" class="submenu__service-link">{{ service }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+
+{% macro MobileMenu(menu_items) %}
+    <nav class="header__menu header__menu--mobile menu">
+        <div class="container">
+            <ul class="menu__list">
+                {% for item in menu_items %}
+                    <li class="menu__item">
+                        <a href="{{ item.href }}" class="menu__link">{{ item.label }}</a>
+                        {% if loop.index == 1 %}
+                            <button class="menu__arrow" type="button">
+                                <svg>
+                                    <use xlink:href="#arrow"></use>
+                                </svg>
+                            </button>    
+                            {% set submenu_items = [
+                                {
+                                    category: "Cкорая медицинская помощь",
+                                    services: ["Детская реанимация", "Линейные бригады", "Бригады для перевозки", "Cкорая медицинская помощь", "Реанимационные", "Детская реанимация", "Линейные бригады"]
+                                },
+                                {
+                                    category: "Забор анализов",
+                                    services: ["Детская реанимация", "Линейные бригады", "Бригады для перевозки"]
+                                },
+                                {
+                                    category: "Госпитализация",
+                                    services: ["Детская реанимация", "Линейные бригады", "Бригады для перевозки", "Cкорая медицинская помощь"]
+                                },
+                                {
+                                    category: "Детская неотложная помощь",
+                                    services: ["Детская реанимация", "Линейные бригады", "Бригады для перевозки", "Cкорая медицинская помощь", "Реанимационные", "Детская реанимация", "Линейные бригады"]
+                                },
+                                {
+                                    category: "Транспортировка",
+                                    services: ["Детская реанимация", "Линейные бригады", "Бригады для перевозки", "Cкорая медицинская помощь", "Реанимационные", "Детская реанимация", "Линейные бригады"]
+                                },
+                                {
+                                    category: "Забор анализов",
+                                    services: ["Детская реанимация", "Линейные бригады", "Бригады для перевозки", "Cкорая медицинская помощь", "Реанимационные", "Детская реанимация", "Линейные бригады"]
+                                },
+                                {
+                                    category: "Скорая медицинская помощь",
+                                    services: ["Детская реанимация", "Линейные бригады", "Бригады для перевозки", "Cкорая медицинская помощь", "Реанимационные", "Детская реанимация", "Линейные бригады"]
+                                }
+                            ] %}      
+                            <div class="menu__submenu submenu menu">
+                                <div class="container">
+                                    <button class="menu__back-button">
+                                        <svg>
+                                            <use xlink:href="#arrow"></use>
+                                        </svg>
+                                        <span>Назад</span>
+                                    </button>
+                                    <ul class="menu__list">
+                                        {% for item in submenu_items %}
+                                            <li class="menu__item">
+                                                <a href="#" class="menu__link">{{item.category}}</a>
+                                                <button class="menu__arrow" type="button">
+                                                    <svg>
+                                                        <use xlink:href="#arrow"></use>
+                                                    </svg>
+                                                </button>
+                                                <div class="menu__submenu submenu menu">
+                                                    <div class="container">
+                                                        <button class="menu__back-button">
+                                                            <svg>
+                                                                <use xlink:href="#arrow"></use>
+                                                            </svg>
+                                                            <span>{{ item.category }}</span>
+                                                        </button>
+                                                        <ul class="menu__list">
+                                                            {% for service in item.services %}
+                                                                <li class="menu__item">
+                                                                    <a href="#" class="menu__link">{{ service }}</a>
+                                                                </li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="menu__actions">
+                <div class="header__location">
+                    <svg class="header__location-icon">
+                        <use xlink:href="#geo"></use>
+                    </svg>
+                </div>
+                <div class="header__bvi">
+                    <svg>
+                        <use xlink:href="#bvi"></use>
+                    </svg>
+                </div>
+                <div class="wrapper">
+                    <a href="tel:89765432100" class="header__phone button">
+                        <svg>
+                            <use xlink:href="#phone"></use>
+                        </svg>
+                        <span>8 (976) 543 21 00</span>
+                    </a>
+                    <button class="header__button button" type="button">
+                        <span>Получить консультацию</span>        
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+{% endmacro %}
+
+
+{% macro Menu(items, device) %}
+    <nav class="header__menu header__menu--{{device}}">
+        <ul class="header__menu-list">
+            {% for item in items %}
+                <li class="header__menu-item {{ 'header__menu-item--services' if loop.index == 1 }}">
+                    {% if loop.index == 1 %}
+                        <svg class="header__menu-item-icon">
+                            <use xlink:href="#services"></use>
+                        </svg>
+                        <span class="header__menu-item-label">{{ item.label }}</span>
+                        {% set submenu_items = [
+                            {
+                                category: "Cкорая медицинская помощь",
+                                services: {
+                                    firstColumn: ["Детская реанимация", "Линейные бригады", "Бригады для перевозки", "Cкорая медицинская помощь", "Реанимационные", "Детская реанимация", "Линейные бригады"],
+                                    secondColumn: ["Детская реанимация", "Линейные бригады", "Бригады для перевозки", "Cкорая медицинская помощь", "Реанимационные", "Детская реанимация", "Линейные бригады"]
+                                }
+                            },
+                            {
+                                category: "Забор анализов",
+                                services: {
+                                    firstColumn: ["Детская реанимация", "Линейные бригады", "Бригады для перевозки"],
+                                    secondColumn: ["Детская реанимация", "Линейные бригады", "Бригады для перевозки"]
+                                }
+                            },
+                            {
+                                category: "Госпитализация",
+                                services: {
+                                    firstColumn: ["Детская реанимация", "Линейные бригады", "Бригады для перевозки", "Cкорая медицинская помощь"],
+                                    secondColumn: ["Детская реанимация", "Линейные бригады", "Бригады для перевозки", "Cкорая медицинская помощь"]
+                                }
+                            },
+                            {
+                                category: "Детская неотложная помощь",
+                                services: {
+                                    firstColumn: ["Детская реанимация", "Линейные бригады", "Бригады для перевозки", "Cкорая медицинская помощь", "Реанимационные", "Детская реанимация", "Линейные бригады"],
+                                    secondColumn: ["Детская реанимация", "Линейные бригады", "Бригады для перевозки", "Cкорая медицинская помощь", "Реанимационные", "Детская реанимация", "Линейные бригады"]
+                                }
+                            },
+                            {
+                                category: "Транспортировка",
+                                services: {
+                                    firstColumn: ["Детская реанимация", "Линейные бригады", "Бригады для перевозки", "Cкорая медицинская помощь"],
+                                    secondColumn: ["Детская реанимация", "Линейные бригады", "Бригады для перевозки", "Cкорая медицинская помощь"]
+                                }
+                            },
+                            {
+                                category: "Забор анализов",
+                                services: {
+                                    firstColumn: ["Детская реанимация", "Линейные бригады", "Бригады для перевозки", "Cкорая медицинская помощь", "Реанимационные", "Детская реанимация", "Линейные бригады"],
+                                    secondColumn: ["Детская реанимация", "Линейные бригады", "Бригады для перевозки", "Cкорая медицинская помощь", "Реанимационные", "Детская реанимация", "Линейные бригады"]
+                                }
+                            },
+                            {
+                                category: "Скорая медицинская помощь",
+                                services: {
+                                    firstColumn: ["Детская реанимация", "Линейные бригады", "Бригады для перевозки", "Cкорая медицинская помощь"],
+                                    secondColumn: ["Детская реанимация", "Линейные бригады", "Бригады для перевозки", "Cкорая медицинская помощь"]
+                                }
+                            }
+                        ] %}
+                        {{ Submenu(submenu_items)}}
+                    {% else %}
+                        <a href="{{ item.href }}" class="header__menu-link">{{ item.label }}</a>                        
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+{% endmacro %}
+
+
+<header class="header">
+    <div class="header__container container">
+        <a href="/" class="header__logo logo">
+            <img class="logo__icon" src="images/logo-icon.svg" alt="" class="logo__icon">
+            <img class="logo__title" src="images/logo-title.svg" alt="">
+            <img class="logo__subtitle" src="images/logo-subtitle.svg" alt="">
+        </a>
+        {# <div class="header__location">
+            <svg class="header__location-icon">
+                <use xlink:href="#geo"></use>
+            </svg>
+            <span class="header__location-title">Москва</span>
+        </div> #}
+        {% set menu_items = [
+            {label: "Услуги"},
+            {label: "Цены", href: "#"},
+            {label: "Акции", href: "#"},
+            {label: "Отзывы", href: "#"},
+            {label: "О клинике", href: "#"},
+            {label: "Контакты", href: "#"}
+        ] %}
+        {{ Menu(menu_items, "desktop")}}
+
+        {{ MobileMenu(menu_items) }}
+
+        <div class="header__actions">
+            <button class="header__bvi" type="button">
+                <svg>
+                    <use xlink:href="#bvi"></use>
+                </svg>
+            </button>
+            <a href="tel:89765432100" class="header__phone button">
+                <svg>
+                    <use xlink:href="#phone"></use>
+                </svg>
+                <span>8 (976) 543 21 00</span>
+            </a>
+            <button class="header__button button" type="button">
+                <span>Получить консультацию</span>        
+            </button>
+        </div>
+        <div class="header__burger">
+            <span></span>
+        </div>
+    </div>
+</header>

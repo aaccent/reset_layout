@@ -1,0 +1,213 @@
+.hero {
+    &__swiper {
+        position: relative;
+        .swiper-controls {
+            pointer-events: none;
+            position: absolute;
+            right: 0;
+            bottom: rem(80);
+            width: 100%;
+            z-index: 2;
+            .container {
+                display: flex;
+                justify-content: flex-end;
+                gap: rem(10);
+            }
+            .swiper-button-prev, .swiper-button-next {
+                background-color: rgba($color: $white, $alpha: 0.1);
+                backdrop-filter: blur(14px);
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                pointer-events: auto;
+                position: static;
+                margin: 0;
+                width: rem(65);
+                height: rem(65);
+                &::after {
+                    content: none
+                }
+                svg {
+                    width: rem(8);
+                    height: rem(13);
+                }
+                @include ishover {
+                    &:not(.swiper-button-disabled) {
+                        background-color: rgba($color: $white, $alpha: 0.16);
+                    }
+                }
+            }
+        }
+        .swiper-pagination-bullets {
+            bottom: rem(20);
+        }
+    }
+
+    @include desktop {
+        &__swiper {
+            .swiper-controls {
+                bottom: rem(60);
+            }
+        }
+    }
+    @include gap {
+        &__swiper {
+            .swiper-controls {
+                display: none;
+            }
+            .swiper-pagination-bullet {
+                flex-basis: calc(65);
+            }
+        }
+    }
+}
+
+.hero-slide {
+    --padding-y: 5rem;
+    padding: var(--padding-y, 5rem) 0;
+    position: relative;
+    &__img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+    }
+    &__container {
+        position: relative;
+        height: 100%;
+        z-index: 2;
+    }
+    &__content {
+        display: flex;
+        flex-direction: column;
+        max-width: rem(520);
+        height: 100%;
+        height: rem(615);
+        @include adaptive-value(height, 570, 615, 768, $container-width)
+    }
+    &__tag {
+        display: flex;
+        align-items: center;
+        gap: rem(8);
+        &:first-child {
+            margin-bottom: auto;
+        }
+        span {
+            color: #F7F1F1;
+            font-size: rem(13);
+            font-weight: 600;
+            line-height: calc(20 / 13);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+    }
+    &__tag-icon {
+        display: flex;
+        align-items: center;
+        svg {
+            color: $primary-color;
+            width: rem(6);
+            height: rem(7);
+        }
+    }
+    &__title {
+        color: white;
+        font-size: rem(58);
+        @include adaptive-value(font-size, 32, 58, 768, $container-width);
+        font-weight: 500;
+        letter-spacing: -0.03em;
+        line-height: calc(55 / 58);
+        span {
+            opacity: 0.45;
+        }
+        &:not(:last-child) {
+            margin-bottom: rem(40);
+            margin-bottom: calc(40 / 58 * 1em);
+        }
+    }
+
+    &__desc {
+        color: $white;
+        @include txt_regular;
+        opacity: 0.7;
+        &:not(:last-child) {
+            margin-bottom: calc(75 / 15 * 1em);
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        gap: rem(10);
+    }
+
+    &__price {
+        border: rem(1) dashed rgba($color: $white, $alpha: 0.28);
+        color: $white;
+    }
+    @include desktop {
+        --padding-y: 60px;
+    }
+    @include gap {
+        padding-top: rem(40);
+        &::after {
+            background-color: rgba($color: $black, $alpha: 0.45);
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+        &__tag {
+            gap: rem(6);
+            }
+        &__tag-icon {
+            svg {
+                color: $white;
+                &:last-child {
+                    fill-opacity: 0.45;
+                }
+            }
+            
+        }
+        &__title {
+            line-height: calc(35 / 32 * 100%);
+            &:not(:last-child) {
+                margin-bottom: rem(20);
+            }
+        }
+        &__desc {
+            &:not(:last-child) {
+                margin-bottom: rem(50)
+            }
+        }
+    }
+
+    @media (max-width: 480px) {
+        &__tag {
+            span {
+                font-size: rem(12);
+            }
+        }
+        &__decs {
+            font-size: rem(14);
+        }
+        &__buttons {
+            flex-direction: column;
+            & > * {
+                justify-content: center;
+                padding-top: rem(17);
+                padding-bottom: rem(17);
+                span {
+                    font-size: rem(14);
+                }
+            }
+        }
+    }
+}
+
+.swiper-controls {
+
+}

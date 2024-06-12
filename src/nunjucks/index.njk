@@ -1,0 +1,26 @@
+{% extends "templates/layout.njk" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="css/libs/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/style.min.css">
+
+{% endblock %}
+
+
+{% block content %}
+    {% include "pages-blocks/hero.njk" %}
+    {% include "pages-blocks/services.njk" %}
+    {% include "pages-blocks/why-we.njk" %}
+    {% include "pages-blocks/our-company.njk" %}
+    {% include "pages-blocks/help.njk" %}
+    {% include "pages-blocks/contact-us.njk" %}
+    {% include "pages-blocks/our-advantages.njk" %}
+    {% include "pages-blocks/about-us.njk" %}
+    {% include "pages-blocks/faq.njk" %}
+    {% include "pages-blocks/call-us.njk" %}
+{% endblock %}
+
+{% block scripts %}
+    <script src="js/libs/swiper-bundle.min.js"></script>
+    {{ super() }}
+{% endblock %}

@@ -1,0 +1,55 @@
+{% macro HeroSlide() %}
+    <div class="hero__slide hero-slide swiper-slide">
+        <img src="images/hero-slider.png" alt="" class="hero-slide__img">
+        <div class="hero-slide__container container">
+            <div class="hero-slide__content">
+                <div class="hero-slide__tag">
+                    <span class="hero-slide__tag-icon">
+                        <svg>
+                            <use xlink:href="#hero-tag">
+                        </svg>
+                        <svg>
+                            <use xlink:href="#hero-tag">
+                        </svg>
+                    </span>
+                    <span>выезд в течении 20 минут</span>
+                </div>
+                <h2 class="hero-slide__title">Комплексная платная скорая помощь <span>в Москве</span></h2>
+                <p class="hero-slide__desc">Современный подход к оказанию круглосуточной экстренноймедицинской помощи пациентам соответствует единым медицинским алгоритмам, высокому профессионализму.</p>
+                <div class="hero-slide__buttons">
+                    <button class="hero-slide__button hero-slide__call-doctor button button--primary" type="button">
+                        <span>Вызвать врача</span>
+                    </button>
+                    <div class="hero-slide__price button">
+                        <span>от 3000 ₽</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+<section class="hero">
+    <div class="hero__swiper swiper">
+        <div class="swiper-wrapper">
+            {% for i in range(1,4) %}
+                {{ HeroSlide() }}
+            {% endfor %}
+        </div>
+        <div class="swiper-controls">
+            <div class="container">
+                <div class="swiper-button-prev">
+                    <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 12L1 6.5L7 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div class="swiper-button-next">
+                    <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 12L7 6.5L1 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
