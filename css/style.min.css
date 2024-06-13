@@ -1887,6 +1887,13 @@ body._lock {
     font-size: 0.875rem;
   }
 }
+.why-we__desc p:not(:first-child) {
+  margin-top: 1.25rem;
+}
+.why-we__desc-icon svg {
+  width: 2.125rem;
+  height: 1.25rem;
+}
 .why-we__advantages {
   grid-column: 2/3;
   grid-row: 1/3;
@@ -1949,6 +1956,13 @@ body._lock {
   }
   .why-we__desc p {
     font-size: 0.875rem;
+  }
+  .why-we__desc p:not(:first-child) {
+    margin-top: 1.25rem;
+  }
+  .why-we__desc-icon svg {
+    width: 1.5625rem;
+    height: 0.9375rem;
   }
   .why-we__advantages {
     grid-template-columns: 1fr;
