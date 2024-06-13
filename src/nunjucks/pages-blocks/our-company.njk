@@ -4,7 +4,7 @@
             <img src="images/doctor-0{{'1' if index % 2 else '2'}}.png" alt="">
             <div class="doctor__experience"><span>Стаж: </span>{{ doctor.experience }}</div>
         </div>
-        <h4 class="doctor__name">{{ doctor.name }}</h4>
+        <div class="doctor__name">{{ doctor.name }}</div>
         <div class="doctor__position">{{ doctor.position }}</div>
     </div>
 {% endmacro %}

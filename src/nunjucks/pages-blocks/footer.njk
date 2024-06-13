@@ -1,7 +1,7 @@
 {% macro MenuColumn(column) %}
     <div class="footer__menu-column column {{ 'column--main' if column.main }}">
         <div class="column__header">
-            <h6 class="column__title">{{ column.title }}</h6>
+            <div class="column__title">{{ column.title }}</div>
             <svg class="column__arrow">
                 <use xlink:href="#arrow"></use>
             </svg>
