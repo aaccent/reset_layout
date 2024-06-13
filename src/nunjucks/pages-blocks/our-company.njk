@@ -1,7 +1,7 @@
 {% macro Doctor(doctor, index) %}
     <div class="our-doctors__doctor doctor swiper-slide">
         <div class="doctor__image">
-            <img src="images/doctor-01.png" alt="">
+            <img src="images/doctor-0{{'1' if index % 2 else '2'}}.png" alt="">
             <div class="doctor__experience"><span>Стаж: </span>{{ doctor.experience }}</div>
         </div>
         <h4 class="doctor__name">{{ doctor.name }}</h4>

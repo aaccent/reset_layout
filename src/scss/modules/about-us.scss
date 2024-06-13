@@ -93,6 +93,15 @@
             max-width: rem(340);
         }
     }
+    @include gap {
+        &__body {
+            margin-left: rem(-20);
+            margin-right: rem(-20);
+        }
+        &__review-item {
+            width: calc(100% - rem(40));
+        }
+    }
     @include phone {
         .swiper-pagination-bullets {
             margin-top: rem(35);

@@ -148,6 +148,13 @@
             }
         }
     }
+    @media screen and (max-width: 480px) {
+        &__form {
+            .form__submit {
+                align-self: stretch;
+            }
+        }
+    }
 }
 
 .form {

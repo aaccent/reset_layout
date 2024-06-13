@@ -416,8 +416,15 @@ window.onload = function() {
         })
 
         new Swiper(".reviews__swiper", {
-            slidesPerView: 1,
+            slidesPerView: "auto",
+            spaceBetween: 20,
+            centeredSlides: true,
             speed: 500,
+            breakpoints: {
+                768: {
+                    slidesPerView: 1,
+                }
+            },
             navigation: {
                 nextEl: ".reviews .swiper-button-next",
                 prevEl: ".reviews .swiper-button-prev",
@@ -427,6 +434,7 @@ window.onload = function() {
                 clickable: true,
             }
         })
+
         new Swiper(".certificates__swiper", {
             slidesPerView: "auto",
             spaceBetween: 4,
