@@ -23,9 +23,6 @@
         p {
             @include txt_regular;
             opacity: 0.5;
-            &:not(:first-child) {
-                margin-top: rem(20);
-            }
         }
     }
 
@@ -33,6 +30,9 @@
         svg {
             width: rem(34);
             height: rem(20);
+        }
+        &:not(:last-child) {
+            margin-bottom: rem(40);
         }
     }
     &__advantages {
@@ -96,15 +96,15 @@
             margin-top: rem(10);
             p {
                 font-size: rem(14);
-                &:not(:first-child) {
-                    margin-top: rem(20);
-                }
             }
         }
         &__desc-icon {
             svg {
                 width: rem(25);
                 height: rem(15);
+            }
+            &:not(:last-child) {
+                margin-bottom: rem(20);
             }
         }
         &__advantages {

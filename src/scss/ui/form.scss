@@ -51,6 +51,11 @@
         font-weight: 400;
         line-height: calc(20 / 12);
         opacity: 0.5;
+        a {
+            @include ishover {
+                text-decoration: underline;
+            }
+        }
     }
     @include phone {
         &__input {
