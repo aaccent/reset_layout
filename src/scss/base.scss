@@ -30,7 +30,7 @@ body {
     background-color: #F5F5F5;
     color: $text-color;
     font-family: "Inter", "sans-serif";
-    &._lock, &.body_lock {
+    &._lock {
         // height: 100%;
         overflow: hidden;
     }
