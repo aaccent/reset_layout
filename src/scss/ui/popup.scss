@@ -20,7 +20,6 @@
 
     &__content {
         background-color: $white;
-        
         position: relative;
         max-width: rem(890);
         width: 100%;
@@ -83,12 +82,13 @@
         opacity: 1;
         visibility: visible;
     }
-    &--call-doctor {
+    &--call-doctor, &--consultation {
         .popup__content {
             --padding: 5rem;
             border-radius: rem(40);
             padding: calc(0.9375 * var(--padding, 5rem)) var(--padding, 5rem) var(--padding, 5rem);;
             @include adaptive-value(--padding, 40, 80, 768, 992);
+            transform: scale(0.4);
         }
     }
     &--gallery {

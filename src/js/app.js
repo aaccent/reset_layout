@@ -90,7 +90,7 @@ function validateForm(form) {
             }
         }
         if (reqFiedls[i].getAttribute("name") === "phone") {
-            if (reqFiedls[i].value.trim() === "" || reqFiedls[i].value.length < 15) {
+            if (reqFiedls[i].value.trim() === "" || reqFiedls[i].value.length < 18) {
                 reqFiedls[i].closest(".form__control").classList.add("form__control--error");
                 errors++;
             }
@@ -119,20 +119,37 @@ function validateForm(form) {
 
 
 window.onload = function() {
+    let callDoctorPopupEl = document.querySelector(".popup--call-doctor")
+
+
     // HEADER
     const headerEl = document.querySelector(".header");
     const burgerMenuEl = headerEl.querySelector(".header__burger");
     const serviceMenuItemEl = headerEl.querySelector(".header__menu-item--services");
     const desktopSubmenuEl = serviceMenuItemEl.querySelector(".header__submenu");
-    const desktopMenuEl = headerEl.querySelector(".header__menu-list");
     const mobileMenuEl = headerEl.querySelector(".header__menu--mobile");
 
+    const consultationButtonEls = headerEl.querySelectorAll(".header__button");
+    const buttonEls = document.querySelectorAll(".header__menu-item--prices, .header__menu-item--stocks, .column__menu-item--prices, .column__menu-item--stocks")
 
-    desktopMenuEl.addEventListener("click", (e) => {
-        if (e.target.closest(".header__menu-item:not(.header__menu-item--services)")) {
-            e.preventDefault()
-            openPopup(document.querySelector(".popup"))
+    Array.from(buttonEls).forEach(buttonEl => {
+        buttonEl.addEventListener("click", e => {
+            e.preventDefault();
+            openPopup(callDoctorPopupEl)
+        })
+    })
+
+    desktopSubmenuEl.addEventListener("click", (e) => {
+        if (!e.target.closest(".submenu__service-link")) {
+            return
         }
+        e.preventDefault();
+        openPopup(callDoctorPopupEl)
+    })
+
+    Array.from(consultationButtonEls).forEach(buttonEl => {
+        let popupEl = document.querySelector(".popup--consultation")
+        buttonEl.addEventListener("click", e => openPopup(popupEl))
     })
 
     serviceMenuItemEl.addEventListener("click", (e) => {
@@ -206,6 +223,19 @@ window.onload = function() {
         })
     })
 
+    // SERVICES
+    let servicesListEl = document.querySelector(".services__list")
+    servicesListEl.addEventListener("click", e => {
+        if (!e.target.closest(".services__service-item")) {
+            return
+        }
+        openPopup(callDoctorPopupEl)
+    })
+
+    // OUR ADVANTAGES
+    const moreButtonEl = document.querySelector(".our-advantages__about-more");
+    moreButtonEl.addEventListener("click", e => openPopup(callDoctorPopupEl))
+
     // FAQ
 
     const faqItemHeaderEls = document.querySelectorAll(".accordion__header");
@@ -261,34 +291,62 @@ window.onload = function() {
     })
 
     // FOOTER
-
-    const footerColumnEls = document.querySelectorAll(".footer__menu-column");
+    const footerEl = document.querySelector(".footer")
+    const footerMenuEl = footerEl.querySelector(".footer__menu")
     const gapMeidaQuery = window.matchMedia("(max-width: 768px)");
 
-    // const hadnleClick = (column) => {
-    //     if (e.target.closest(".column__header")) {
-    //         e.currentTarget.classList.toggle("column--menu-open")
-    //     }
-    // }
-    Array.from(footerColumnEls).forEach(column => {
-        column.addEventListener("click", (e) => {
-            if (window.innerWidth <= 768) {
-                if (e.target.closest(".column__header")) {
-                    e.currentTarget.classList.toggle("column--open")
-                }
+    footerMenuEl.addEventListener("click", (e) => {
+        let targetEl = e.target;
+        if (targetEl.closest(".column--main")) {
+            return 
+        }
+        
+        if (gapMeidaQuery.matches) {
+            if (targetEl.closest(".column__header")) {
+                targetEl.closest(".column").classList.toggle("column--open")
             }
-        })
+        }
+        if (targetEl.closest(".column__menu-link")) {
+            e.preventDefault()
+            openPopup(callDoctorPopupEl)
+        }
     })
 
     gapMeidaQuery.addEventListener("change", e => {
         if (e.matches) {
-            for (let i = 0; i < footerColumnEls.length; i++) {
-                if (footerColumnEls[i].classList.contains("column--open")) {
-                    footerColumnEls[i].classList.remove("column--open")
-                }
-            }
+            let openColumnEls = footerEl.querySelectorAll(".column--open")
+            Array.from(openColumnEls).forEach(columnEl => columnEl.classList.remove("column--open"))
         }
     })
+
+    // LOCOMOTIVE SCROLL
+    if (window.LocomotiveScroll) {
+        let scroll = new LocomotiveScroll();
+
+        let contactsLinkEls = document.querySelectorAll(".header__menu-item--contacts a, .column__menu-item--contacts")
+        let callUsSection = document.querySelector("section.call-us");
+
+        let aboutLinkEl = document.querySelectorAll(".header__menu-item--about, .column__menu-item--about")
+        let aboutSection = document.querySelector("section.our-advantages")
+
+        let reviewsLinkEls = document.querySelectorAll(".header__menu-item--reviews, .column__menu-item--reviews")
+        let reviewsSection = document.querySelector("section.about-us")
+
+        function handleLinks(linkEls, section) {
+            Array.from(linkEls).forEach(linkEl => {
+                linkEl.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    scroll.scrollTo(section, {
+                        duration: 800,
+                    })
+                })
+            })
+        }
+
+        handleLinks(contactsLinkEls, callUsSection)
+        handleLinks(aboutLinkEl, aboutSection)
+        handleLinks(reviewsLinkEls, reviewsSection)
+    }
 
     // SWIPERs
     if (window.Swiper) {

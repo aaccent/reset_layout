@@ -17,7 +17,31 @@
 
     {% include "../pages-blocks/footer.njk" %}
 
-
+    <div class="popup popup--consultation">
+        <div class="popup__container">
+            <div class="popup__content">
+                <button class="popup__close" type="button"></button>
+                <div class="popup__header">
+                    <h4 class="popup__title">Получите бесплатную консультацию <span class="_aaccent">от специалиста</span></h4>
+                    <p class="popup__desc">Оставьте заявку и мы перезвоним вам в ближайшее время</p>
+                </div>
+                <div class="popup__body">
+                    <form action="#" method="POST" name="" class="popup__form form">
+                        <div class="form__control">
+                            <input type="text" name="name" class="form__input form__input--required" placeholder="Ваше имя" autocomplete="off">
+                        </div>
+                        <div class="form__control">
+                            <input type="tel" name="phone" class="form__input form__input--required" placeholder="+7 (999)-999-99-99" autocomplete="off">
+                        </div>
+                        <button class="form__submit button button--primary" type="submit">
+                            <span>Заказать звонок</span>
+                        </button>
+                        <div class="form__agreement">Нажимая на кнопку «Заказать звонок» вы соглашаетесь c политикой конфиденциальности сайта</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="popup popup--call-doctor">
         <div class="popup__container">
             <div class="popup__content">

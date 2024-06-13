@@ -9,7 +9,7 @@
         <div class="column__body">
             <ul class="column__menu">
                 {% for menu_item in column.menu %}
-                    <li class="column__menu-item">
+                    <li class="column__menu-item {{ 'column__menu-item--' + menu_item.modificator if column.main }}">
                         <a href="#" class="column__menu-link">{{ menu_item.label }}</a>
                     </li>
                 {% endfor %}
@@ -66,11 +66,11 @@
                         title: "Компания",
                         main: true,
                         menu: [
-                            { label: "О клинике", link: "" },
-                            { label: "Цены", link: "" },
-                            { label: "Акции", link: "" },
-                            { label: "Отзывы", link: "" },
-                            { label: "Контакты", link: "" }
+                            { label: "О клинике", link: "#", modificator: "about" },
+                            { label: "Цены", link: "#", modificator: "prices" },
+                            { label: "Акции", link: "#", modificator: "stocks" },
+                            { label: "Отзывы", link: "#", modificator: "reviews" },
+                            { label: "Контакты", link: "#", modificator: "contacts" }
                         ]
                     },
                     {
