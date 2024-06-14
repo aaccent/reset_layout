@@ -130,7 +130,7 @@ window.onload = function() {
     const mobileMenuEl = headerEl.querySelector(".header__menu--mobile");
 
     const consultationButtonEls = headerEl.querySelectorAll(".header__button");
-    const buttonEls = document.querySelectorAll(".header__menu-item--prices, .header__menu-item--stocks, .column__menu-item--prices, .column__menu-item--stocks")
+    const buttonEls = document.querySelectorAll(".header__menu-item--prices, .header__menu-item--stocks, .column__menu-item--prices, .column__menu-item--stocks, .menu__item--stocks, .menu__item--prices")
 
     Array.from(buttonEls).forEach(buttonEl => {
         buttonEl.addEventListener("click", e => {
@@ -386,22 +386,33 @@ window.onload = function() {
     if (window.LocomotiveScroll) {
         let scroll = new LocomotiveScroll();
 
-        let contactsLinkEls = document.querySelectorAll(".header__menu-item--contacts a, .column__menu-item--contacts")
+        let contactsLinkEls = document.querySelectorAll(".header__menu-item--contacts a, .column__menu-item--contacts, .menu__item--contacts")
         let callUsSection = document.querySelector("section.call-us");
 
-        let aboutLinkEl = document.querySelectorAll(".header__menu-item--about, .column__menu-item--about")
+        let aboutLinkEl = document.querySelectorAll(".header__menu-item--about, .column__menu-item--about, .menu__item--about")
         let aboutSection = document.querySelector("section.our-advantages")
 
-        let reviewsLinkEls = document.querySelectorAll(".header__menu-item--reviews, .column__menu-item--reviews")
+        let reviewsLinkEls = document.querySelectorAll(".header__menu-item--reviews, .column__menu-item--reviews, .menu__item--reviews")
         let reviewsSection = document.querySelector("section.about-us")
 
         function handleLinks(linkEls, section) {
             Array.from(linkEls).forEach(linkEl => {
                 linkEl.addEventListener("click", (e) => {
                     e.preventDefault();
-                    scroll.scrollTo(section, {
-                        duration: 800,
-                    })
+                    if (mobileMenuEl.classList.contains("menu--open")) {
+                        mobileMenuEl.classList.remove("menu--open")
+                        burgerMenuEl.classList.remove("header__burger--open")
+                        unlockBody()
+                        mobileMenuEl.addEventListener("transitionend", () => {
+                            scroll.scrollTo(section, {
+                                duration: 800,
+                            })
+                        }, { once: true })
+                    } else {
+                        scroll.scrollTo(section, {
+                            duration: 800,
+                        })
+                    }
                 })
             })
         }
