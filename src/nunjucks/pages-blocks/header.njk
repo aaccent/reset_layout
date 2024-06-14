@@ -128,9 +128,14 @@
                                                             <span>{{ item.category }}</span>
                                                         </button>
                                                         <ul class="menu__list">
-                                                            {% for service in item.services %}
+                                                            {% for item in item.services.firstColumn %}
                                                                 <li class="menu__item">
-                                                                    <a href="#" class="menu__link">{{ service }}</a>
+                                                                    <a href="#" class="menu__link">{{ item }}</a>
+                                                                </li>
+                                                            {% endfor %}
+                                                            {% for item in item.services.secondColumn %}
+                                                                <li class="menu__item">
+                                                                    <a href="#" class="menu__link">{{ item }}</a>
                                                                 </li>
                                                             {% endfor %}
                                                         </ul>

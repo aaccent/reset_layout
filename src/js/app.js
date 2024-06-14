@@ -19,7 +19,7 @@ const isMobile = {
     }
 }; 
 
-const lockPaddingElements = document.querySelector("header");
+const lockPaddingElements = null //document.querySelector("header");
 
 function lockBody() {
     let paddingValue = window.innerWidth - document.documentElement.clientWidth;
@@ -139,6 +139,11 @@ window.onload = function() {
         })
     })
 
+    Array.from(consultationButtonEls).forEach(buttonEl => {
+        let popupEl = document.querySelector(".popup--consultation")
+        buttonEl.addEventListener("click", e => openPopup(popupEl))
+    })
+
     desktopSubmenuEl.addEventListener("click", (e) => {
         if (!e.target.closest(".submenu__service-link")) {
             return
@@ -147,20 +152,13 @@ window.onload = function() {
         openPopup(callDoctorPopupEl)
     })
 
-    Array.from(consultationButtonEls).forEach(buttonEl => {
-        let popupEl = document.querySelector(".popup--consultation")
-        buttonEl.addEventListener("click", e => openPopup(popupEl))
-    })
-
     serviceMenuItemEl.addEventListener("click", (e) => {
-
         if (e.target.closest(".submenu__backdrop")) {
             desktopSubmenuEl.className = "header__submenu header__submenu--close";
             desktopSubmenuEl.firstElementChild.addEventListener("transitionend", () => {
                 unlockBody()
                 desktopSubmenuEl.classList.remove("header__submenu--close")
             }, { once: true })
-        // } else if () {
 
         } else if (!e.target.closest(".header__submenu")) {
             if (desktopSubmenuEl.classList.contains("header__submenu--open")) {
