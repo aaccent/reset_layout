@@ -64,6 +64,7 @@
         }
     }
     &__vector {
+        pointer-events: none;
         position: absolute;
         right: rem(-65);
         bottom: rem(-80);

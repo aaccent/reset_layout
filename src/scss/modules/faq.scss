@@ -31,7 +31,7 @@
     &__desc {
     }
 
-    &__form {
+    &__make-question {
         background-color: #F7F1F1;
         border-radius: rem(55);
         display: flex;
@@ -40,19 +40,16 @@
         align-self: self-end;
         // margin-top: calc(125 / 505 * 100%);
         padding: rem(10) rem(10) rem(10) rem(35);
-        .form__control {
+        div {
+            color: $grey;
+            @include txt_medium;
             flex-grow: 1;
         }
-        .form__input, .form__textarea {
-            color: $grey;
-        }
-        .form__submit {
-            background-color: $primary-color;
-            color: $white;
+        .button {
             flex-shrink: 0;
             align-self: flex-end;
+            justify-content: center;
         }
-
     }
 
     &__questions {
@@ -121,13 +118,13 @@
             grid-column: 1 / 2;
             grid-row: auto
         }
-        &__form {
+        &__make-question {
             max-width: rem(520);
             order: 1;
         }
     }
     @include phone {
-        &__form {
+        &__make-question {
             border-radius: rem(10);
             flex-direction: column;
             gap: rem(20);
@@ -149,23 +146,11 @@
         }
     }
     @media screen and (max-width: 480px) {
-        &__form {
-            .form__submit {
+        &__make-question {
+            .button {
                 align-self: stretch;
             }
         }
-    }
-}
-
-.form {
-
-    &__control {
-    }
-
-    &__input {
-    }
-
-    &__submit {
     }
 }
 

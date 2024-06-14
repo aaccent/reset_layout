@@ -241,7 +241,6 @@ window.onload = function() {
 
         let galleryPopupEl = document.querySelector(".popup--gallery");
         let currentImgSrc= e.target.closest("img").getAttribute("src");
-        console.log(e.target)
         galleryPopupEl.querySelector("img").setAttribute("src", currentImgSrc);
         openPopup(galleryPopupEl)
     })
@@ -251,6 +250,9 @@ window.onload = function() {
     moreButtonEl.addEventListener("click", e => openPopup(callDoctorPopupEl))
 
     // FAQ
+    const makeQuestionButtonEl = document.querySelector(".faq__make-question button");
+
+    makeQuestionButtonEl.addEventListener("click", e => openPopup(callDoctorPopupEl));
 
     const faqItemHeaderEls = document.querySelectorAll(".accordion__header");
 
@@ -524,7 +526,6 @@ window.onload = function() {
     const phoneInputEls = document.querySelectorAll(".form__input[name='phone']")
     const nameInputEls = document.querySelectorAll(".form__input[name='name']")
     const inputControlClass = "form__control"
-    const textAreaEl = document.getElementById("question");
 
     Array.from(inputEls).forEach(inputEl => {
         let inputControlEl = inputEl.closest("." + inputControlClass)
@@ -587,23 +588,6 @@ window.onload = function() {
             validateForm(e.target)
         })
     }
-
-    textAreaEl.addEventListener("input", e => {
-        const hiddenTextAreaEl = textAreaEl.previousElementSibling;
-        let maxHeight = parseFloat(getComputedStyle(textAreaEl).maxHeight);
-        hiddenTextAreaEl.value = textAreaEl.value;
-
-        if (hiddenTextAreaEl.scrollHeight > maxHeight) {
-            textAreaEl.style.overflow = "auto"
-        } else {
-            textAreaEl.style.overflow = ""
-        }
-        if (textAreaEl.offsetHeight !== hiddenTextAreaEl.scrollHeight) {
-            textAreaEl.style.height = Math.max(40, hiddenTextAreaEl.scrollHeight) + "px"
-        }
-
-
-    }) 
 
     // POPUPs
     document.querySelectorAll(".popup__close").forEach(
