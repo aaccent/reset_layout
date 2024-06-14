@@ -229,6 +229,7 @@ window.onload = function() {
         if (!e.target.closest(".services__service-item")) {
             return
         }
+        e.preventDefault()
         openPopup(callDoctorPopupEl)
     })
 
@@ -251,11 +252,9 @@ window.onload = function() {
 
     // FAQ
     const makeQuestionButtonEl = document.querySelector(".faq__make-question button");
-
     makeQuestionButtonEl.addEventListener("click", e => openPopup(callDoctorPopupEl));
 
     const faqItemHeaderEls = document.querySelectorAll(".accordion__header");
-
     faqItemHeaderEls.forEach(faqItemHeaderEl => {
         let timeoutId;
         faqItemHeaderEl.addEventListener("click", e => {
@@ -283,12 +282,60 @@ window.onload = function() {
         })
     })
 
+    // reviews & seo text
+    const faqAboutArticleEl = document.querySelector(".faq__about-article");
+    const faqAboutTextEl = faqAboutArticleEl.querySelector(".article__text");
+    const faqAboutMoreButtonEl = faqAboutArticleEl.querySelector(".article__more");
+    const maxHeight = parseFloat(getComputedStyle(faqAboutTextEl).maxHeight)
+
+    function changeElemHeight(elem) {
+        const buttonTextEl = elem.querySelector("span")
+        const className = elem.classList[1];
+        if (elem.classList.contains(className + "--open")) {
+            elem.classList.remove(className + "--open")
+            buttonTextEl.innerHTML = "Читать полностью"
+        } else {
+            elem.classList.add(className + "--open")
+            buttonTextEl.innerHTML = "Свернуть текст"
+        }
+    }
+
+    function checkElemHeight(elem) {
+        const className = elem.classList[1];
+        const textEl = faqAboutTextEl;
+        const readMoreEl = faqAboutMoreButtonEl;
+
+        if (textEl.offsetHeight < textEl.scrollHeight) {
+            !elem.classList.contains(className + "--hide") && elem.classList.add(className + "--hide")
+        } else {
+            if (!elem.classList.contains(className + "--open")) {
+                // elem.className = className
+                elem.classList.remove(`${className}--hide`);
+            } else if (textEl.offsetHeight <= maxHeight) {
+                // elem.className = className
+                elem.classList.remove(`${className}--hide`);
+                elem.classList.remove(`${className}--open`);
+                readMoreEl.querySelector("span").innerHTML = "Читать полностью"
+            }
+        } 
+    }
+
+    checkElemHeight(faqAboutArticleEl);
+    faqAboutMoreButtonEl.addEventListener("click", () => changeElemHeight(faqAboutArticleEl))
+
+    window.addEventListener("resize", () => {
+        checkElemHeight(faqAboutArticleEl)
+    })
+
+    
+
 
     // CASES
     const allCasesButtonEl = document.querySelector(".help__when-case a")
 
     allCasesButtonEl.addEventListener("click", e => {
-        let casesPopupEl = document.querySelector(".popup--cases")
+        let casesPopupEl = document.querySelector(".popup--cases");
+        e.preventDefault();
         openPopup(casesPopupEl)
     })
     
@@ -364,6 +411,26 @@ window.onload = function() {
         handleLinks(contactsLinkEls, callUsSection)
         handleLinks(aboutLinkEl, aboutSection)
         handleLinks(reviewsLinkEls, reviewsSection)
+    }
+
+    // FANCYBOX
+    if (window.Fancybox) {
+        Fancybox.bind("[data-fancybox]", {
+            // Your custom options
+        });
+        function youtubeParser(url){
+            var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+            var match = url.match(regExp);
+            return (match&&match[7].length==11)? match[7] : false;
+        }
+        let fancyboxYoutubeVideoEls = document.querySelectorAll("[data-fancybox-youtube]")
+
+        Array.from(fancyboxYoutubeVideoEls).forEach(videoEl => {
+            let videoSrc = videoEl.getAttribute("href")
+            let videoId = youtubeParser(videoSrc)
+
+            videoEl.querySelector("img").setAttribute("src", `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`)
+        })
     }
 
     // SWIPERs

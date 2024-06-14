@@ -1,5 +1,15 @@
 
 .about-us {
+    .section__ellipse {
+        &--bottom-right {
+            left: calc(1032 / 1680 * 100%);
+            bottom: calc(64 / 1430 * 100%);
+        }
+        &--bottom-left {
+            right: calc(843 / 1680 * 100%);
+            bottom: calc(-190 / 1430 * 100% );
+        }
+    }
     & > .container {
         display: flex;
         flex-direction: column;

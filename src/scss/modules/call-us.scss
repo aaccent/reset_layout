@@ -1,14 +1,20 @@
 .call-us {
-    background: linear-gradient(180deg, #0d1b1f 0%, #111d26 100%);
-    color: $white;
+    .section__ellipse {
+        &--bottom-left {
+            fill: rgba(6, 145, 175, 0.1);
+            rotate: -50deg;
+            right: calc(1138 / 1680 * 100%);
+            bottom: calc(-455 / 1430 * 100% );
+        }
+    }
     &__body {
         .container {
             display: grid;
             grid-template-columns: 1fr auto;
             grid-template-rows: auto auto auto;
-            column-gap: calc(252 / 1520 * 100%);
-            column-gap: rem(252);
-            @include adaptive-value(column-gap, 50, 252, 992, $container-width);
+            // column-gap: calc(252 / 1520 * 100%);
+            column-gap: rem(235);
+            @include adaptive-value(column-gap, 50, 235, 992, $container-width);
             justify-content: space-between;
         }
     }

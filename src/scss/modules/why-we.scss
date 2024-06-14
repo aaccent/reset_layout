@@ -1,9 +1,10 @@
 .why-we {
     position: relative;
     overflow: hidden;
-    &__ellipse {
-        position: absolute;
+    .section__ellipse {
+        
     }
+
     &__container {
         display: flex;
         flex-direction: column;
@@ -89,6 +90,11 @@
         }
     }
     @include phone {
+        &__ellipse {
+            &--top-right, &--bottom-left {
+                display: none;
+            }
+        }
         &__content {
             row-gap: rem(25);
         }

@@ -1,5 +1,6 @@
 .footer {
     padding: rem(80) 0 rem(30);
+    @include adaptive-value(padding-top, 20, 80, 576, $container-width);
     &__container {
         display: flex;
         flex-direction: column;
@@ -57,7 +58,7 @@
     &__socials {
         display: flex;
         flex-wrap: wrap;
-        gap: rem(10);
+        gap: rem(9);
         margin-top: auto;
     }
     &__social-link {
@@ -129,7 +130,7 @@
         font-size: rem(27);
         font-weight: 400;
         // line-height: rem(20);
-        letter-spacing: 0.26em;
+        letter-spacing: 0.25em;
         text-align: center;
         text-transform: uppercase;
         opacity: 0.4;
@@ -228,6 +229,7 @@
         }
     }
     @include phone {
+        padding-bottom: rem(20);
         &__container {
             gap: rem(20)
         }

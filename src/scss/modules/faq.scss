@@ -63,35 +63,6 @@
         }
     }
 
-    &__about {
-    }
-
-    &__about-text {
-        p {
-            @include txt_regular;
-            &:not(:last-child) {
-                margin-bottom: rem(20);
-            }
-        }
-        // max-height: calc(rem(20) * 6 + rem(20));
-        // overflow: hidden;
-    }
-    &__about-more {
-        color: $primary-color;
-        display: flex;
-        align-items: center;
-        gap: rem(8);
-        @include txt_medium;
-        &:not(:first-child) {
-            margin-top: rem(35);
-        }
-        svg {
-            width: rem(8);
-            height: rem(8);
-            transform: rotate(90deg);
-        }
-    }
-
     @media screen and (min-width: 577px) and (max-width: 1280px) {
         &__question {
             .accordion {
@@ -124,25 +95,17 @@
         }
     }
     @include phone {
+        &__content {
+            .container {
+                gap: rem(20);
+            }
+        }
         &__make-question {
             border-radius: rem(10);
             flex-direction: column;
             gap: rem(20);
             align-items: stretch;
             padding: rem(20);
-        }
-        &__about-text {
-            p {
-                @include txt_regular;
-                &:not(:last-child) {
-                    margin-bottom: rem(10);
-                }
-            }
-        }
-        &__about-more {
-            &:not(:first-child) {
-                margin-top: rem(20);
-            }
         }
     }
     @media screen and (max-width: 480px) {
@@ -154,3 +117,61 @@
     }
 }
 
+.article {
+    &__text {
+        max-height: calc(rem(20) * 6 + rem(20));
+        overflow: hidden;
+        p {
+            @include txt_regular;
+            &:not(:last-child) {
+                margin-bottom: rem(20);
+            }
+        }
+    }
+    &__more {
+        display: none;
+        color: $primary-color;
+        align-items: center;
+        gap: rem(8);
+        @include txt_medium;
+        &:not(:first-child) {
+            margin-top: rem(35);
+        }
+        svg {
+            width: rem(8);
+            height: rem(8);
+            transform: rotate(90deg);
+        }
+    }
+    &--hide {
+        .article__more {
+            display: flex;
+
+        }
+    }
+    &--open {
+        .article__text {
+            max-height: none;
+        }
+        .article__more {
+            svg {
+                transform: rotate(0deg);
+            }
+        }
+    }
+    @include phone {
+        &__text {
+            max-height: calc(rem(20) * 9 + rem(10));
+            p {
+                &:not(:last-child) {
+                    margin-bottom: rem(10);
+                }
+            }
+        }
+        &__more {
+            &:not(:first-child) {
+                margin-top: rem(20);
+            }
+        }
+    }
+}

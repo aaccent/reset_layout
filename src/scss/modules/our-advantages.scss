@@ -113,10 +113,15 @@
     &__about-video {
         background-color: $grey;
         border-radius: rem(25);
+        overflow: hidden;
     }
     .blockquote {
         --padding-value: 5rem;
         background-color: $white;
+        background-image: url(../images/decor-vector-02.svg), url(../images/decor-vector-01.svg);
+        background-repeat: no-repeat;
+        background-position: 0% 100%, 100% 100%;
+        background-size: 37% 40%, 32% 64%;
         border-radius: rem(40);
         display: flex;
         flex-direction: column;
@@ -368,6 +373,7 @@
             display: none;
         }
         .blockquote {
+            background-image: none;
             border-radius: rem(20);
             padding: rem(25);
             &__tag {

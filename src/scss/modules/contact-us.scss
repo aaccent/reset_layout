@@ -1,9 +1,14 @@
 .contact-us {  
-    --padding-y: 10rem;
-    background: linear-gradient(180deg, #0d1b1f 0%, #111d26 100%);
-    color: $white;
-    padding: var(--padding-y, 10rem) 0;
-    @include adaptive-value(--padding-y, 70, 160, 768, $container-width);
+    // --padding-y: 10rem;
+    // background: linear-gradient(180deg, #0d1b1f 0%, #111d26 100%);
+    // color: $white;
+    // padding: var(--padding-y, 10rem) 0;
+    // @include adaptive-value(--padding-y, 70, 160, 768, $container-width);
+    .section__ellipse {
+        &--bottom-left {
+            rotate: -50deg;
+        }
+    }
     .order-call {
         background-color: rgba($color: #0D191F, $alpha: 0.85);
         &__image {
@@ -23,123 +28,12 @@
             max-width: rem(380);
         }
     }
+    @include phone {
+        .order-call__image {
+            align-self: center;
+            width: calc(295 / 340 * 100%);
+            max-width: rem(380);
+        }
+    }
 }
-
-// .contact-us {  
-//     --padding-y: 10rem;
-//     background: linear-gradient(180deg, #0d1b1f 0%, #111d26 100%);
-//     color: $white;
-//     padding: var(--padding-y, 10rem) 0;
-//     @include adaptive-value(--padding-y, 70, 160, 768, $container-width);
-//     &__body {
-//         background-color: rgba($color: #0D191F, $alpha: 0.85);
-//         border-radius: rem(40);
-//         padding: rem(80);
-//         @include adaptive-value(padding, 40, 80, 992, $container-width);
-//         position: relative;
-//     }
-
-//     &__icon {
-//         background-color: #1F262B;
-//         border-radius: rem(15);
-//         position: absolute;
-//         top: rem(25);
-//         right: rem(25);
-//         width: calc(60 / 1520 * 100%);
-//         aspect-ratio: 1;
-//     }
-
-//     &__content {
-//         width: 62%;
-//         max-width: rem(768);
-//     }
-
-//     &__title {
-//         font-size: rem(42);
-//         @include adaptive-value(font-size, 24, 42, 768, $container-width);
-//         font-weight: 500;
-//         line-height: calc(50 / 42);
-//         letter-spacing: -0.03em;
-//         span {
-//             opacity: 0.45;
-//         }
-//         &:not(:last-child) {
-//             margin-bottom: rem(45);
-//         }
-//         a {
-//             white-space: nowrap;
-//         }
-//     }
-
-//     &__form {
-//         display: flex;
-//         gap: rem(20);
-//         align-items: center;
-//         flex-wrap: wrap;
-//         & > * {
-//             flex-shrink: 0;
-//             flex-basis: calc(50% - rem(10));
-//         }
-//     }
-
-//     &__image {
-//         position: absolute;
-//         right: rem(143);
-//         @include adaptive-value(right, 85, 143, 1280, $container-width);
-//         bottom: 0;
-//         width: calc(456 / 1520 * 100%);
-//         img {
-//             width: 100%;
-//             height: auto;
-//             object-fit: contain;
-//         }
-//     }
-//     @include tablet {
-//         &__body{
-//             display: flex;
-//             flex-direction: column;
-//             gap: rem(25);
-//         }
-//         &__content {
-//             width: 100%;
-//             max-width: unset;
-//         }
-//         &__title {
-//             max-width: rem(400);
-//         }
-//         &__icon {
-//             width: rem(50);
-//             height: rem(50);
-//         }
-//         &__image {
-//             position: static;
-//             align-self: center;
-//             width: 60%;
-//             max-width: rem(380);
-//         }
-//     }
-//     @include gap {
-//         &__body {
-//             padding: rem(25);
-//         }
-//         &__content {
-//         }
-//         &__form {
-//             flex-direction: column;
-//             & > * {
-//                 width: 100%;
-//             }
-//         }
-//     }
-//     @include phone {
-//         &__title {
-//             &:not(:last-child) {
-//                 margin-bottom: rem(25);
-//             }
-//         }
-//         &__form {
-//             gap: rem(15);
-//         }
-//     }
-// }
 
