@@ -194,6 +194,13 @@ window.onload = function() {
     
     mobileMenuEl.addEventListener("click", (e) => {
         let hasSubmenu = e.target.closest(".menu__item").childElementCount === 3;
+        let lastSubmenu = e.target.closest(".menu__item").childElementCount === 1 && e.target.closest(".menu__submenu")
+        
+        if (lastSubmenu) {
+            e.preventDefault()
+            openPopup(callDoctorPopupEl)
+            return
+        }
 
         if (!hasSubmenu) {
             return 
@@ -217,7 +224,7 @@ window.onload = function() {
     // HERO
     Array.from(document.querySelectorAll(".hero-slide__call-doctor")).forEach(buttonEl => {
         buttonEl.addEventListener("click", e => {
-            openPopup(document.querySelector(".popup"))
+            openPopup(callDoctorPopupEl)
         })
     })
 
