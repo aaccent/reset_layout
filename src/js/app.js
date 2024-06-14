@@ -232,6 +232,20 @@ window.onload = function() {
         openPopup(callDoctorPopupEl)
     })
 
+    // TRANSPORT 
+    let transportListEl = document.querySelector(".our-transport .swiper-wrapper")
+    transportListEl.addEventListener("click", e => {
+        if (!e.target.closest(".transport")) {
+            return
+        }
+
+        let galleryPopupEl = document.querySelector(".popup--gallery");
+        let currentImgSrc= e.target.closest("img").getAttribute("src");
+        console.log(e.target)
+        galleryPopupEl.querySelector("img").setAttribute("src", currentImgSrc);
+        openPopup(galleryPopupEl)
+    })
+
     // OUR ADVANTAGES
     const moreButtonEl = document.querySelector(".our-advantages__about-more");
     moreButtonEl.addEventListener("click", e => openPopup(callDoctorPopupEl))
@@ -276,8 +290,10 @@ window.onload = function() {
         openPopup(casesPopupEl)
     })
     
+
     // CERTIFICATE
     let certificatesListEl = document.querySelector(".certificates .swiper-wrapper")
+
 
     certificatesListEl.addEventListener("click", e => {
         if (!e.target.closest(".certificate__image-wrapper")) {
@@ -285,8 +301,8 @@ window.onload = function() {
         }
 
         let certificatePopupEl = document.querySelector(".popup--gallery");
-        let currentImgSrc= e.target.closest("img").getAttribute.src;
-        certificatePopupEl.querySelector("img").setAttribute.src = currentImgSrc;
+        let currentImgSrc= e.target.closest("img").getAttribute("src");
+        certificatePopupEl.querySelector("img").setAttribute("src", currentImgSrc);
         openPopup(certificatePopupEl)
     })
 
