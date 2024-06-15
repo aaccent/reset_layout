@@ -66,6 +66,12 @@ body {
             color: $grey
         }
     }
+    &--multirow {
+        display: flex;
+        flex-direction: column;
+        gap: rem(160);
+        @include adaptive-value(gap, 70, 160, 576, $container-width);
+    }
     &--light {
         background-color: $white;
     }
@@ -74,7 +80,7 @@ body {
         color: $white;
         position: relative;
         overflow: hidden;
-        & > .container, & > .section__body {
+        & > :not(.section__ellipse) {
             position: relative;
             z-index: 2;
         }

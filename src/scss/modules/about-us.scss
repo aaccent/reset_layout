@@ -124,10 +124,12 @@
 }
 
 .certificates {
-    background-color: rgba($color: #0D191F, $alpha: 0.85);
-    border-radius: rem(40);
-    padding: rem(80);
-    @include adaptive-value(padding, 25, 80, 768, $container-width);
+    &__content {
+        background-color: rgba($color: #0D191F, $alpha: 0.85);
+        border-radius: rem(40);
+        padding: rem(80);
+        @include adaptive-value(padding, 25, 80, 768, $container-width);
+    }
     &__header {
         display: flex;
         justify-content: space-between;

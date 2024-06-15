@@ -1,21 +1,14 @@
 .why-we {
     position: relative;
     overflow: hidden;
-    .section__ellipse {
-        
-    }
 
-    &__container {
-        display: flex;
-        flex-direction: column;
-        gap: rem(160);
-        @include adaptive-value(gap, 70, 160, 576, $container-width);
-    }
     &__content {
-        display: grid;
-        grid-template-columns: max(rem(556)) max(rem(752));
-        grid-template-columns: calc(552 / 1520 * 100%) 1fr;
-        column-gap: rem(40);
+        .container {
+            display: grid;
+            grid-template-columns: max(rem(556)) max(rem(752));
+            grid-template-columns: calc(552 / 1520 * 100%) 1fr;
+            column-gap: rem(40);
+        }
     }
 
     &__desc {
@@ -65,8 +58,10 @@
 
     @include tablet {
         &__content {
-            grid-template-columns: 1fr;
-            row-gap: rem(40);
+            .container {
+                grid-template-columns: 1fr;
+                row-gap: rem(40);
+            }
         }
         &__title, &__desc {
             max-width: rem(520);
@@ -96,7 +91,9 @@
             }
         }
         &__content {
-            row-gap: rem(25);
+            .container {
+                row-gap: rem(25);
+            }
         }
         &__desc {
             margin-top: rem(10);

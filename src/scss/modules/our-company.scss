@@ -1,8 +1,4 @@
 .our-company {
-    display: flex;
-    flex-direction: column;
-    gap: rem(160);
-    @include adaptive-value(gap, 70, 160, 576, $container-width);
 
     .our-doctors, .our-transport {
         &__header {

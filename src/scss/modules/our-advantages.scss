@@ -3,16 +3,12 @@
 };
 
 .our-advantages {
-    .container {
-        display: flex;
-        flex-direction: column;
-        gap: rem(160);
-        @include adaptive-value(gap, 70, 160, 576, $container-width)
-    }
     &__about {
-        display: flex;
-        gap: calc(120 / 1520 * 100%);
-        gap: rem(120);
+        .container {
+            display: flex;
+            gap: calc(120 / 1520 * 100%);
+            gap: rem(120);
+        }
     }
     &__about-col {
         &:first-child {
@@ -188,16 +184,15 @@
         }
     }
     @media screen and (min-width: 1281px) and (max-width: #{$container-width}px) {
-
         font-size: calc(16 * (100vw / 1680));
-
         &__about {
-            gap: calc(40px + 80 * (100vw - 993px) / ($container-width - 993))
+            .container {
+                gap: calc(40px + 80 * (100vw - 993px) / ($container-width - 993))
+            }
         }
         &__about-col {
             &:last-child {
                 flex-basis: em(880)
-
             }
         }
         &__about-stats {
@@ -233,8 +228,10 @@
     }
     @include desktop {
         &__about {
-            flex-direction: column;
-            row-gap: rem(50);
+            .container {
+                flex-direction: column;
+                row-gap: rem(50);
+            }
         }
         &__about-col {
             &:last-child {

@@ -9,12 +9,12 @@
     </article>
 {% endmacro %}
 
-<section class="why-we section section--dark">
+<section class="why-we section section--dark section--multirow">
     <div class="section__ellipse section__ellipse--top-right"></div>
     <div class="section__ellipse section__ellipse--bottom-right"></div>
     <div class="section__ellipse section__ellipse--bottom-left"></div>
-    <div class="why-we__container container">
-        <div class="why-we__content">
+    <div class="why-we__content">
+        <div class="container">
             <h2 class="why-we__title section__title">Почему выбирают услуги <span>нашей скорой помощи</span></h2>
             <div class="why-we__desc">
                 <div class="why-we__desc-icon">
@@ -46,7 +46,9 @@
                 {% endfor %}
             </div>
         </div>
-        <aside class="why-we__aside">
+    </div>
+    <aside class="why-we__aside">
+        <div class="container">
             <div class="order-call">
                 <div class="order-call__inner-wrapper">
                     <div class="order-call__icon">
@@ -79,6 +81,6 @@
                     <img src="images/phone.svg" alt="">
                 </div>
             </div>
-        </aside>
-    </div>
+        </div>
+    </aside>
 </section>
