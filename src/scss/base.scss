@@ -78,6 +78,11 @@ body {
             position: relative;
             z-index: 2;
         }
+        .section__title {
+            span {
+                opacity: 0.45;
+            }
+        }
         .section__ellipse {
             pointer-events: none;
             position: absolute;
@@ -202,5 +207,10 @@ body {
 }
 
 ._aaccent {
-    color: $grey;
+    &--grey {
+        color: $grey;
+    }
+    &--transparent {
+        opacity: 0.45;
+    }
 }
