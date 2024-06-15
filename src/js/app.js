@@ -343,7 +343,52 @@ window.onload = function() {
         e.preventDefault();
         openPopup(casesPopupEl)
     })
+
     
+    // ADVANTAGES
+    function initDigitCounter(counterEl) {
+        if (counterEl) {
+            animateDigitCounter(counterEl)
+        }
+    }
+    function animateDigitCounter(counter) {
+        let startTimestamp = null;
+        const duration = 1200;
+        const startValue = parseInt(counter.innerHTML);
+        const startPosition = 0;
+
+        const step = (timestamp) => {
+            if (!startTimestamp) {
+                startTimestamp = timestamp
+            }
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1)
+            counter.innerHTML = Math.floor(progress * startValue);
+            if (progress < 1) {
+                window.requestAnimationFrame(step)
+            }
+        }
+        window.requestAnimationFrame(step)
+    }
+    
+    let observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            const targetEl = entry.target;
+            const digitCounter = targetEl.querySelector("[data-digit-counter]")
+            if (digitCounter) {
+                initDigitCounter(digitCounter)
+            }
+            if (entry.isIntersecting) {
+                observer.unobserve(targetEl)
+            }
+        })
+    }, { threshold: 0.3 })
+
+    const statEls = document.querySelectorAll(".our-advantages__about-col:last-child .stat")
+    
+    if (statEls.length) {
+        Array.from(statEls).forEach(stat => observer.observe(stat))
+    }
+
 
     // CERTIFICATE
     let certificatesListEl = document.querySelector(".certificates .swiper-wrapper")
