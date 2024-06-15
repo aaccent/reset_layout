@@ -218,7 +218,16 @@ window.onload = function() {
         parentMenuListEl.classList.add("menu__list--submenu-open");
 
         e.target.closest(".menu__item").querySelector(".menu").classList.add("menu--open")
-        
+    })
+
+    const burgerMediaQuery = window.matchMedia("(max-width: 1280px)")
+    burgerMediaQuery.addEventListener("change", e => {
+        if (!e.matches && burgerMenuEl.classList.contains("header__burger--open")) {
+            Array.from(document.querySelectorAll(".submenu.menu--open")).forEach(submenu => submenu.classList.remove("menu--open"))
+            mobileMenuEl.querySelector(".menu__list--submenu-open")?.classList.remove("menu__list--submenu-open")
+            mobileMenuEl.classList.remove("menu--open")
+            burgerMenuEl.classList.remove("header__burger--open")
+        }
     })
 
     // HERO
