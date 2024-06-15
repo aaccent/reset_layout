@@ -185,6 +185,7 @@ window.onload = function() {
             })
         } else {
             lockBody()
+            window.scrollTo(0,0)
         }
         
         burgerMenuEl.classList.toggle("header__burger--open")
@@ -628,7 +629,7 @@ window.onload = function() {
             slidesPerView: "auto",
             spaceBetween: 20,
             centeredSlides: true,
-            speed: 500,
+            speed: 580,
             breakpoints: {
                 768: {
                     slidesPerView: 1,

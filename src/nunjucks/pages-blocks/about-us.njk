@@ -36,13 +36,17 @@
     <div class="section__ellipse section__ellipse--bottom-left"></div>
     <article class="about-us__reviews reviews">
         <div class="container">
-            <div class="section__header">
+            <div class="reviews__header section__header">
                 <h2 class="reviews__title section__title">Что говорят клиенты <span>о нашей работе</span></h2>
             </div>
             <div class="reviews__body">
-                <div class="reviews__swiper swiper">
-                    <div class="reviews__caption">
+                <div class="reviews__caption">
+                    <div>
+                        <span>Клиент</span>
+                        <span>Отзыв</span>
                     </div>
+                </div>
+                <div class="reviews__swiper swiper">
                     <div class="reviews__list swiper-wrapper">
                         {% for i in range(1,8) %}
                             {{ Review() }}
