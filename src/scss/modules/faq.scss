@@ -121,12 +121,6 @@
     &__text {
         max-height: calc(rem(20) * 6 + rem(20));
         overflow: hidden;
-        p {
-            @include txt_regular;
-            &:not(:last-child) {
-                margin-bottom: rem(20);
-            }
-        }
     }
     &__more {
         display: none;
@@ -162,11 +156,6 @@
     @include phone {
         &__text {
             max-height: calc(rem(20) * 9 + rem(10));
-            p {
-                &:not(:last-child) {
-                    margin-bottom: rem(10);
-                }
-            }
         }
         &__more {
             &:not(:first-child) {

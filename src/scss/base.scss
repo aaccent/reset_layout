@@ -184,6 +184,23 @@ body {
     opacity: 1;
 }
 
+.text-block {
+    p {
+        @include txt_regular;
+        &:not(:last-child) {
+            margin-bottom: rem(20);
+        }
+    }
+    @include phone {
+        p {
+            &:not(:last-child) {
+                margin-bottom: rem(10);
+            }
+        }
+    }
+
+}
+
 ._aaccent {
     color: $grey;
 }

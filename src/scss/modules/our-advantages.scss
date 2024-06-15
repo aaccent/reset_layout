@@ -37,12 +37,6 @@
     }
 
     &__about-desc {
-        @include txt_regular;
-        p {
-            &:not(:last-child) {
-                margin-bottom: rem(20);
-            }
-        }
         &:not(:last-child) {
             margin-bottom: rem(50);
         }
@@ -357,11 +351,6 @@
         }
         &__about-desc {
             font-size: rem(14);
-            p {
-                &:not(:last-child) {
-                    margin-bottom: rem(10);
-                }
-            }
             &:not(:last-child) {
                 margin-bottom: rem(30);
             }
