@@ -3939,7 +3939,7 @@ body._lock {
 }
 @media screen and (min-width: 1280.5px) and (max-width: 1440px) {
   .footer__content {
-    grid-template-columns: 18.125rem 1fr;
+    grid-template-columns: 19.375rem 1fr;
   }
   .footer__content > * {
     pad: 1.875rem;
