@@ -1,0 +1,86 @@
+{% extends "templates/layout.njk" %}
+
+{% set title = "Страница услуги" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="css/libs/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/service-page.min.css">
+{% endblock %}
+
+
+{% from "pages-blocks/why-we.njk" import WhyWe %}
+{% from "pages-blocks/macros/about.njk" import About %}
+{% from "pages-blocks/macros/faq.njk" import Faq %}
+
+{% block content %}
+    <section class="hero">
+        <img src="images/hero-service.png" alt="" class="hero__img">
+        <div class="hero__container container">
+            {# <div class="hero__breadcrumbs">Breadcrumbs</div> #}
+            <div class="hero__content">
+                <h1 class="hero__title">Платные медицинские услуги на дому в Москве</h1>
+                <div class="hero__body">
+                    <div class="hero__desc">Современный подход к оказанию круглосуточной экстренноймедицинской помощи пациентам соответствует единым медицинским алгоритмам, высокому профессионализму.</div>
+                    <div class="hero__buttons">
+                        <div class="hero__price button">
+                            <span>от 3000 ₽</span>
+                        </div>
+                        <button class="hero__button button button--primary" type="button">
+                            <span>Вызвать врача</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="desc section">
+        <div class="container">
+            <div class="desc__row">
+                <div class="desc__info">
+                    <div class="desc__info-title">Медицинские услуги на дому от клиники Ресет это:</div>
+                    <div class="desc__info-desc">Наша компания гарантирует быстрый выезд скорой медицинской помощи в любое время суток. Мы понимаем, что в экстренных ситуациях каждая секунда на счету, и наша цель — обеспечить вам необходимую помощь как можно скорее. Мы понимаем, что в экстренных ситуациях каждая секунда на счету, и наша цель — обеспечить вам необходимую помощь как можно скорее.</div>
+                    <ul class="desc__info-list">
+                        <li class="desc__info-item">Срочная подача скорой помощи</li>
+                        <li class="desc__info-item">полный комплекс выездных услуг</li>
+                        <li class="desc__info-item">доступная стоимость, Вызов от 3000 ₽</li>
+                        <li class="desc__info-item">Опытные врачи разных специализаций</li>
+                    </ul>
+                </div>
+                <div class="desc__img">
+                    <img src="images/single-service-01.png" alt="">
+                </div>
+            </div>
+            <div class="desc__row desc__row--reverse">
+                <div class="desc__info">
+                    <div class="desc__info-title">Виды оказываемых услуг:</div>
+                    <div class="desc__info-desc">Наша компания гарантирует быстрый выезд скорой медицинской помощи в любое время суток. Мы понимаем, что в экстренных ситуациях каждая секунда на счету, и наша цель — обеспечить вам необходимую помощь как можно скорее. Мы понимаем, что в экстренных ситуациях каждая секунда на счету, и наша цель — обеспечить вам необходимую помощь как можно скорее.</div>
+                    <ul class="desc__info-list">
+                        <li class="desc__info-item">забор анализов</li>
+                        <li class="desc__info-item">капельницы</li>
+                        <li class="desc__info-item">скорая помощь</li>
+                        <li class="desc__info-item">транспортировка</li>
+                    </ul>
+                </div>
+                <div class="desc__img">
+                    <img src="images/single-service-02.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    {{ WhyWe() }}
+    {% include "pages-blocks/our-company.njk" %}
+    {% include "pages-blocks/back-call.njk" %}
+    {% include "pages-blocks/help.njk" %}
+    {% include "pages-blocks/contact-us.njk" %}
+    {{ Faq() }}
+    {% include "pages-blocks/our-advantages.njk" %}
+    {{ About() }}
+    {% include "pages-blocks/call-us.njk" %}
+{% endblock %}
+
+{% block scripts %}
+    <script src="js/libs/swiper-bundle.min.js"></script>
+    <script src="js/libs/locomotive-scroll.min.js"></script>
+    {{ super() }}
+    
+{% endblock %}

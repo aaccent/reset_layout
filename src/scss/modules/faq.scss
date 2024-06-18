@@ -1,19 +1,19 @@
 .faq {
     &__content {
-        .container {
-            display: grid;
-            // grid-template-columns: 1fr calc(880 / 1520 * 100%);
-            // grid-template-columns: rem(505) 1fr;
-            grid-template-columns: min(45%, rem(505)) 1fr ;
-            grid-template-rows: auto auto 1fr;
-            // column-gap: calc(138 / 1520  * 100%);
-            // column-gap: rem(138);
-            // @include adaptive-value(column-gap, 60, 138, 992, $container-width);
-            column-gap: rem(60);
-            row-gap: rem(40);
-        }
     }
+    &__container {
+        display: grid;
+        // grid-template-columns: 1fr calc(880 / 1520 * 100%);
+        // grid-template-columns: rem(505) 1fr;
+        grid-template-columns: min(45%, rem(505)) 1fr ;
+        grid-template-rows: auto auto 1fr;
+        // column-gap: calc(138 / 1520  * 100%);
+        // column-gap: rem(138);
+        // @include adaptive-value(column-gap, 60, 138, 992, $container-width);
+        column-gap: rem(60);
+        row-gap: rem(40);
 
+    }
     &__title, &__desc, &__form {
         grid-column: 1 / 2;
     }
@@ -70,12 +70,11 @@
         }
     }
     @include tablet {
-        &__content {
-            .container {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: rem(30);
-            }
+        &__container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: rem(30);
+
         }
         &__desc, &__questions {
             max-width: rem(640);
@@ -91,10 +90,9 @@
         }
     }
     @include phone {
-        &__content {
-            .container {
-                gap: rem(20);
-            }
+        &__container {
+            gap: rem(20);
+
         }
         &__make-question {
             border-radius: rem(10);
@@ -108,54 +106,6 @@
         &__make-question {
             .button {
                 align-self: stretch;
-            }
-        }
-    }
-}
-
-.article {
-    &__text {
-        max-height: calc(rem(20) * 6 + rem(20));
-        overflow: hidden;
-    }
-    &__more {
-        display: none;
-        color: $primary-color;
-        align-items: center;
-        gap: rem(8);
-        @include txt_medium;
-        &:not(:first-child) {
-            margin-top: rem(35);
-        }
-        svg {
-            width: rem(8);
-            height: rem(8);
-            transform: rotate(90deg);
-        }
-    }
-    &--hide {
-        .article__more {
-            display: flex;
-
-        }
-    }
-    &--open {
-        .article__text {
-            max-height: none;
-        }
-        .article__more {
-            svg {
-                transform: rotate(0deg);
-            }
-        }
-    }
-    @include phone {
-        &__text {
-            max-height: calc(rem(20) * 9 + rem(10));
-        }
-        &__more {
-            &:not(:first-child) {
-                margin-top: rem(20);
             }
         }
     }

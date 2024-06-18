@@ -2,13 +2,11 @@
     position: relative;
     overflow: hidden;
 
-    &__content {
-        .container {
-            display: grid;
-            grid-template-columns: max(rem(556)) max(rem(752));
-            grid-template-columns: calc(552 / 1520 * 100%) 1fr;
-            column-gap: rem(40);
-        }
+    &__container {
+        display: grid;
+        grid-template-columns: max(rem(556)) max(rem(752));
+        grid-template-columns: calc(552 / 1520 * 100%) 1fr;
+        column-gap: rem(40);
     }
 
     &__desc {
@@ -57,11 +55,10 @@
 
 
     @include tablet {
-        &__content {
-            .container {
-                grid-template-columns: 1fr;
-                row-gap: rem(40);
-            }
+        &__container {
+            grid-template-columns: 1fr;
+            row-gap: rem(40);
+
         }
         &__title, &__desc {
             max-width: rem(520);
@@ -90,10 +87,8 @@
                 display: none;
             }
         }
-        &__content {
-            .container {
-                row-gap: rem(25);
-            }
+        &__container {
+            row-gap: rem(25);
         }
         &__desc {
             margin-top: rem(10);

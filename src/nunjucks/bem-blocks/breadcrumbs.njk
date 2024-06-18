@@ -1,0 +1,19 @@
+{# <nav class="breadcrumbs">
+    <ol class="breadcrumbs__list">
+        <li class="breadcrumbs__item">
+            <a href="#" class="breadcrumbs__link"></a>
+        </li>
+    </ol>
+</nav> #}
+
+{% macro Breadcrumbs(items) %}
+    <nav class="breadcrumbs">
+        <ol class="breadcrumbs__list">
+            {% for item in items %}
+                <li class="breadcrumbs__item">
+                    <a href="#" class="breadcrumbs__link"></a>
+                </li>
+            {% endfor %}
+        </ol>
+    </nav>
+{% endmacro %}

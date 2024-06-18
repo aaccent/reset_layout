@@ -1,0 +1,206 @@
+@import "base/_functions.scss";
+@import "base/_vars.scss";
+@import "base/_fonts.scss";
+@import "base/_reset.scss";
+@import "mixins/_breakpoints.scss";
+@import "mixins/_media.scss";
+@import "mixins/_fonts.scss";
+@import "base.scss";
+
+// ui
+@import "ui/button.scss";
+@import "ui/form.scss";
+@import "ui/breadcrumbs.scss";
+@import "ui/accordion.scss";
+@import "ui/popup.scss";
+@import "ui/video.scss";
+@import "ui/article.scss";
+
+// bem-blocks
+@import "modules/order-call.scss";
+
+
+@import "modules/header.scss";
+
+@import "modules/hero.scss";
+.hero {
+    --padding-y: 5rem;
+    padding: var(--padding-y, 5rem) 0;
+    position: relative;
+    &::before {
+        background: linear-gradient(180deg, rgba(13, 27, 31, 0.7) 0%, rgba(17, 29, 38, 0.7) 100%);
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+    }
+    &__img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+    }
+
+    &__container {
+        position: relative;
+        z-index: 2;
+    }
+
+    &__breadcrumbs {
+        position: absolute;
+        top: calc(rem(25) - var(--padding-y));
+        left: 0;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: rem(615);
+        @include adaptive-value(height, 570, 615, 768, $container-width);
+    }
+
+    &__title {
+        color: white;
+        font-size: rem(58);
+        @include adaptive-value(font-size, 32, 58, 768, $container-width);
+        font-weight: 500;
+        letter-spacing: -0.03em;
+        line-height: calc(55 / 58);
+        width: 80%;
+        max-width: rem(730);
+        span {
+            opacity: 0.45;
+        }
+        &:not(:last-child) {
+            margin-bottom: calc(45 / 58 * 1em);
+        }
+    }
+
+    &__body {
+        border-top: $border;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: rem(60);
+        padding: rem(25) 0 0;
+    }
+
+    &__desc {
+        color: $white;
+        @include txt_regular;
+        max-width: rem(490);
+        opacity: 0.7;
+    }
+
+    &__buttons {
+        display: flex;
+        flex-shrink: 0;
+        gap: rem(15) rem(10);
+    }
+
+    &__price {
+        border: rem(1) dashed rgba($color: $white, $alpha: 0.28);
+        color: $white;
+    }
+    @include desktop {
+        --padding-y: 3.75rem;
+    }
+    @include gap {
+        --padding-y: 2.5rem;
+        &__title {
+            line-height: calc(35 / 32 * 100%);
+        }
+        &__body {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: rem(25);
+        }
+        &__desc {
+
+        }
+    }
+
+    @include phone {
+        padding-top: 1.25rem;
+        &__title, &__desc {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        &__title {
+            &:not(:last-child) {
+                margin-bottom: rem(20);
+            }
+        }
+        &__body {
+            border-top: none;
+            padding-top: 0;
+        }
+        &__buttons {
+            border-top: $border;
+            padding: rem(30) 0 0;
+            flex-direction: column;
+            align-self: stretch;
+            & > * {
+                justify-content: center;
+                padding-top: rem(17);
+                padding-bottom: rem(17);
+                span {
+                    font-size: rem(14);
+                }
+            }
+        }
+    }
+}
+// @import "modules/services.scss";
+@import "modules/desc.scss";
+.desc {
+
+    &__info-title {
+        max-width: rem(582);
+    }
+}
+
+@import "modules/why-we.scss";
+@import "modules/our-company.scss";
+.back-call {
+    position: relative;
+    .section__ellipse {
+        height: calc(615 / 775 * 100%);
+        &--bottom-right {
+            bottom: calc(-240 / 775 * 100%);
+        }
+        &--bottom-left {
+            bottom: calc(-410 / 775 * 100%);
+        }
+    }
+}
+.order-call {
+    background-color: rgba($color: #0D191F, $alpha: 0.85);
+    &__image {
+        right: rem(184);
+        @include adaptive-value(right, 85, 184, 1280, $container-width);
+        bottom: 0;
+        width: calc(339 / 1520 * 100%);
+    }
+    @include tablet {
+        .order-call__image {
+            align-self: center;
+            width: rem(180);
+        }
+    }
+}
+
+@import "modules/contact-us.scss";
+@import "modules/help.scss";
+@import "modules/faq.scss";
+@import "modules/our-advantages.scss";
+@import "modules/about-us.scss";
+@import "modules/call-us.scss";
+
+@import "modules/footer.scss";

@@ -1,0 +1,32 @@
+.breadcrumbs {
+    &__list {
+        display: flex;
+        gap: 4px;
+    }
+    &__item {
+        display: flex;
+        align-items: center;
+        opacity: 0.5;
+        &:last-child {
+            .breadcrumbs__link {
+                cursor: auto;
+                pointer-events: none;
+            }
+        }
+        &:not(:last-child) {
+            &:after {
+                content: "/";
+                font-family: "Nunito", sans-serif;
+                font-size: 1rem;
+                display: inline-block;
+                margin-left: 0.25em;
+            }
+        }
+    }
+    &__link {
+        font-size: 1rem;
+        font-weight: 400;
+        white-space: nowrap;
+        opacity: 0.5;
+    }
+}

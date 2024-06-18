@@ -1,0 +1,131 @@
+.desc {
+
+    &__row {
+        display: flex;
+        gap: rem(50) rem(15);
+        &:not(:last-child) {
+            margin-bottom: rem(15);
+        }
+        &--reverse {
+            flex-direction: row-reverse;
+        }
+    }
+
+    &__info {
+        padding: rem(35) rem(40);
+    }
+
+    &__info-title {
+        font-size: rem(42);
+        @include adaptive-value(font-size, 24, 42, 576, $container-width);
+        font-weight: 500;
+        line-height: calc(50 / 42);
+        letter-spacing: -0.03em;
+        max-width: rem(582);
+        &:not(:last-child) {
+            margin-bottom: rem(25);
+        }
+    }
+
+    &__info-desc {
+        color: $grey;
+        @include txt_regular;
+        &:not(:last-child) {
+            margin-bottom: rem(50);
+        }
+    }
+
+    &__info-list {
+    }
+
+    &__info-item {
+        background-image: url(../images/cross-red.svg);
+        background-position: rem(2) center;
+        background-repeat: no-repeat;
+        @include txt_semibold;
+        padding-left: rem(30);
+        text-transform: uppercase;
+        &:not(:last-child) {
+            margin-bottom: rem(15);
+        }
+    }
+
+    &__img {
+        padding: rem(15);
+        picture {
+            border-radius: rem(25);
+            display: block;
+            height: 100%;
+            overflow: hidden;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+    @media screen and (min-width: 992.5px) {
+        &__row {
+            & > * {
+                background-color: $white;
+                border-radius: rem(40);
+                width: calc((100% - rem(15)) / 2);
+            }
+        }
+    }
+    @include tablet {
+        &__row {
+            background-color: $white;
+            border-radius: rem(30);
+            flex-direction: column;
+            padding: rem(40);
+            & > * {
+                padding: 0;
+            }
+        }
+        &__info-title {
+            width: 70%;
+        }
+        &__img {
+            picture {
+                img {
+                    aspect-ratio: calc(320 / 240);
+                    height: auto;
+                    max-height: rem(500);
+                }
+            }
+        }
+    }
+    @include phone {
+        &__row {
+            border-radius: rem(20);
+            row-gap: rem(30);
+            padding: rem(20);
+        }
+        &__info-title {
+            width: 100%;
+            &:not(:last-child) {
+                margin-bottom: rem(15)
+            }
+        }
+        &__info-desc {
+            &:not(:last-child) {
+                margin-bottom: rem(25)
+            }
+        }
+        &__info-item {
+            background-position: left rem(2);
+            padding-left: rem(28);
+            &:not(:last-child) {
+                margin-bottom: rem(10)
+            }
+        }
+        &__img {
+            width: calc(100% + rem(20));
+            align-self: center;
+            picture {
+                border-radius: rem(10)
+            }
+        }
+    }
+}

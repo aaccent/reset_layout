@@ -240,13 +240,15 @@ window.onload = function() {
 
     // SERVICES
     let servicesListEl = document.querySelector(".services__list")
-    servicesListEl.addEventListener("click", e => {
-        if (!e.target.closest(".services__service-item")) {
-            return
-        }
-        e.preventDefault()
-        openPopup(callDoctorPopupEl)
-    })
+    if (servicesListEl) {
+        servicesListEl.addEventListener("click", e => {
+            if (!e.target.closest(".services__service-item")) {
+                return
+            }
+            e.preventDefault()
+            openPopup(callDoctorPopupEl)
+        })
+    }
 
     // TRANSPORT 
     let transportListEl = document.querySelector(".our-transport .swiper-wrapper")
@@ -298,7 +300,7 @@ window.onload = function() {
     })
 
     // reviews & seo text
-    const faqAboutArticleEl = document.querySelector(".faq__about-article");
+    const faqAboutArticleEl = document.querySelector(".article");
     const faqAboutTextEl = faqAboutArticleEl.querySelector(".article__text");
     const faqAboutMoreButtonEl = faqAboutArticleEl.querySelector(".article__more");
     const maxHeight = parseFloat(getComputedStyle(faqAboutTextEl).maxHeight)
@@ -336,6 +338,8 @@ window.onload = function() {
     }
 
     checkElemHeight(faqAboutArticleEl);
+
+    
     faqAboutMoreButtonEl.addEventListener("click", () => changeElemHeight(faqAboutArticleEl))
 
     window.addEventListener("resize", () => {
@@ -403,17 +407,18 @@ window.onload = function() {
     // CERTIFICATE
     let certificatesListEl = document.querySelector(".certificates .swiper-wrapper")
 
-
-    certificatesListEl.addEventListener("click", e => {
-        if (!e.target.closest(".certificate__image-wrapper")) {
-            return
-        }
-
-        let certificatePopupEl = document.querySelector(".popup--gallery");
-        let currentImgSrc= e.target.closest("img").getAttribute("src");
-        certificatePopupEl.querySelector("img").setAttribute("src", currentImgSrc);
-        openPopup(certificatePopupEl)
-    })
+    if (certificatesListEl) {
+        certificatesListEl.addEventListener("click", e => {
+            if (!e.target.closest(".certificate__image-wrapper")) {
+                return
+            }
+    
+            let certificatePopupEl = document.querySelector(".popup--gallery");
+            let currentImgSrc= e.target.closest("img").getAttribute("src");
+            certificatePopupEl.querySelector("img").setAttribute("src", currentImgSrc);
+            openPopup(certificatePopupEl)
+        })
+    }
 
     // FOOTER
     const footerEl = document.querySelector(".footer")

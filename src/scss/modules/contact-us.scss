@@ -1,10 +1,6 @@
 .contact-us {  
-    // --padding-y: 10rem;
-    // background: linear-gradient(180deg, #0d1b1f 0%, #111d26 100%);
-    // color: $white;
-    // padding: var(--padding-y, 10rem) 0;
-    // @include adaptive-value(--padding-y, 70, 160, 768, $container-width);
     .section__ellipse {
+        height: calc(615 / 775 * 100%);
         &--bottom-left {
             rotate: -50deg;
         }

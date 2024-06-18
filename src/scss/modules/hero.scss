@@ -125,7 +125,7 @@
             opacity: 0.45;
         }
         &:not(:last-child) {
-            margin-bottom: rem(40);
+            // margin-bottom: rem(40);
             margin-bottom: calc(40 / 58 * 1em);
         }
     }
@@ -191,9 +191,6 @@
                 font-size: rem(12);
             }
         }
-        &__decs {
-            font-size: rem(14);
-        }
         &__buttons {
             flex-direction: column;
             & > * {
@@ -206,8 +203,4 @@
             }
         }
     }
-}
-
-.swiper-controls {
-
 }
