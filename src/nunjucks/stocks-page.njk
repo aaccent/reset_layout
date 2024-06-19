@@ -1,0 +1,61 @@
+{% extends "templates/layout.njk" %}
+
+{% set title = "Страница цен" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="css/stocks-page.min.css">
+{% endblock %}
+
+
+{% block content %}
+    {% macro Stock(args) %}
+        <article class="stocks__stock-item stock">
+            <div class="stock__image">
+                <img src="images/stock.png" alt="">
+            </div>
+            <div class="stock__content">
+                <div class="stock__name">Скидка 10% на сбор анализов</div>
+                <div class="stock__desc">Закажите услугу по сбору анализов в июне и получите скидку 10%</div>
+                <div class="stock__more">
+                    <span>Узнать подробее</span>
+                    <svg>
+                        <use xlink:href="#arrow-link"></use>
+                    </svg>
+                </div>
+            </div>
+        </article>
+    {% endmacro %}
+
+    <div class="page">
+        <div class="page__nav"></div>
+        <section class="stocks page__section">
+            <div class="section__header">
+                <div class="container">
+                    <h1 class="section__title">Акции</h1>
+                </div>
+            </div>
+            <div class="stocks__body section__body">
+                <div class="container">
+                    <div class="stocks__list">
+                        {% for i in range(0, 12) %}
+                            {{ Stock() }}
+                        {% endfor %}
+                    </div>
+                    <button class="stocks__button" type="button">
+                        <span>Показать еще</span>
+                        <svg>
+                            <use xlink:href="#plus"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+        {% include "pages-blocks/call-us.njk" %}
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="js/libs/locomotive-scroll.min.js"></script>
+    {{ super() }}
+    
+{% endblock %}

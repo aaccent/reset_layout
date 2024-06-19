@@ -1,0 +1,194 @@
+@import "base/_functions.scss";
+@import "base/_vars.scss";
+@import "base/_fonts.scss";
+@import "base/_reset.scss";
+@import "mixins/_breakpoints.scss";
+@import "mixins/_media.scss";
+@import "mixins/_fonts.scss";
+@import "base.scss";
+
+// ui
+@import "ui/button.scss";
+@import "ui/form.scss";
+@import "ui/breadcrumbs.scss";
+@import "ui/accordion.scss";
+@import "ui/popup.scss";
+@import "ui/video.scss";
+@import "ui/article.scss";
+
+// bem-blocks
+@import "modules/order-call.scss";
+
+.page {
+    padding-top: rem(25);
+    &__section {
+        padding: rem(60) 0 rem(160);
+        @include adaptive-value(padding-bottom, 70, 160, 576, $container-width);
+        .section__body {
+            .container {
+                position: relative;
+                &::before {
+                    border: rem(1) solid #D8E2E5;
+                    border-bottom: none;
+                    border-top-left-radius: rem(25);
+                    border-top-right-radius: rem(25);
+                    content: "";
+                    display: block;
+                    margin: 0 0 rem(25);
+                    height: rem(15);
+                }
+            }
+        }
+    }
+    @include phone {
+        padding-top: rem(20);
+        &__section {
+            padding-top: rem(40);
+            .section__body {
+                .container {
+                    &::before {
+                        margin-bottom: rem(15);
+                        height: rem(10);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@import "modules/header.scss";
+
+.stock {
+    picture, &__image {
+        aspect-ratio: calc(487 / 300);
+        border-radius: rem(25);
+        display: block;
+        overflow: hidden;
+        &:not(:last-child) {
+            margin-bottom: rem(25);
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    &__image {
+    }
+    &__content {
+        max-width: rem(345);
+    }
+    &__name {
+        font-size: rem(24);
+        font-weight: 500;
+        line-height: calc(30 / 24);
+        letter-spacing: -0.02em;
+        &:not(:last-child) {
+            margin-bottom: rem(15);
+        }
+    }
+
+    &__desc {
+        color: $grey;
+        @include txt_regular;
+        &:not(:last-child) {
+            margin-bottom: rem(20);
+        }
+    }
+
+    &__more {
+        color: $primary-color;
+        display: flex;
+        align-items: center;
+        gap: rem(8);
+        span {
+            @include txt_regular;
+        }
+        svg {
+            width: rem(8);
+            height: rem(8)
+        }
+    }
+    @include gap {
+        picture, &__image {
+            aspect-ratio: calc(340 / 225);
+            &:not(:last-child) {
+                margin-bottom: rem(20);
+            }
+        }
+        &__name {
+            font-size: rem(18);
+            line-height: calc(25 / 18);
+            &:not(:last-child) {
+                margin-bottom: rem(10);
+            }
+        }
+        &__desc {
+            &:not(:last-child) {
+                margin-bottom: rem(15);
+            }
+        }
+    }
+    @include phone {
+        picture, &__image {
+            border-radius: rem(15);
+        }
+    }
+}
+
+.stocks {
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: rem(50) rem(30)
+    }
+    &__stock-item {
+        width: calc((100% - rem(60)) / 3)
+    }
+    &__button {
+        background-color: $white;
+        border-radius: rem(15);
+        color: $primary-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: rem(8);
+        margin: rem(60) 0 0;
+        padding: rem(30);
+        width: 100%;
+        span {
+            @include txt_medium;
+        }
+        svg {
+            width: rem(8);
+            height: rem(8);
+        }
+    }
+    @include tablet {
+        &__stock-item {
+            width: calc((100% - rem(30)) / 2)
+        }
+    }
+    @include gap {
+        &__list {
+            gap: rem(35) rem(16)
+        }
+        &__stock-item {
+            width: calc((100% - rem(16)) / 2)
+        }
+    }
+    @include phone {
+        &__stock-item {
+            width: 100%;
+        }
+        &__button {
+            border-radius: rem(10);
+            padding: rem(20);
+            margin-top: rem(30)
+        }
+    }
+}
+
+@import "modules/call-us.scss";
+
+@import "modules/footer.scss";
