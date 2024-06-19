@@ -252,24 +252,30 @@ window.onload = function() {
 
     // TRANSPORT 
     let transportListEl = document.querySelector(".our-transport .swiper-wrapper")
-    transportListEl.addEventListener("click", e => {
-        if (!e.target.closest(".transport")) {
-            return
-        }
-
-        let galleryPopupEl = document.querySelector(".popup--gallery");
-        let currentImgSrc= e.target.closest("img").getAttribute("src");
-        galleryPopupEl.querySelector("img").setAttribute("src", currentImgSrc);
-        openPopup(galleryPopupEl)
-    })
+    if (transportListEl) {
+        transportListEl.addEventListener("click", e => {
+            if (!e.target.closest(".transport")) {
+                return
+            }
+    
+            let galleryPopupEl = document.querySelector(".popup--gallery");
+            let currentImgSrc= e.target.closest("img").getAttribute("src");
+            galleryPopupEl.querySelector("img").setAttribute("src", currentImgSrc);
+            openPopup(galleryPopupEl)
+        })
+    }
 
     // OUR ADVANTAGES
     const moreButtonEl = document.querySelector(".our-advantages__about-more");
-    moreButtonEl.addEventListener("click", e => openPopup(callDoctorPopupEl))
+    if (moreButtonEl) {
+        moreButtonEl.addEventListener("click", e => openPopup(callDoctorPopupEl))
+    }
 
     // FAQ
     const makeQuestionButtonEl = document.querySelector(".faq__make-question button");
-    makeQuestionButtonEl.addEventListener("click", e => openPopup(callDoctorPopupEl));
+    if (makeQuestionButtonEl) {
+        makeQuestionButtonEl.addEventListener("click", e => openPopup(callDoctorPopupEl));
+    }
 
     const faqItemHeaderEls = document.querySelectorAll(".accordion__header");
     faqItemHeaderEls.forEach(faqItemHeaderEl => {
@@ -300,50 +306,52 @@ window.onload = function() {
     })
 
     // reviews & seo text
-    const articleEl = document.querySelector(".article");
-    const articleTextEl = articleEl.querySelector(".article__text");
-    const readMoreButtonEl = articleEl.querySelector(".article__more");
-    const maxHeight = parseFloat(getComputedStyle(articleTextEl).maxHeight)
-
-    function changeElemHeight(elem) {
-        const buttonTextEl = elem.querySelector("span")
-        const className = elem.classList[1];
-        if (elem.classList.contains(className + "--open")) {
-            elem.classList.remove(className + "--open")
-            buttonTextEl.innerHTML = "Читать полностью"
-        } else {
-            elem.classList.add(className + "--open")
-            buttonTextEl.innerHTML = "Свернуть текст"
-        }
-    }
-
-    function checkElemHeight(elem) {
-        const className = elem.classList[1];
-        const textEl = articleTextEl;
-        const readMoreEl = readMoreButtonEl;
-
-        if (textEl.offsetHeight < textEl.scrollHeight) {
-            !elem.classList.contains(className + "--hide") && elem.classList.add(className + "--hide")
-        } else {
-            if (!elem.classList.contains(className + "--open")) {
-                // elem.className = className
-                elem.classList.remove(`${className}--hide`);
-            } else if (textEl.offsetHeight <= maxHeight) {
-                // elem.className = className
-                elem.classList.remove(`${className}--hide`);
-                elem.classList.remove(`${className}--open`);
-                readMoreEl.querySelector("span").innerHTML = "Читать полностью"
+    if (document.querySelector(".article")) {
+        const articleEl = document.querySelector(".article");
+        const articleTextEl = articleEl.querySelector(".article__text");
+        const readMoreButtonEl = articleEl.querySelector(".article__more");
+        const maxHeight = parseFloat(getComputedStyle(articleTextEl).maxHeight)
+    
+        function changeElemHeight(elem) {
+            const buttonTextEl = elem.querySelector("span")
+            const className = elem.classList[1];
+            if (elem.classList.contains(className + "--open")) {
+                elem.classList.remove(className + "--open")
+                buttonTextEl.innerHTML = "Читать полностью"
+            } else {
+                elem.classList.add(className + "--open")
+                buttonTextEl.innerHTML = "Свернуть текст"
             }
-        } 
+        }
+    
+        function checkElemHeight(elem) {
+            const className = elem.classList[1];
+            const textEl = articleTextEl;
+            const readMoreEl = readMoreButtonEl;
+    
+            if (textEl.offsetHeight < textEl.scrollHeight) {
+                !elem.classList.contains(className + "--hide") && elem.classList.add(className + "--hide")
+            } else {
+                if (!elem.classList.contains(className + "--open")) {
+                    // elem.className = className
+                    elem.classList.remove(`${className}--hide`);
+                } else if (textEl.offsetHeight <= maxHeight) {
+                    // elem.className = className
+                    elem.classList.remove(`${className}--hide`);
+                    elem.classList.remove(`${className}--open`);
+                    readMoreEl.querySelector("span").innerHTML = "Читать полностью"
+                }
+            } 
+        }
+    
+        checkElemHeight(articleEl);
+    
+        readMoreButtonEl.addEventListener("click", () => changeElemHeight(articleEl))
+    
+        window.addEventListener("resize", () => {
+            checkElemHeight(articleEl)
+        })
     }
-
-    checkElemHeight(articleEl);
-
-    readMoreButtonEl.addEventListener("click", () => changeElemHeight(articleEl))
-
-    window.addEventListener("resize", () => {
-        checkElemHeight(articleEl)
-    })
 
     
 
@@ -419,6 +427,86 @@ window.onload = function() {
             openPopup(certificatePopupEl)
         })
     }
+
+    if (document.querySelector(".tab")) {
+        let tabPanelEl = document.querySelector(".tab__panel")
+        const categoryButtonEl = document.querySelector(".tab__head")
+        const tabContentEl = tabPanelEl.nextElementSibling;
+
+        tabPanelEl.addEventListener("click", e => {
+
+            if (e.target.closest(".tab__head")) {
+                tabPanelEl.classList.toggle("tab__panel--open")
+            }
+            if (!e.target.closest(".tab__button")) {
+                return
+            }
+
+            const categoryEl = e.target.closest(".tab__button");
+            tabPanelEl.querySelector(".tab__button--active").classList.remove("tab__button--active");
+            categoryEl.classList.add("tab__button--active")
+            
+            categoryButtonEl.querySelector("span").innerHTML = categoryEl.innerHTML
+            tabPanelEl.classList.remove("tab__panel--open")
+            
+            tabContentEl.querySelector(".tab__page--active").classList.remove("tab__page--active")
+            tabContentEl.querySelector(".prices__services--" + categoryEl.dataset.category).classList.add("tab__page--active")
+        })
+    }
+
+    // let lock = false;
+    // selectEl.addEventListener("click", e => {
+    //     // клик по заголовку
+    //     if (e.target.closest(".select__head") && !lock) {
+    //         lock = true
+    //         if (selectEl.classList.contains("select_open")) {
+    //             selectEl.classList.remove("select_open")
+    //             selectMenu.style.height = ""
+    //         } else {
+    //             selectEl.classList.add("select_open")
+    //             selectMenu.style.height = selectMenu.scrollHeight + "px"
+    //         }
+    //         selectMenu.addEventListener("transitionend", () => lock = false)
+    //     }
+    //     // клик по вариантам
+    //     if (e.target.closest(".select__option")) {
+    //         let activeOptionEl = selectEl.querySelector(".select__option_selected")
+    //         let curOptionEl = e.target.closest(".select__option");
+
+    //         activeOptionEl && activeOptionEl.classList.remove("select__option_selected")
+    //         curOptionEl.classList.add("select__option_selected")
+
+    //         selectEl.querySelector("input").value = curOptionEl.dataset.value
+    //         selectLabel.innerHTML = curOptionEl.querySelector(".select__option-label").innerHTML
+    //         selectEl.classList.add("select_selected")
+
+    //         setTimeout(() => {
+    //             selectEl.classList.remove("select_open")
+    //             selectMenu.style.height = ""
+    //         }, 200);
+            
+    //     }
+    // })
+        // let scroll = new LocomotiveScroll()
+        // let formBlockEl = document.querySelector(".form-block")
+
+        // document.querySelectorAll(".prices-section__category").forEach(categoryBlock => {
+        //     categoryBlock.addEventListener("click", e => {
+        //         const buttonEl = e.target.closest(".service__button")
+        //         if (!buttonEl) {
+        //             return
+        //         }
+    
+        //         const textareaEl = formBlockEl.querySelector("textarea")
+        //         const formControlEl = textareaEl.closest(".form__control")
+        //         const serviceName = buttonEl.closest(".service").querySelector(".service__name").innerHTML
+    
+        //         textareaEl.value = serviceName
+        //         formControlEl.classList.add("form__control_filled")
+        //         formBlockEl.querySelector("input[type='hidden']").value = buttonEl.dataset["serviceName"]
+        //         scroll.scrollTo(formBlockEl)            
+        //     })  
+        // })
 
     // FOOTER
     const footerEl = document.querySelector(".footer")

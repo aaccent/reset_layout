@@ -1,0 +1,221 @@
+{% extends "templates/layout.njk" %}
+
+{% set title = "Страница цен" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="css/prices-page.min.css">
+{% endblock %}
+
+
+{% block content %}
+    <div class="page">
+        <div class="page__nav"></div>
+        {% macro Service(item) %}
+            <div class="prices__service service">
+                <div class="service__desc">
+                    <div class="service__about">
+                        <div class="service__name">{{ item.name }}</div>
+                        <div class="service__id">{{ item.id }}</div>
+                    </div>
+                    <div class="service__price">{{ item.price }} ₽</div>
+                </div> 
+                <button class="service__button" type="button">
+                    <span>Оставить заявку</span>
+                    <svg>
+                        <use xlink:href="#arrow-link"></use>
+                    </svg>
+                </button>
+            </div>
+        {% endmacro %}
+        <section class="prices">
+            <div class="section__header">
+                <div class="container">
+                    <h1 class="section__title">Цены платной медицинской скорой помощи в Москве</h1>
+                </div>
+            </div>
+            <div class="prices__body section__body">
+                <div class="container">
+                    <div class="prices__content tab">
+                        <div class="prices__categories tab__panel">
+                            <button class="tab__head" type="button">
+                                <span>Скорая медицинская помощь</span>
+                                <svg>
+                                    <use xlink:href="#arrow"></use>
+                                </svg>
+                            </button>
+                            <nav class="prices__categories-list tab__nav">
+                                <button class="prices__category tab__button tab__button--active" type="button" data-category="ambulance">Скорая медицинская помощь</button>
+                                <button class="prices__category tab__button" type="button" data-category="sampling">Забор анализов</button>
+                                <button class="prices__category tab__button" type="button" data-category="injections">Капелиница и уколы</button>
+                                <button class="prices__category tab__button" type="button" data-category="hospitalization">Госпитализация</button>
+                                <button class="prices__category tab__button" type="button" data-category="emergency-care">Детская неотложенная помощь</button>
+                                <button class="prices__category tab__button" type="button" data-category="transoprtation">Транспортировка</button>
+                            </nav>
+                        </div>
+                        <div class="tab__content">
+                            {% set categories = [
+                                { 
+                                    name: "ambulance", 
+                                    services: [
+                                        { name: "Забор анализов", id: "425", price: "2310" },
+                                        { name: "Скорая медицинская помощь", id: "233", price: "1210" },
+                                        { name: "Капельницы и уколы", id: "H221", price: "5000" },
+                                        { name: "Госпитализация", id: "222", price: "2310" },
+                                        { name: "Детская неотложенная помощь", id: "214", price: "1210" },
+                                        { name: "Транспортировка", id: "425", price: "25 110" },
+                                        { name: "Дежурство на мероприятиях", id: "214", price: "2310" },
+                                        { name: "Капельницы и уколы", id: "H221", price: "5000" },
+                                        { name: "Госпитализация", id: "222", price: "2310" },
+                                        { name: "Детская неотложенная помощь", id: "214", price: "1210" },
+                                        { name: "Транспортировка", id: "425", price: "25 110" },
+                                        { name: "Дежурство на мероприятиях", id: "214", price: "2310" }
+                                    ]
+                                },
+                                { 
+                                    name: "sampling", 
+                                    services: [
+                                        { name: "Дежурство на мероприятиях", id: "214", price: "2310" },
+                                        { name: "Капельницы и уколы", id: "H221", price: "5000" },
+                                        { name: "Госпитализация", id: "222", price: "2310" },
+                                        { name: "Детская неотложенная помощь", id: "214", price: "1210" },
+                                        { name: "Транспортировка", id: "425", price: "25 110" },
+                                        { name: "Дежурство на мероприятиях", id: "214", price: "2310" }
+                                    ]
+                                },
+                                { 
+                                    name: "injections", 
+                                    services: [
+                                    { name: "Капельницы и уколы", id: "H221", price: "5000" },
+                                    { name: "Забор анализов", id: "425", price: "2310" },
+                                    { name: "Скорая медицинская помощь", id: "233", price: "1210" },
+                                    { name: "Госпитализация", id: "222", price: "2310" }
+                                    ]
+                                },
+                                { 
+                                    name: "hospitalization", 
+                                    services: [
+                                        { name: "Скорая медицинская помощь", id: "233", price: "1210" },
+                                        { name: "Госпитализация", id: "222", price: "2310" },
+                                        { name: "Забор анализов", id: "425", price: "2310" },
+                                        { name: "Капельницы и уколы", id: "H221", price: "5000" },
+                                        { name: "Детская неотложенная помощь", id: "214", price: "1210" },
+                                        { name: "Транспортировка", id: "425", price: "25 110" }
+                                    ]
+                                },
+                                { 
+                                    name: "emergency-care", 
+                                    services: [
+                                    { name: "Госпитализация", id: "222", price: "2310" },
+                                    { name: "Детская неотложенная помощь", id: "214", price: "1210" },
+                                    { name: "Транспортировка", id: "425", price: "25 110" },
+                                    { name: "Дежурство на мероприятиях", id: "214", price: "2310" },
+                                    { name: "Забор анализов", id: "425", price: "2310" },
+                                    { name: "Скорая медицинская помощь", id: "233", price: "1210" },
+                                    { name: "Капельницы и уколы", id: "H221", price: "5000" },
+                                    { name: "Капельницы и уколы", id: "H221", price: "5000" },
+                                    { name: "Госпитализация", id: "222", price: "2310" },
+                                    { name: "Детская неотложенная помощь", id: "214", price: "1210" }
+                                    ]
+                                },
+                                { 
+                                    name: "transoprtation", 
+                                    services: [
+                                        { name: "Забор анализов", id: "425", price: "2310" },
+                                        { name: "Скорая медицинская помощь", id: "233", price: "1210" },
+                                        { name: "Капельницы и уколы", id: "H221", price: "5000" },
+                                        { name: "Госпитализация", id: "222", price: "2310" },
+                                        { name: "Детская неотложенная помощь", id: "214", price: "1210" }
+                                    ]
+                                }
+                            ] %}
+                            {% for category in categories %}
+                                <div class="prices__services prices__services--{{ category.name }} tab__page {{ 'tab__page--active' if loop.index == 1 }}">
+                                    {% for service in category.services %}
+                                        {{ Service(service) }}
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% include "pages-blocks/back-call.njk" %}
+        <section class="content section section--multirow">
+            <div class="container">
+                <div class="content__column">
+                    <div class="content__block">
+                        <h2>Скорая медицинская помощь</h2>
+                        <p>
+                            Повседневная практика показывает, что постоянное информационно-пропагандистское обеспечение нашей деятельности позволяет оценить значение существенных финансовых и административных условий. Задача организации, в особенности же дальнейшее развитие различных форм деятельности <span>играет важную роль в формировании</span> существенных финансовых и административных условий. Таким образом начало повседневной работы по формированию позиции обеспечивает широкому кругу (специалистов) участие в формировании позиций, занимаемых участниками в отношении поставленных задач.
+                        </p>
+                        <p>
+                            Не следует, однако забывать, что новая модель организационной деятельности требуют определения и уточнения модели развития. С другой стороны консультация с широким активом играет <span>важную роль в формировании позиций</span>, занимаемых участниками в отношении поставленных задач.
+                        </p>
+                    </div>
+                    <div class="content__block">
+                        <h4>Виды оказываемой помощи:</h4>
+                        <div>
+                            <p>Не следует, однако забывать, что новая модель организационной деятельности требуют определения и уточнения модели развития. С другой стороны консультация с широким активом играет важную роль в формировании позиций, занимаемых участниками в отношении поставленных задач.</p>
+                        </div>
+                        <ul>
+                            <li>Срочная подача скорой помощи</li>
+                            <li>полный комплекс выездных услуг</li>
+                            <li>доступная стоимость, Вызов от 3000 ₽</li>
+                            <li>Опытные врачи разных специализаций</li>
+                        </ul>
+                        <p>Не следует, однако забывать, что новая модель организационной деятельности требуют определения и уточнения модели развития. С другой стороны консультация с широким активом играет важную роль в формировании позиций, занимаемых участниками в отношении поставленных задач.</p>
+                        <img src="images/hero-service.png" alt="">
+                    </div>
+                    <div class="content__block">
+                        <h4>Почему стоит обратиться к нам:</h4>
+                        <p>Не следует, однако забывать, что новая модель организационной деятельности требуют определения и уточнения модели развития. С другой стороны консультация с широким активом играет важную роль в формировании позиций, занимаемых участниками в отношении поставленных задач.</p>
+                        <h5>Этапы оказания помощи:</h5>
+                        <ol>
+                            <li>Оставьте заявку на сайте или позвоните по номеру: 8 (976) 543 21 00 круглосуточно</li>
+                            <li>Не следует, однако забывать, что новая модель организационной деятельности требуют определения и уточнения модели развития. С другой стороны консультация с широким активом играет важную роль в формировании позиций, занимаемых участниками в отношении поставленных задач.</li>
+                            <li>Ожидаете бригаду скорой помощи, специалисты прибудут на адрес в течении 30 минут</li>
+                            <li>По прибытию бригады, получаете профессиональную квалифиуированную помощь</li>
+                        </ol>
+                        <blockquote>
+                            <p>
+                                Не следует, однако забывать, что новая модель организационной деятельности требуют определения и уточнения модели развития. С другой стороны консультация с широким активом играет важную роль в формировании позиций, занимаемых участниками в отношении поставленных задач. По прибытию бригады, получаете профессиональную квалифиуированную помощь. По прибытию бригады, получаете профессиональную квалифиуированную помощь.
+                            </p>
+                            <footer>
+                                <div class="author">
+                                    <div class="author__image">
+                                        <img src="images/director.png" alt="">
+                                    </div>
+                                    <div class="author__name">Фёдоров Кирилл</div>
+                                    <div class="author__position">Генеральный директор «РЕСЕТ»</div>
+                                </div>
+                            </footer>
+                        </blockquote>
+                    </div>
+                </div>
+                <aside class="content__aside">
+                    <form action="#" method="POST" name="" class="content__form form">
+                        <h5>Остались вопросы?<br><span>Оставьте заявку</span></h5>
+                        <div class="form__control">
+                            <input type="text" name="name" class="form__input form__input--required" placeholder="Ваше имя" autocomplete="off">
+                        </div>
+                        <div class="form__control">
+                            <input type="tel" name="phone" class="form__input form__input--required" placeholder="+7 (999)-999-99-99" autocomplete="off">
+                        </div>
+                        <button class="form__submit button button--primary" type="submit">
+                            <span>Задать вопросы</span>
+                        </button>
+                        <div class="form__agreement">Нажимая на кнопку «Заказать звонок» вы соглашаетесь c <a href="#">политикой конфиденциальности</a> сайта</div>
+                    </form>
+                </aside>
+            </div>
+        </section>
+        {% include "pages-blocks/call-us.njk" %}
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="js/libs/locomotive-scroll.min.js"></script>
+    {{ super() }}
+    
+{% endblock %}
