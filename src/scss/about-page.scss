@@ -1,0 +1,324 @@
+@import "base/_functions.scss";
+@import "base/_vars.scss";
+@import "base/_fonts.scss";
+@import "base/_reset.scss";
+@import "mixins/_breakpoints.scss";
+@import "mixins/_media.scss";
+@import "mixins/_fonts.scss";
+@import "base.scss";
+
+// ui
+@import "ui/button.scss";
+@import "ui/form.scss";
+@import "ui/breadcrumbs.scss";
+@import "ui/popup.scss";
+@import "ui/video.scss";
+
+// bem-blocks
+@import "modules/order-call.scss";
+
+
+@import "modules/header.scss";
+
+.stat {
+    border: rem(1) solid #D8E2E5;
+    border-top-color: transparent;
+    border-bottom-left-radius: rem(25);
+    border-bottom-right-radius: rem(25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: rem(90) rem(66) rem(95);
+    &__title {
+        &:not(:last-child) {
+            margin-bottom: rem(15);
+        }
+    }
+    &__value {
+        font-size: rem(58);
+        // @include adaptive-value(font-size, 32, 58, 576, $container-width);
+        font-weight: 500;
+        line-height: calc(60 / 58);
+        letter-spacing: -0.03em;
+    }
+    &__unit {
+        font-size: rem(32);
+        font-weight: 500;
+        line-height: calc(35 / 32);
+        letter-spacing: -0.03em;
+    }
+    &__desc {
+        color: $grey;
+        @include txt_regular;
+        max-width: rem(250);
+        text-align: center;
+    }
+    @media screen and (min-width: 993px) and (max-width: #{$container-width}px) {
+        font-size: calc(16 * (100vw / 1680));
+        @function em($value) {
+            @return 1em * calc($value / 16)
+        };
+        --padding-x: calc(30px + 30 * (100vw - 993px) / (1680 - 993));
+        --padding-y: calc(30px + 60 * (100vw - 993px) / (1680 - 993));
+        padding: var(--padding-y) var(--padding-x);
+        &__value {
+            font-size: em(58);
+        }
+        &__unit {
+            font-size: em(32);
+        }
+    }
+    @include tablet {
+        padding: rem(30);
+        &__value {
+            font-size: rem(52);
+            line-height: calc(55 / 52);
+        }
+        &__unit {
+            font-size: rem(28);
+        }
+    }
+    @include gap {
+        border-top-color: #D8E2E5;
+        border-bottom: transparent;
+        border-radius: rem(25) rem(25) 0 0 ;
+        align-items: flex-start;
+        &__desc {
+            text-align: left;
+        }
+    }
+    @include phone {
+        border-radius: rem(15) 0 0 0;
+        border-right: transparent;
+        padding: rem(20) rem(24);
+        &__title {
+            &:not(:last-child) {
+                margin-bottom: rem(10);
+            }
+        }
+    }
+}
+
+.about {
+    margin-top: rem(25);
+    padding-bottom: rem(160);
+    @include adaptive-value(padding-bottom, 70, 160, 576, $container-width);
+    &__body {
+        display: grid;
+        // grid-template-columns: 1fr calc(497 / 1520 * 100%);
+        grid-template-columns: 1fr rem(497);
+        grid-template-columns: 1fr min(40%, rem(497));
+        gap: rem(40) rem(16);
+    }
+    &__desc {
+        background-color: $white;
+        border-radius: rem(40);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        // padding: rem(55) rem(60)
+        padding: calc(55 / 1007 * 100%) calc(60 / 1007 * 100%);
+        position: relative;
+    }
+    &__logo {
+        top: rem(20);
+        right: rem(20);
+        position: absolute;
+        width: auto;
+        height: rem(50);
+    }
+    &__title, &__text {
+        max-width: rem(585);
+    }
+    &__title {
+        font-size: rem(58);
+        @include adaptive-value(font-size, 32, 58, 576, $container-width);
+        font-weight: 500;
+        line-height: calc(60 / 58);
+        letter-spacing: -0.03em;
+        &:not(:last-child) {
+            margin-bottom: rem(25);
+        }
+    }
+    &__text {
+        color: $grey;
+        @include txt_regular;
+    }
+    &__image {
+        border-radius: rem(40);
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+    }
+    &__swiper {
+        grid-column: 1 / 3;
+        width: 100%;
+        min-width: 0;
+    }
+    @include tablet {
+        &__body {
+            grid-template-columns: 1fr;
+        }
+        &__desc, &__image, &__swiper {
+            grid-column: 1 / 2;
+        }
+        &__desc, &__image {
+            height: rem(450);
+        }
+    }
+    @include phone {
+        margin-top: rem(10);
+        &__body {
+            row-gap: rem(10);
+        }
+        &__desc, &__image {
+            border-radius: rem(20);
+            height: rem(340);
+        }
+        &__image {
+            &:not(:last-child) {
+                margin-bottom: rem(15);
+            }
+        }
+        &__logo {
+            display: none
+        }
+    }
+}
+
+.video-block {
+    .video {
+        aspect-ratio: calc(1680 / 775);
+        display: block;
+        overflow: hidden;
+        &::before {
+            background: $gradient;
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+        }
+        &__play-button {
+            background-clip: content-box;
+            border: rem(1) dashed $white;
+            padding: rem(10);
+            width: rem(100);
+            height: rem(100)
+        }
+        &__info {
+            color: $white;
+            font-size: rem(24);
+            font-weight: 500;
+            line-height: calc(30 / 24);
+            position: absolute;
+            left: 0;
+            bottom: rem(40);
+            z-index: 3;
+        }
+        &__duration {
+            opacity: 0.5;
+        }
+    }
+    @include tablet {
+        .video {
+            aspect-ratio: calc(100 / 62.5);
+        }
+    }
+    @include phone {
+        .video {
+            aspect-ratio: calc(380 / 580);
+            width: 100%;
+            max-height: rem(480);
+            &__info {
+                font-size: rem(18);
+                line-height: calc(25 / 18);
+            }
+            &__play-button {
+                padding: rem(8);
+                width: rem(80);
+                height: rem(80)
+            }
+        }
+    }
+}
+
+.value {
+    background-color: $background;
+    border-radius: calc(40 / 377 * 100%) / calc(40 / 460 * 100%);
+    display: flex;
+    flex-direction: column;
+    padding: rem(35) rem(40);
+    position: relative;
+    height: rem(460);
+    overflow: hidden;
+    &__image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.4s ease 0s, visibility 0.4s ease 0s;
+        z-index: 1;
+    }
+    &__name {
+        font-size: rem(24);
+        font-weight: 500;
+        line-height: calc(30 / 24);
+        letter-spacing: -0.02em;
+        margin: 0 0 auto;
+        transition: transform 0.4s ease 0s, opacity 0.4s ease 0s;
+    }
+    &__desc {
+        color: $grey;
+        @include txt_regular;
+        margin: rem(20) 0 0;
+        transition: transform 0.4s ease 0s, opacity 0.4s ease 0s;
+    }
+    &__name, &__desc {
+        position: relative;
+        z-index: 2;
+    }
+    @include gap {
+        width: rem(360);
+    }
+    @include phone {
+        border-radius: rem(20);
+        padding: rem(20) rem(25);
+        width: rem(310);
+        height: rem(380);
+        &__name {
+            font-size: rem(18);
+            line-height: calc(25 / 18);
+        }
+    }
+    @include ishover {
+        .value__image {
+            opacity: 1;
+            visibility: visible;
+        }
+        .value__name {
+            opacity: 0;
+            transform: translate(0, rem(-20))
+        }
+        .value__desc {
+            opacity: 0;
+            transform: translate(0, rem(20))
+        }
+    }
+}
+.values {
+
+}
+@import "modules/why-we.scss";
+@import "modules/our-company.scss";
+@import "modules/our-advantages.scss";
+@import "modules/about-us.scss";
+@import "modules/call-us.scss";
+
+@import "modules/footer.scss";

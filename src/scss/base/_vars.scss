@@ -1,4 +1,5 @@
 $primary-color: #672C1D;
+$background: #F5F5F5;
 $text-color: #222222;
 
 $white: #FFFFFF;
@@ -8,6 +9,7 @@ $red: #672C1D;// burgundy
 $darkred: #511F12;
 
 $border: rem(1) solid rgba($color: $white, $alpha: 0.15);
+$gradient: linear-gradient(180deg, rgba(13, 27, 31, 0.7) 0%, rgba(17, 29, 38, 0.7) 100%);
 $container-width: 1680;
 
 

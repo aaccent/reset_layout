@@ -13,6 +13,7 @@
         object-fit: cover;
         object-position: center;
         transition: transform 0.4s ease 0s;
+        z-index: 1;
     }
     &__play-button {
         background-color: $white;
@@ -28,6 +29,7 @@
         width: rem(65);
         height: rem(65);
         transform: translate(-50%, -50%);
+        z-index: 3;
         svg {
             width: rem(18);
             height: rem(18);
@@ -40,11 +42,13 @@
         }
     }
     @include phone {
-        width: rem(55);
-        height: rem(55);
-        svg {
-            width: rem(14);
-            height: rem(14);
+        &__play-button {
+            width: rem(55);
+            height: rem(55);
+            svg {
+                width: rem(14);
+                height: rem(14);
+            }
         }
     }
 }

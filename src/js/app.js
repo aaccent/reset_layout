@@ -751,6 +751,39 @@ window.onload = function() {
                 prevEl: ".certificates .swiper-button-prev",
             },
         })
+
+        new Swiper(".about__swiper", {
+            slidesPerView: 1.4,
+            spaceBetween: 10,
+            breakpoints: {
+                576: {
+                    slidesPerView: 2
+                },
+                768: {
+                    slidesPerView: 2.35
+                },
+                992: {
+                    slidesPerView: 5,
+                    spaceBetween: 0
+                }
+            }
+        })
+
+        new Swiper(".values__swiper", {
+            slidesPerView: "auto",
+            spaceBetween: 4,
+            breakpoints: {
+                768: {
+                    slidesPerView: 2.25
+                },
+                993: {
+                    slidesPerView: 3,
+                },
+                1360: {
+                    slidesPerView: 4,
+                }
+            }
+        })
     }
 
     // FORMs

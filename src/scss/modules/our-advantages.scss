@@ -105,84 +105,6 @@
         border-radius: rem(25);
         overflow: hidden;
     }
-    .blockquote {
-        --padding-value: 5rem;
-        background-color: $white;
-        background-image: url(../images/decor-vector-02.svg), url(../images/decor-vector-01.svg);
-        background-repeat: no-repeat;
-        background-position: 0% 100%, 100% 100%;
-        background-size: 37% 40%, 32% 64%;
-        border-radius: rem(40);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: rem(75) rem(40) rem(80);
-        padding-top: calc(75 / 1520 * 100%);
-        padding-bottom: calc(80 / 1520 * 100%);
-        &__content {
-            margin: 0 auto;
-            width: 100%;
-            max-width: rem(1164);
-        }
-        &__tag {
-            color: $grey;
-            @include txt_regular;
-            &:not(:last-child) {
-                margin-bottom: rem(15);
-            }
-        }
-        &__quote {
-            font-size: rem(42);
-            @include adaptive-value(font-size, 20, 42, 576, $container-width);
-            font-weight: 500;
-            line-height: calc(50 / 42);
-            letter-spacing: -0.03em;
-            span {
-                color: $primary-color;
-            }
-            text-align: center;
-            &:not(:last-child) {
-                margin-bottom: rem(55);
-                // margin-bottom: calc(55 / 42 * 1em);
-            }
-        }
-        &__author {
-            background-color: #F7F1F1;
-            border-radius: rem(600);
-            display: grid;
-            gap: rem(10) rem(30);
-            padding: rem(5) rem(50) rem(5) rem(5);
-        }
-        &__author-avatar {
-            background-color: $white;
-            border-radius: 50%;
-            grid-row: 1 / 3;
-            grid-column: 1 / 2;
-            aspect-ratio: 1;
-            width: rem(140);
-            @include adaptive-value(width, 80, 140, 576, $container-width);
-            overflow: hidden;
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                object-position: center;
-            }
-        }
-        &__author-name {
-            align-self: self-end;
-            grid-column: 2 / 3;
-            font-size: rem(24);
-            font-weight: 500;
-            line-height: calc(30 / 24);
-        }
-        &__author-position {
-            color: $grey;
-            grid-column: 2 / 3;
-            align-self: self-start;
-            @include txt_regular;
-        }
-    }
     @media screen and (min-width: 1281px) and (max-width: #{$container-width}px) {
         font-size: calc(16 * (100vw / 1680));
         &__about {
@@ -317,15 +239,7 @@
                 }
             }
         }
-        .blockquote {
-            padding: rem(40);
-            &__author-name {
-                font-size: rem(18);
-            }
-            &__author-position {
-                font-size: rem(14);
-            }
-        }
+
     }
     @include phone {
         &__about-col {
@@ -358,7 +272,130 @@
         &__about-logo {
             display: none;
         }
-        .blockquote {
+    }
+    @media screen and (max-width: 480px) {
+        &__about-more {
+            flex-basis: 100%;
+            justify-content: center;
+        }
+    }
+}
+
+.stat {
+    &__title {
+        &:not(:last-child) {
+            margin-bottom: rem(15);
+        }
+    }
+
+    &__value {
+        font-family: var(--font-family);
+        font-size: rem(58);
+        font-weight: 500;
+        line-height: calc(60 / 58);
+        letter-spacing: -0.03em;
+    }
+
+    &__unit {
+        font-size: rem(32);
+        font-weight: 500;
+        line-height: calc(35 / 32);
+        letter-spacing: -0.03em;
+    }
+
+    &__desc {
+        color: #979797;
+        @include txt_regular;
+    }
+}
+
+.blockquote {
+    --padding-value: 5rem;
+    background-color: $white;
+    background-image: url(../images/decor-vector-02.svg), url(../images/decor-vector-01.svg);
+    background-repeat: no-repeat;
+    background-position: 0% 100%, 100% 100%;
+    background-size: 37% 40%, 32% 64%;
+    border-radius: rem(40);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: rem(75) rem(40) rem(80);
+    padding-top: calc(75 / 1520 * 100%);
+    padding-bottom: calc(80 / 1520 * 100%);
+    &__content {
+        margin: 0 auto;
+        width: 100%;
+        max-width: rem(1164);
+    }
+    &__tag {
+        color: $grey;
+        @include txt_regular;
+        &:not(:last-child) {
+            margin-bottom: rem(15);
+        }
+    }
+    &__quote {
+        font-size: rem(42);
+        @include adaptive-value(font-size, 20, 42, 576, $container-width);
+        font-weight: 500;
+        line-height: calc(50 / 42);
+        letter-spacing: -0.03em;
+        span {
+            color: $primary-color;
+        }
+        text-align: center;
+        &:not(:last-child) {
+            margin-bottom: rem(55);
+            // margin-bottom: calc(55 / 42 * 1em);
+        }
+    }
+    &__author {
+        background-color: #F7F1F1;
+        border-radius: rem(600);
+        display: grid;
+        gap: rem(10) rem(30);
+        padding: rem(5) rem(50) rem(5) rem(5);
+    }
+    &__author-avatar {
+        background-color: $white;
+        border-radius: 50%;
+        grid-row: 1 / 3;
+        grid-column: 1 / 2;
+        aspect-ratio: 1;
+        width: rem(140);
+        @include adaptive-value(width, 80, 140, 576, $container-width);
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+    &__author-name {
+        align-self: self-end;
+        grid-column: 2 / 3;
+        font-size: rem(24);
+        font-weight: 500;
+        line-height: calc(30 / 24);
+    }
+    &__author-position {
+        color: $grey;
+        grid-column: 2 / 3;
+        align-self: self-start;
+        @include txt_regular;
+    }
+    @include gap {
+        padding: rem(40);
+        &__author-name {
+            font-size: rem(18);
+        }
+        &__author-position {
+            font-size: rem(14);
+        }
+    }
+    @include phone {
             background-image: none;
             border-radius: rem(20);
             padding: rem(25);
@@ -396,57 +433,5 @@
             &__author-position {
                 font-size: rem(14);
             }
-        }
-    }
-    @media screen and (max-width: 480px) {
-        &__about-more {
-            flex-basis: 100%;
-            justify-content: center;
-        }
     }
 }
-
-.stat {
-
-    &__title {
-        &:not(:last-child) {
-            margin-bottom: rem(15);
-        }
-    }
-
-    &__value {
-        font-family: var(--font-family);
-        font-size: rem(58);
-        font-weight: 500;
-        line-height: calc(60 / 58);
-        letter-spacing: -0.03em;
-    }
-
-    &__unit {
-        font-size: rem(32);
-        font-weight: 500;
-        line-height: calc(35 / 32);
-        letter-spacing: -0.03em;
-    }
-
-    &__desc {
-        color: #979797;
-        @include txt_regular;
-    }
-}
-
-// .video {
-//     position: relative;
-//     &__play-button {
-//         background-color: $white;
-//         border-radius: 50%;
-//         position: absolute;
-//         top: 50%;
-//         left: 50%;
-//         // width: rem(55);
-//         // height: rem(55);
-//         width: calc(55 / 340 * 100%);
-//         aspect-ratio: 1;
-//         transform: translate(-50%, -50%);
-//     }
-// }

@@ -1,0 +1,212 @@
+{% extends "templates/layout.njk" %}
+
+{% set title = "О нас" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="css/libs/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/libs/fancybox.css">    
+    <link rel="stylesheet" href="css/about-page.min.css">
+{% endblock %}
+
+{% from "pages-blocks/why-we.njk" import WhyWe %}
+
+{% macro Stat(item) %}
+    <div class="about__stat stat swiper-slide">
+        <div class="stat__title">
+            <span class="stat__value">{{ item.value }}</span>
+            <span class="stat__unit"> {{ item.unit }}</span>
+        </div>
+        <div class="stat__desc">{{ item.desc }}</div>
+    </div>
+{% endmacro %}
+
+{% macro Value(name) %}
+    <div class="values__value-item value swiper-slide">
+        <img src="images/value.png" alt="" class="value__image">
+        <div class="value__name">{{ name }}</div>
+        <div class="value__desc">Наша компания гарантирует быстрый выезд скорой медицинской помощи в любое время суток. Мы понимаем, что в экстренных ситуациях каждая.</div>
+    </div>
+{% endmacro %}
+
+{% macro Doctor(doctor, index) %}
+    <div class="our-doctors__doctor doctor swiper-slide">
+        <div class="doctor__image">
+            <img src="images/doctor-0{{'1' if index % 2 else '2'}}.png" alt="">
+            <div class="doctor__experience"><span>Стаж: </span>{{ doctor.experience }}</div>
+        </div>
+        <div class="doctor__name">{{ doctor.name }}</div>
+        <div class="doctor__position">{{ doctor.position }}</div>
+    </div>
+{% endmacro %}
+
+{% macro Transport(transport) %}
+    {% if transport % 4  %}
+        <div class="our-transport__transport-item transport swiper-slide">
+            <img src="images/transport-0{{ transport % 4 }}.png" alt="" class="transport__image">
+            <div class="transport__button"></div>
+        </div>
+        
+    {% endif %}
+{% endmacro %}
+
+{% block content %}
+    <section class="about">
+        <div class="container">
+            <div class="about__body">
+                <div class="about__desc">
+                    <img src="images/logo-icon.svg" alt="" class="about__logo">
+                    <h1 class="about__title">О компании</h1>
+                    <div class="about__text">Наша компания гарантирует быстрый выезд скорой медицинской помощи в любое время суток. Мы понимаем, что в экстренных ситуациях каждая секунда на счету, и наша цель — обеспечить вам необходимую помощь как.</div>
+                </div>
+                <div class="about__image">
+                    <img src="images/about.png" alt="">
+                </div>
+                <div class="about__swiper swiper">
+                    <div class="about__stats swiper-wrapper">
+                        {% set stats = [
+                            { value: 1200, desc: "Общее число вызовов за все время работы" },
+                            { value: 12, unit: "лет", desc: "Средний стаж работы наших специалистов" },
+                            { value: 35, unit: "минут", desc: "Среднее время приезда нашей скорой" },
+                            { value: 10, unit: "лет", desc: "Опыта работы в медицинской сфере" },
+                            { value: 120, desc: "Вызовов обрабатывает наша компания ежедневно" }
+                        ] %}
+                        {% for stat in stats %}
+                            {{ Stat(stat) }}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="video-block">
+        <a data-fancybox data-fancybox-youtube href="https://www.youtube.com/watch?v=jNQXAC9IVRw&ab_channel=jawed" class="video">
+            <img src="" alt="" class="video__poster">
+            <div class="video__play-button">
+                <svg><use xlink:href="#play"></use></svg>
+            </div>
+            <div class="video__info">
+                <div class="container">
+                    <div class="video__duration">4:26</div>
+                    <div>Посмотрите видео о нашей работе</div>
+                </div>
+            </div>
+        </a>
+    </section>
+    <section class="values section section--light">
+        <div class="section__header">
+            <div class="container">
+                <h2 class="section__title">Наши ценности</h2>
+            </div>
+        </div>
+        <div class="section__body">
+            <div class="container">
+                <div class="values__swiper swiper">
+                    <div class="values__list swiper-wrapper">
+                        {% set values = [ "Постоянное развитие", "Индивидуальный подход к каждому", "Постоянное развитие", "Инновации и передовоые технологии" ] %}
+                        {% for value in values %}
+                            {{ Value(value) }}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{ WhyWe() }}
+    <section class="our-company section section--multirow">
+        <article class="our-advantages__quote">
+            <div class="container">
+                <div class="blockquote">
+                    <div class="blockquote__tag">Миссия компании</div>
+                    <div class="blockquote__quote">Мы оснащены последними медицинскими технологиями и оборудованием, что позволяет нам <span>проводить широкий спектр медицинских процедур прямо на месте</span></div>
+                    <div class="blockquote__author">
+                        <div class="blockquote__author-avatar">
+                            <img src="images/director.png" alt="director">
+                        </div>
+                        <div class="blockquote__author-name">Фёдоров Кирилл</div>
+                        <div class="blockquote__author-position">Генеральный директор «РЕСЕТ»</div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="our-company__doctors our-doctors">
+            <div class="our-doctors__header section__header">
+                <div class="container">
+                    <h2 class="our-doctors__title section__title">Наши опытные <span>врачи скорой помощи</span></h2>
+                    <div class="swiper-controls">
+                        <div class="swiper-button-prev">
+                            <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 12L1 6.5L7 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="swiper-button-next">
+                            <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 12L7 6.5L1 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section__body">
+                <div class="container">
+                    <div class="our-doctors__swiper swiper">
+                        <div class="our-doctors__swiper-wrapper swiper-wrapper">
+                            {% set doctors = [
+                                { name: "Евгений Беляев", position: "Старший фельдшер", experience: "12 лет" },
+                                { name: "Анастасия Морозова", position: "Врач выездной бригады", experience: "22 года" },
+                                { name: "Сергей Иванов", position: "Старший фельдшер", experience: "5 лет" },
+                                { name: "Марина Красноборова", position: "Врач выездной бригады", experience: "10 лет" },
+                                { name: "Евгений Беляев", position: "Старший фельдшер", experience: "12 лет" },
+                                { name: "Анастасия Морозова", position: "Врач выездной бригады", experience: "22 года" },
+                                { name: "Сергей Иванов", position: "Старший фельдшер", experience: "5 лет" },
+                                { name: "Марина Красноборова", position: "Врач выездной бригады", experience: "10 лет" }
+                            ] %}
+                            {% for doctor in doctors %}
+                                {{ Doctor(doctor, loop.index) }}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="our-company__transport our-transport">
+            <div class="our-transport__header section__header">
+                <div class="container">
+                    <h2 class="our-transport__title section__title">Современный транспорт <span>и&nbsp;оборудование</span></h2>
+                    <div class="swiper-controls">
+                        <div class="swiper-button-prev">
+                            <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 12L1 6.5L7 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="swiper-button-next">
+                            <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 12L7 6.5L1 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section__body">
+                <div class="container">
+                    <div class="our-transport__swiper swiper">
+                        <div class="our-transport__transport-list swiper-wrapper">
+                            {% for index in range(1,8) %}
+                                {{ Transport(index) }}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+    {% include "pages-blocks/our-company.njk" %}
+    {% include "pages-blocks/about-us.njk" %}
+    {% include "pages-blocks/call-us.njk" %}
+{% endblock %}
+
+{% block scripts %}
+    <script src="js/libs/swiper-bundle.min.js"></script>
+    <script src="js/libs/fancybox.umd.js"></script>
+    <script src="js/libs/locomotive-scroll.min.js"></script>
+    {{ super() }}
+{% endblock %}
