@@ -300,10 +300,10 @@ window.onload = function() {
     })
 
     // reviews & seo text
-    const faqAboutArticleEl = document.querySelector(".article");
-    const faqAboutTextEl = faqAboutArticleEl.querySelector(".article__text");
-    const faqAboutMoreButtonEl = faqAboutArticleEl.querySelector(".article__more");
-    const maxHeight = parseFloat(getComputedStyle(faqAboutTextEl).maxHeight)
+    const articleEl = document.querySelector(".article");
+    const articleTextEl = articleEl.querySelector(".article__text");
+    const readMoreButtonEl = articleEl.querySelector(".article__more");
+    const maxHeight = parseFloat(getComputedStyle(articleTextEl).maxHeight)
 
     function changeElemHeight(elem) {
         const buttonTextEl = elem.querySelector("span")
@@ -319,8 +319,8 @@ window.onload = function() {
 
     function checkElemHeight(elem) {
         const className = elem.classList[1];
-        const textEl = faqAboutTextEl;
-        const readMoreEl = faqAboutMoreButtonEl;
+        const textEl = articleTextEl;
+        const readMoreEl = readMoreButtonEl;
 
         if (textEl.offsetHeight < textEl.scrollHeight) {
             !elem.classList.contains(className + "--hide") && elem.classList.add(className + "--hide")
@@ -337,26 +337,26 @@ window.onload = function() {
         } 
     }
 
-    checkElemHeight(faqAboutArticleEl);
+    checkElemHeight(articleEl);
 
-    
-    faqAboutMoreButtonEl.addEventListener("click", () => changeElemHeight(faqAboutArticleEl))
+    readMoreButtonEl.addEventListener("click", () => changeElemHeight(articleEl))
 
     window.addEventListener("resize", () => {
-        checkElemHeight(faqAboutArticleEl)
+        checkElemHeight(articleEl)
     })
 
     
 
 
     // CASES
-    const allCasesButtonEl = document.querySelector(".help__when-case a")
-
-    allCasesButtonEl.addEventListener("click", e => {
-        let casesPopupEl = document.querySelector(".popup--cases");
-        e.preventDefault();
-        openPopup(casesPopupEl)
-    })
+    const allCasesButtonEl = document.querySelector(".help-when__case a")
+    if (allCasesButtonEl) {
+        allCasesButtonEl.addEventListener("click", e => {
+            let casesPopupEl = document.querySelector(".popup--cases");
+            e.preventDefault();
+            openPopup(casesPopupEl)
+        })
+    }
 
     
     // ADVANTAGES
@@ -603,7 +603,7 @@ window.onload = function() {
             }
         })
 
-        new Swiper(".help__how-steps", {
+        new Swiper(".help-how__steps", {
             slidesPerView: "auto",
             slidesOffsetAfter: 20,
             slidesOffsetBefore: 20,

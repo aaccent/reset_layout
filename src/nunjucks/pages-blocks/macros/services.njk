@@ -1,0 +1,51 @@
+{% macro Service(service, index) %}
+    <a href="#" class="services__service-item service swiper-slide">
+        {% if service.icon %}
+            <span class="service__icon">
+                <svg>
+                    <use xlink:href="#service-{{ service.icon }}"></use>
+                </svg>
+            </span>
+        {% endif %}
+        <span class="service__number">/0{{ index }}</span>
+        <div class="service__name">{{ service.name }}</div>
+        <div class="service__more">
+            <span>Узнать подробнее</span>
+            <svg>
+                <use xlink:href="#arrow-link"></use>
+            </svg>
+        </div>
+    </a>
+{% endmacro %}
+
+{% macro Content(content) %}
+        <div class="section__header">
+        <div class="container">
+            <h2 class="section__title">{{ content.title | safe}}</h2>
+        </div>
+    </div>
+    <div class="section__body services__body">
+        <div class="container">
+            <div class="services__swiper swiper">
+                <div class="services__list swiper-wrapper">
+                    {% for item in content.services %}
+                        {{ Service(item, loop.index) }}
+                    {% endfor %}
+                    .
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro Services(content, subsection = false) %}
+    {% if subsection %}
+        <article class="services">
+            {{ Content(content)}}
+        </article>
+    {% else %}
+        <section class="services section">
+            {{ Content(content)}}
+        </section>
+    {% endif %}
+{% endmacro %}

@@ -10,17 +10,33 @@
 
 {% from "pages-blocks/macros/about.njk" import About %}
 {% from "pages-blocks/macros/faq.njk" import Faq  %}
+{% from "pages-blocks/macros/services.njk" import Services %}
 
 {% block content %}
     {% include "pages-blocks/hero.njk" %}
-    {% include "pages-blocks/services.njk" %}
+    {% set service_content = {
+        title: "Комплекс услуг платной<br><span>скорой медицинской помощи</span>",
+        services: [
+            { name: "Забор анализов", icon: "01" },
+            { name: "Скорая медецинская помощь", icon: "02" },
+            { name: "Капельницы и уколы", icon: "03" },
+            { name: "Госпитализация", icon: "04" },
+            { name: "Детская неотложенная помощь", icon: "05" },
+            { name: "Транспортировка", icon: "06" },
+            { name: "Дежурство на мероприятиях", icon: "07" },
+            { name: "Забор анализов", icon: "01" }
+        ]
+    } %}
+    {{ Services(service_content) }}
     {% include "pages-blocks/why-we.njk" %}
     {% include "pages-blocks/our-company.njk" %}
-    {% include "pages-blocks/help.njk" %}
+    <section class="help section section--multirow">
+        {% include "pages-blocks/modules/help-how.njk" %}
+        {% include "pages-blocks/modules/help-when.njk" %}
+    </section>
     {% include "pages-blocks/contact-us.njk" %}
     {% include "pages-blocks/our-advantages.njk" %}
     {% include "pages-blocks/about-us.njk" %}
-    {# {% include "pages-blocks/faq.njk" %} #}
     {{ Faq(About) }}
     {% include "pages-blocks/call-us.njk" %}
 {% endblock %}
