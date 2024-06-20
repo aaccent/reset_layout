@@ -2086,19 +2086,20 @@ body._lock {
   opacity: 1;
 }
 
-.stock picture, .stock__image {
+.stock picture {
   aspect-ratio: 1.6233333333;
   border-radius: 1.5625rem;
   display: block;
   overflow: hidden;
 }
-.stock picture:not(:last-child), .stock__image:not(:last-child) {
+.stock picture:not(:last-child) {
   margin-bottom: 1.5625rem;
 }
-.stock picture img, .stock__image img {
+.stock picture img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.4s ease 0s;
 }
 .stock__content {
   max-width: 21.5625rem;
@@ -2145,6 +2146,11 @@ body._lock {
 .stock__more svg {
   width: 0.5rem;
   height: 0.5rem;
+}
+@media screen and (any-hover: hover) {
+  .stock:hover picture img {
+    transform: scale(1.05);
+  }
 }
 @media (max-width: 768px) {
   .stock picture, .stock__image {
