@@ -214,11 +214,11 @@
         </div>
         {% set menu_items = [
             {label: "Услуги", modificator: "services"},
-            {label: "Цены", href: "#", modificator: "prices"},
-            {label: "Акции", href: "#", modificator: "stocks"},
+            {label: "Цены", href: "prices-page.html", modificator: "prices"},
+            {label: "Акции", href: "stocks-page.html", modificator: "stocks"},
             {label: "Отзывы", href: "#", modificator: "reviews"},
-            {label: "О клинике", href: "#", modificator: "about"},
-            {label: "Контакты", href: "#", modificator: "contacts"}
+            {label: "О клинике", href: "about-page.html", modificator: "about"},
+            {label: "Контакты", href: "contacts-page.html", modificator: "contacts"}
         ] %}
         {{ Menu(menu_items )}}
 

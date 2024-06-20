@@ -177,14 +177,14 @@ window.onload = function() {
 
     const locationEl = headerEl.querySelector(".header__location");
     const consultationButtonEls = headerEl.querySelectorAll(".header__button");
-    const buttonEls = document.querySelectorAll(".header__menu-item--prices, .header__menu-item--stocks, .column__menu-item--prices, .column__menu-item--stocks, .menu__item--stocks, .menu__item--prices")
+    // const buttonEls = document.querySelectorAll(".header__menu-item--prices, .header__menu-item--stocks, .column__menu-item--prices, .column__menu-item--stocks, .menu__item--stocks, .menu__item--prices")
 
-    Array.from(buttonEls).forEach(buttonEl => {
-        buttonEl.addEventListener("click", e => {
-            e.preventDefault();
-            openPopup(callDoctorPopupEl)
-        })
-    })
+    // Array.from(buttonEls).forEach(buttonEl => {
+    //     buttonEl.addEventListener("click", e => {
+    //         e.preventDefault();
+    //         openPopup(callDoctorPopupEl)
+    //     })
+    // })
 
     Array.from(consultationButtonEls).forEach(buttonEl => {
         let popupEl = document.querySelector(".popup--consultation")
@@ -282,6 +282,7 @@ window.onload = function() {
         openPopup(citiesPopupEl)
     })
 
+
     // HERO
     Array.from(document.querySelectorAll(".hero-slide__call-doctor")).forEach(buttonEl => {
         buttonEl.addEventListener("click", e => {
@@ -298,6 +299,20 @@ window.onload = function() {
             }
             e.preventDefault()
             openPopup(callDoctorPopupEl)
+        })
+    }
+
+    // DOCTORS
+
+    let doctorsListEl = document.querySelector(".our-doctors .swiper-wrapper")
+    if (doctorsListEl) {
+        doctorsListEl.addEventListener("click", e => {
+            if (!e.target.closest(".doctor")) {
+                return
+            }  
+
+            let popupEl = document.querySelector(".popup--doctor")
+            openPopup(popupEl)
         })
     }
 
@@ -405,8 +420,6 @@ window.onload = function() {
     }
 
     
-
-
     // CASES
     const allCasesButtonEl = document.querySelector(".help-when__case a")
     if (allCasesButtonEl) {
@@ -592,11 +605,11 @@ window.onload = function() {
     if (window.LocomotiveScroll) {
         let scroll = new LocomotiveScroll();
 
-        let contactsLinkEls = document.querySelectorAll(".header__menu-item--contacts a, .column__menu-item--contacts, .menu__item--contacts")
-        let callUsSection = document.querySelector("section.call-us");
+        // let contactsLinkEls = document.querySelectorAll(".header__menu-item--contacts a, .column__menu-item--contacts, .menu__item--contacts")
+        // let callUsSection = document.querySelector("section.call-us");
 
-        let aboutLinkEl = document.querySelectorAll(".header__menu-item--about, .column__menu-item--about, .menu__item--about")
-        let aboutSection = document.querySelector("section.our-advantages")
+        // let aboutLinkEl = document.querySelectorAll(".header__menu-item--about, .column__menu-item--about, .menu__item--about")
+        // let aboutSection = document.querySelector("section.our-advantages")
 
         let reviewsLinkEls = document.querySelectorAll(".header__menu-item--reviews, .column__menu-item--reviews, .menu__item--reviews")
         let reviewsSection = document.querySelector("section.about-us")
@@ -675,8 +688,8 @@ window.onload = function() {
         }
 
 
-        handleLinks(contactsLinkEls, callUsSection)
-        handleLinks(aboutLinkEl, aboutSection)
+        // handleLinks(contactsLinkEls, callUsSection)
+        // handleLinks(aboutLinkEl, aboutSection)
         handleLinks(reviewsLinkEls, reviewsSection)
     }
 
@@ -702,6 +715,24 @@ window.onload = function() {
 
     // SWIPERs
     if (window.Swiper) {
+        new Swiper(".doctor-card__certificates-swiper", {
+            slidesPerView: 4,
+            slidesPerView: "auto",
+            spaceBetween: 12,
+            observeParents: true,
+            observeSlideChildren: true,
+            observer: true,
+            watchOverflow: true,
+            breakpoints: {
+                768: {
+                    slidesPerView: 4,
+                },
+                993: {
+                    slidesPerView: "auto",
+                }
+            }
+        })
+
         new Swiper(".hero__swiper", {
             slidesPerView: 1,
             speed: 800,
@@ -973,6 +1004,20 @@ window.onload = function() {
     })
 
     // POPUPs
+    // let doctorCertificatesListEl = document.querySelector(".popup--doctor .doctor-card__certificates-list");
+    
+    // if (doctorCertificatesListEl) {
+    //     doctorCertificatesListEl.addEventListener("click", e => {
+    //         if (!e.target.closest(".swiper-slide")) {
+    //             return
+    //         }
+    
+    //         let galleryPopupEl = document.querySelector(".popup--gallery");
+    //         let currentImgSrc= e.target.closest("img").getAttribute("src");
+    //         galleryPopupEl.querySelector("img").setAttribute("src", currentImgSrc);
+    //         openPopup(galleryPopupEl)
+    //     })
+    // }
     let citiesListEl = document.querySelector(".popup__cities")
     let cityEls = citiesPopupEl.querySelectorAll(".popup__city");
 

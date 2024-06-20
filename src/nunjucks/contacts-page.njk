@@ -3,7 +3,7 @@
 {% set title = "Контакты" %}
 {% block styles %}
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/contact-page.min.css">
+    <link rel="stylesheet" href="css/contacts-page.min.css">
 
 {% endblock %}
 
@@ -11,7 +11,7 @@
 {% block content %}
     <div class="page">
         <div class="page__nav"></div>
-        <section class="contact page__section">
+        <section class="contacts page__section">
             <div class="section__header">
                 <div class="container">
                     <h1 class="section__title">Контакты</h1>
@@ -19,59 +19,59 @@
             </div>
             <div class="section__body">
                 <div class="container">
-                    <div class="contact__header">
-                        <div class="contact__header-wrapper">
-                            <div class="contact__info">
-                                <div class="contact__info-item contact__info-item--phone">
-                                    <div class="contact__info-icon">
+                    <div class="contacts__header">
+                        <div class="contacts__header-wrapper">
+                            <div class="contacts__info">
+                                <div class="contacts__info-item contacts__info-item--phone">
+                                    <div class="contacts__info-icon">
                                         <svg><use xlink:href="#phone"></use></svg>
                                     </div>
-                                    <div class="contact__info-desc">
+                                    <div class="contacts__info-desc">
                                         <span>8 (976) 543 21 00</span>
                                         <span>Пн - Пт с 08:00 до 20:00</span>
                                     </div>
                                 </div>
-                                <a href="mailto:mail@example.com" class="contact__info-item contact__info-item--mail">
-                                    <div class="contact__info-icon">
+                                <a href="mailto:mail@example.com" class="contacts__info-item contacts__info-item--mail">
+                                    <div class="contacts__info-icon">
                                         <svg><use xlink:href="#mail"></use></svg>
                                     </div>
-                                    <div class="contact__info-desc">mail@example.com</div>
+                                    <div class="contacts__info-desc">mail@example.com</div>
                                 </a>
-                                <div class="contact__info-item contact__info-item--geo">
-                                    <div class="contact__info-icon">
+                                <div class="contacts__info-item contacts__info-item--geo">
+                                    <div class="contacts__info-icon">
                                         <svg><use xlink:href="#geo"></use></svg>
                                     </div>
-                                    <div class="contact__info-desc">
+                                    <div class="contacts__info-desc">
                                         Республика Татарстан, г.&nbsp;Казань, ул.&nbsp;Баумана, 1
                                     </div>
                                 </div>
                             </div>
-                            <ul class="contact__socials">
-                                <li class="contact__social-item">
-                                    <a href="#" class="contact__social-link contact__social-link--vk">
+                            <ul class="contacts__socials">
+                                <li class="contacts__social-item">
+                                    <a href="#" class="contacts__social-link contacts__social-link--vk">
                                         <svg><use xlink:href="#vk"></use></svg>
                                     </a>
                                 </li>
-                                <li class="contact__social-item">
-                                    <a href="#" class="contact__social-link contact__social-link--whatsapp">
+                                <li class="contacts__social-item">
+                                    <a href="#" class="contacts__social-link contacts__social-link--whatsapp">
                                         <svg><use xlink:href="#whatsapp"></use></svg>
                                     </a>
                                 </li>
-                                <li class="contact__social-item">
-                                    <a href="#" class="contact__social-link contact__social-link--telegram">
+                                <li class="contacts__social-item">
+                                    <a href="#" class="contacts__social-link contacts__social-link--telegram">
                                         <svg><use xlink:href="#telegram"></use></svg>
                                     </a>
                                 </li>
-                                <li class="contact__social-item">
-                                    <a href="#" class="contact__social-link contact__social-link--youtube">
+                                <li class="contacts__social-item">
+                                    <a href="#" class="contacts__social-link contacts__social-link--youtube">
                                         <svg><use xlink:href="#youtube"></use></svg>
                                     </a>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <div class="contact__main">
-                        <form action="#" method="POST" name="" class="contact__form form">
+                    <div class="contacts__main">
+                        <form action="#" method="POST" name="" class="contacts__form form">
                             <div class="form__title">Обратная связь</div>
                             <div class="form__body">
                                 <div class="form__control">
@@ -107,11 +107,11 @@
                                 <div class="form__agreement">Нажимая на кнопку «Заказать звонок» вы соглашаетесь c <a href="#">политикой конфиденциальности</a> сайта</div>
                             </div>
                         </form>
-                        <div id="map" class="contact__map" data-center="49.123356, 55.782238"></div>
+                        <div id="map" class="contacts__map" data-center="49.123356, 55.782238"></div>
                     </div>
-                    <div class="contact__footer">
-                        <div class="contact__footer-cols">
-                            <div class="contact__footer-col col">
+                    <div class="contacts__footer">
+                        <div class="contacts__footer-cols">
+                            <div class="contacts__footer-col col">
                                 <div class="col__title">Реквизиты:</div>
                                 <div class="col__info">
                                     <div class="col__text-small col__doc">ИНН: 1443543432432</div>
@@ -120,20 +120,20 @@
                                     <div class="col__text-small col__doc">ЕГРИП: 2234 421421 122</div>
                                 </div>
                             </div>
-                            <div class="contact__footer-col col">
+                            <div class="contacts__footer-col col">
                                 <div class="col__title">Учредители:</div>
                                 <div class="col__info">
                                     <div class="col__text-big col__company">ООО «РЕСЕТ»</div>
                                     <a href="#" target="_blank" class="col__link">Правовая информация</a>
                                 </div>
                             </div>
-                            <div class="contact__footer-col col">
+                            <div class="contacts__footer-col col">
                                 <div class="col__title">Генеральный директор</div>
                                 <div class="col__info">
                                     <div class="col__text-big">Иванов Иван Иванович</div>
                                 </div>
                             </div>
-                            <div class="contact__footer-col col">
+                            <div class="contacts__footer-col col">
                                 <div class="col__info">
                                     <a href="#" class="col__button">
                                         <span>Скачать реквизиты</span>
