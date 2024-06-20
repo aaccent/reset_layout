@@ -28,6 +28,78 @@
 
 @import "modules/header.scss";
 
+.nav {
+    background-color: $white;
+    border-radius: rem(25);
+    padding: rem(10);
+    overflow: hidden;
+    &__head {
+        background-color: $primary-color;
+        border-radius: rem(20);
+        display: none;
+        color: $white;
+        justify-content: space-between;
+        align-items: center;
+        gap: rem(8);
+        padding: rem(30) rem(35);
+        width: 100%;
+        span {
+            @include txt_semibold;
+            font-size: rem(18)
+        }
+        svg {
+            width: rem(16);
+            height: rem(16);
+            transform: rotate(90deg);
+        }
+    }
+    &__menu {
+    }
+
+    &__menu-item {
+        &:not(:last-child) {
+            margin-bottom: rem(5);
+        }
+        &--active {
+            .nav__menu-link {
+                background-color: $primary-color;
+                color: $white;
+            }
+        }
+    }
+
+    &__menu-link {
+        border-radius: rem(15);
+        display: block;
+        @include txt_semibold;
+        padding: rem(20) rem(25);
+    }
+    @include tablet {
+        padding: 0;
+        &__head {
+            display: flex;
+        }
+        &__menu {
+            height: 0;
+        }
+        &--open {
+            .nav__head {
+                svg {
+                    transform: rotate(-90deg);
+                }
+            }
+            .nav__menu {
+                padding-top: rem(10);
+                height: auto;
+            }
+        }
+    }
+    @include phone {
+        &__head {
+            padding: rem(20) rem(23)
+        }
+    }
+}
 
 .content {
     .container {
@@ -244,16 +316,21 @@
             flex-direction: column-reverse;
         }
         &__aside {
-            display: none;
+            align-self: stretch;
+            position: static;
+            max-width: rem(620);
         }
         &__nav {
-            width: 100%;
+            width: auto;
         }
         &__form {
             display: none;
         }
     }
     @include phone {
+        .container {
+            gap: rem(35);
+        }
         &__column {
             & > div {
                 &:not(:last-child) {
@@ -325,50 +402,8 @@
                 }
             }
         }
-    }
-}
-
-.nav {
-    background-color: $white;
-    border-radius: rem(25);
-    padding: rem(10);
-    &__head {
-        display: none;
-        span {
-            @include txt_semibold;
-        }
-    }
-    &__menu {
-    }
-
-    &__menu-item {
-        &:not(:last-child) {
-            margin-bottom: rem(5);
-        }
-        &--active {
-            .nav__menu-link {
-                background-color: $primary-color;
-                color: $white;
-            }
-        }
-    }
-
-    &__menu-link {
-        border-radius: rem(15);
-        display: block;
-        @include txt_semibold;
-        padding: rem(20) rem(25);
-    }
-    @include tablet {
-        // &__head {
-        //     display: flex;
-        //     justify-content: space-between;
-        //     align-self: center;
-        //     gap: rem(2)
-        // }
-        &__menu {
-            display: flex;
-            flex-wrap: wrap
+        &__nav {
+            border-radius: rem(10);
         }
     }
 }
