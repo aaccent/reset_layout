@@ -305,7 +305,6 @@ window.onload = function() {
     }
 
     // DOCTORS
-
     let doctorsListEl = document.querySelector(".our-doctors .swiper-wrapper")
     if (doctorsListEl) {
         doctorsListEl.addEventListener("click", e => {
@@ -520,60 +519,6 @@ window.onload = function() {
         })
     }
 
-    // let lock = false;
-    // selectEl.addEventListener("click", e => {
-    //     // клик по заголовку
-    //     if (e.target.closest(".select__head") && !lock) {
-    //         lock = true
-    //         if (selectEl.classList.contains("select_open")) {
-    //             selectEl.classList.remove("select_open")
-    //             selectMenu.style.height = ""
-    //         } else {
-    //             selectEl.classList.add("select_open")
-    //             selectMenu.style.height = selectMenu.scrollHeight + "px"
-    //         }
-    //         selectMenu.addEventListener("transitionend", () => lock = false)
-    //     }
-    //     // клик по вариантам
-    //     if (e.target.closest(".select__option")) {
-    //         let activeOptionEl = selectEl.querySelector(".select__option_selected")
-    //         let curOptionEl = e.target.closest(".select__option");
-
-    //         activeOptionEl && activeOptionEl.classList.remove("select__option_selected")
-    //         curOptionEl.classList.add("select__option_selected")
-
-    //         selectEl.querySelector("input").value = curOptionEl.dataset.value
-    //         selectLabel.innerHTML = curOptionEl.querySelector(".select__option-label").innerHTML
-    //         selectEl.classList.add("select_selected")
-
-    //         setTimeout(() => {
-    //             selectEl.classList.remove("select_open")
-    //             selectMenu.style.height = ""
-    //         }, 200);
-            
-    //     }
-    // })
-        // let scroll = new LocomotiveScroll()
-        // let formBlockEl = document.querySelector(".form-block")
-
-        // document.querySelectorAll(".prices-section__category").forEach(categoryBlock => {
-        //     categoryBlock.addEventListener("click", e => {
-        //         const buttonEl = e.target.closest(".service__button")
-        //         if (!buttonEl) {
-        //             return
-        //         }
-    
-        //         const textareaEl = formBlockEl.querySelector("textarea")
-        //         const formControlEl = textareaEl.closest(".form__control")
-        //         const serviceName = buttonEl.closest(".service").querySelector(".service__name").innerHTML
-    
-        //         textareaEl.value = serviceName
-        //         formControlEl.classList.add("form__control_filled")
-        //         formBlockEl.querySelector("input[type='hidden']").value = buttonEl.dataset["serviceName"]
-        //         scroll.scrollTo(formBlockEl)            
-        //     })  
-        // })
-
     // FOOTER
     const footerEl = document.querySelector(".footer")
     const footerMenuEl = footerEl.querySelector(".footer__menu")
@@ -602,6 +547,10 @@ window.onload = function() {
             Array.from(openColumnEls).forEach(columnEl => columnEl.classList.remove("column--open"))
         }
     })
+
+    // TYPICAL PAGE
+
+
 
     // LOCOMOTIVE SCROLL
     if (window.LocomotiveScroll) {
@@ -638,18 +587,34 @@ window.onload = function() {
             })
         }
 
+        // handleLinks(contactsLinkEls, callUsSection)
+        // handleLinks(aboutLinkEl, aboutSection)
+        handleLinks(reviewsLinkEls, reviewsSection)
+
         // let contentNavEl = document.querySelector(".content__nav")
         if (document.querySelector(".content__nav")) {
-            let pageNavLinksEls = document.querySelectorAll(".nav__menu-link")
-            let blockEls = document.querySelectorAll(".content .content__block")
+
+            const contentNavEl = document.querySelector(".content__nav")
+            let contentNavLinksEls = contentNavEl.querySelectorAll(".nav__menu-link")
+            let contentBlockEls = document.querySelectorAll(".content .content__block")
     
             let lastPosY = 0,  curSection = 0;
     
-            pageNavLinksEls.forEach(navLink => {
+            contentNavEl.addEventListener("click", e => {
+                if (!window.matchMedia("(max-width: 992px").matches) {
+                    return
+                }
+                if (e.target.closest(".nav__head")) {
+                    e.target.closest(".nav").classList.toggle("nav--open")
+                }
+            })
+
+            Array.from(contentNavLinksEls).forEach(navLink => {
                 let sectionId = navLink.getAttribute("href")
                 const target = document.getElementById(sectionId.slice(1))
                 navLink.addEventListener("click", (e) => {
                     e.preventDefault()
+                    e.target.closest(".nav--open")?.classList.remove("nav--open")
                     scroll.scrollTo(target, {
                             offset: -100,
                             duration: 800,
@@ -657,42 +622,38 @@ window.onload = function() {
                     )
                 })
             })
+
+
             window.addEventListener("scroll", () => {
                 let posY = window.pageYOffset;
                 
                 if (posY > lastPosY) {
-                    if (curSection === blockEls.length - 1)
+                    if (curSection === contentBlockEls.length - 1)
                         return
-                    let sectionYOffset = blockEls[curSection + 1].offsetTop
+                    let sectionYOffset = contentBlockEls[curSection + 1].offsetTop
                     if (posY >= sectionYOffset - window.innerHeight / 2) {
-                        pageNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
-                        pageNavLinksEls[curSection + 1].parentElement.classList.add("nav__menu-item--active")
+                        contentNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
+                        contentNavLinksEls[curSection + 1].parentElement.classList.add("nav__menu-item--active")
                         curSection += 1
                     }
                 }  else {
                     if (curSection === 0)
                         return 
-                    let sectionYOffset = blockEls[curSection].offsetTop
+                    let sectionYOffset = contentBlockEls[curSection].offsetTop
                     if (sectionYOffset - window.innerHeight / 2 >= posY) {
-                        pageNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
-                        pageNavLinksEls[curSection - 1].parentElement.classList.add("nav__menu-item--active")
+                        contentNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
+                        contentNavLinksEls[curSection - 1].parentElement.classList.add("nav__menu-item--active")
                         curSection -= 1
                     } 
                     if (curSection == 1 && posY <= 30) {
-                        pageNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
-                        pageNavLinksEls[curSection - 1].parentElement.classList.add("nav__menu-item--active")
+                        contentNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
+                        contentNavLinksEls[curSection - 1].parentElement.classList.add("nav__menu-item--active")
                         curSection -= 1
                     }
                 }
-            
                 lastPosY = posY
             })
         }
-
-
-        // handleLinks(contactsLinkEls, callUsSection)
-        // handleLinks(aboutLinkEl, aboutSection)
-        handleLinks(reviewsLinkEls, reviewsSection)
     }
 
     // FANCYBOX
@@ -923,7 +884,6 @@ window.onload = function() {
     }
 
     // FORMs
-
     const inputEls = document.querySelectorAll(".form__input")
     const phoneInputEls = document.querySelectorAll(".form__input[name='phone']")
     const nameInputEls = document.querySelectorAll(".form__input[name='name']")
@@ -931,8 +891,6 @@ window.onload = function() {
 
     Array.from(inputEls).forEach(inputEl => {
         let inputControlEl = inputEl.closest("." + inputControlClass)
-    
-        // input
 
         inputEl.addEventListener("input", () => {
             if (inputControlEl.classList.contains(inputControlClass + "--error")) {

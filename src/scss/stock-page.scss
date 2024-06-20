@@ -103,6 +103,17 @@
     }
 }
 
+.content {
+    @include tablet {
+        .container {
+            display: block;
+        }
+        &__aside {
+            display: none;
+        }
+    }
+}
+
 @import "modules/content.scss";
 @import "modules/our-advantages.scss";
 @import "modules/about-us.scss";
