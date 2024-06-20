@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Типовая</title>
+    <title>Типовая страница</title>
     
     <link rel="stylesheet" href="css/typical-page.min.css">
 
@@ -1044,9 +1044,19 @@
 
     
     <div class="page">
-        <div class="page__nav"></div>
-
-        <section class="content page__seciton">
+        <nav class="page__nav breadcrumbs">
+            <div class="container">
+                <ol class="breadcrumbs__list">
+                    <li class="breadcrumbs__item">
+                        <a href="./" class="breadcrumbs__link">Главная</a>
+                    </li>
+                    <li class="breadcrumbs__item">
+                        <a href="№" class="breadcrumbs__link">Правовая информация</a>
+                    </li>
+                </ol>
+            </div>
+        </nav>
+        <section class="content page__section">
             <div class="container">
                 <div class="content__column">
                     <div class="content__block" id="one">
@@ -1119,45 +1129,41 @@
                 </aside>
             </div>
         </section>
-        <aside class="contact-us section section--dark">
+        <section class="call-us section section--dark">
     <div class="section__ellipse section__ellipse--top-right"></div>
     <div class="section__ellipse section__ellipse--bottom-right"></div>
     <div class="section__ellipse section__ellipse--bottom-left"></div>
-    <div class="container">
-        <div class="contact-us__body">
-            <div class="order-call">
-                <div class="order-call__inner-wrapper">
-                    <div class="order-call__icon">
-                        <svg><use xlink:href="#24-hours"></use></svg>
-                    </div>        
-                    <div class="order-call__content">
-                        <div class="order-call__title">Пишите, звоните по номеру: <span><a href="#">8 (976) 543 21 00</a> круглосуточно</span></div>
-                        <form action="#" method="POST" name="" class="order-call__form">
-                            <div class="form__control">
-                                <input type="text" class="form__input form__input--required" name="name" placeholder="Ваше имя" autocomplete="off">
-                            </div>
-                            <div class="form__control">
-                                <input type="tel" class="form__input form__input--required" name="phone" placeholder="+7 (999)-999-99-99" autocomplete="off">
-                            </div>
-                            <button class="form__submit button button--primary" type="submit">
-                                <span>Заказать звонок</span>
-                            </button>
-                            <p class="form__agreement">Нажимая на кнопку «Заказать звонок» вы соглашаетесь с <a href="#">политикой конфиденциальности</a> сайта</p>
-                        </form>
-                    </div>
-                    <div class="order-call__vector">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="890" height="312" viewBox="0 0 890 312" fill="none">
-                            <path d="M46 265.203C49.9144 247.197 61.4561 231.422 71.1914 216.08C78.9701 203.82 86.6389 191.414 96.7327 180.882C112.814 164.101 133.042 150.844 153.483 140.016C195.99 117.497 244.738 105.107 292.736 104.118C314.882 103.661 337.316 103.572 359.353 106.077C385.914 109.097 412.197 115.038 438.426 120.072C458.54 123.933 482.505 130.234 503.224 126.09C511.719 124.391 519.02 118.142 525.966 113.355C539.62 103.945 553.195 94.495 567.182 85.5741C607.745 59.7032 650.889 47.6101 698.807 46.2475C747.303 44.8685 795.358 49.4012 843.308 56.1142" stroke="white" stroke-opacity="0.05" stroke-width="92" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="order-call__image">
-                    <picture><source srcset="images/contact-us.webp" type="image/webp"><img src="images/contact-us.png" alt=""></picture>
-                </div>
+    <div class="call-us__body section__body">
+        <div class="container">
+            <h2 class="call-us__title section__title">Получите полный комплекс услуг платной медицинской <span>скорой помощи в Москве</span></h2>
+            <div class="call-us__info">
+                <a href="tel:89765432100" class="call-us__phone">
+                    <svg><use xlink:href="#phone"></use></svg>
+                </a>
+                <div class="call-us__info-text">Пишите, звоните по номеру: <span class="call-us__info-phone">8 (976) 543 21 00</span> <span class="_aaccent">круглосуточно</span></div>
             </div>
+            <ul class="call-us__services">
+                <li class="call-us__service">Выезд в течении 30&nbsp;минут</li>
+                <li class="call-us__service">Стоимость вызова от&nbsp;3000&nbsp;₽</li>
+                <li class="call-us__service">Стоимость вызова от&nbsp;3000&nbsp;₽</li>
+                <li class="call-us__service">В бригаде 3 опытных специалиста</li>
+            </ul>
+            <form action="#" method="POST" name="" class="call-us__form form">
+                <div class="form__title">Оставьте заявку для консультации</div>
+                <div class="form__control">
+                    <input type="text" name="name" class="form__input form__input--required" placeholder="Ваше имя" autocomplete="off">
+                </div>
+                <div class="form__control">
+                    <input type="tel" name="phone" class="form__input form__input--required" placeholder="+7 (999)-999-99-99" autocomplete="off">
+                </div>
+                <button class="form__submit button button--primary">
+                    <span>Оставить заявку</span>
+                </button>
+                <div class="form__agreement">Нажимая на кнопку «Оставить заявку» вы соглашаетесь с <a href="#">политикой конфиденциальности</a> сайта</div>
+            </form>
         </div>
     </div>
-</aside>
+</section>
     </div>
 
 

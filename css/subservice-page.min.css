@@ -221,6 +221,51 @@ body._lock {
   }
 }
 
+.page {
+  padding-top: 1.5625rem;
+}
+.page__nav {
+  margin: 0 0 3.75rem;
+}
+.page__section {
+  padding: 0 0 10rem;
+}
+@media screen and (max-width: 1680px) and (min-width: 576px) {
+  .page__section {
+    padding-bottom: calc(70px + 90 * (100vw - 576px) / (1680 - 576));
+  }
+}
+@media screen and (max-width: 576px) {
+  .page__section {
+    padding-bottom: 70px;
+  }
+}
+.page__section .section__body .container {
+  position: relative;
+}
+.page__section .section__body .container::before {
+  border: 0.0625rem solid #D8E2E5;
+  border-bottom: none;
+  border-top-left-radius: 1.5625rem;
+  border-top-right-radius: 1.5625rem;
+  content: "";
+  display: block;
+  margin: 0 0 1.5625rem;
+  height: 0.9375rem;
+}
+@media (max-width: 576px) {
+  .page {
+    padding-top: 1.25rem;
+  }
+  .page__nav {
+    margin-bottom: 2.5rem;
+  }
+  .page__section .section__body .container::before {
+    margin-bottom: 0.9375rem;
+    height: 0.625rem;
+  }
+}
+
 .swiper-controls {
   display: flex;
   justify-content: center;
@@ -458,29 +503,35 @@ body._lock {
 
 .breadcrumbs__list {
   display: flex;
-  gap: 4px;
+  gap: 0.5rem;
 }
 .breadcrumbs__item {
   display: flex;
   align-items: center;
-  opacity: 0.5;
+  opacity: 0.55;
+}
+.breadcrumbs__item:last-child {
+  opacity: 1;
 }
 .breadcrumbs__item:last-child .breadcrumbs__link {
   cursor: auto;
   pointer-events: none;
+  opacity: 1;
 }
-.breadcrumbs__item:not(:last-child):after {
-  content: "/";
-  font-family: "Nunito", sans-serif;
-  font-size: 1rem;
+.breadcrumbs__item:not(:first-child):before {
+  content: ">>";
+  font-family: "Inter", sans-serif;
+  font-size: 0.5rem;
   display: inline-block;
-  margin-left: 0.25em;
+  margin-right: 0.5rem;
 }
 .breadcrumbs__link {
-  font-size: 1rem;
-  font-weight: 400;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.6666666667;
+  letter-spacing: 0.04em;
   white-space: nowrap;
-  opacity: 0.5;
+  text-transform: uppercase;
 }
 
 .accordion {
@@ -2273,9 +2324,13 @@ body._lock {
   z-index: 2;
 }
 .hero__breadcrumbs {
+  color: #FFFFFF;
   position: absolute;
-  top: calc(1.5625rem - var(--padding-y));
+  top: 1.5625rem;
   left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  z-index: 2;
 }
 .hero__content {
   display: flex;
@@ -2369,6 +2424,9 @@ body._lock {
 @media (max-width: 576px) {
   .hero {
     padding-top: 1.25rem;
+  }
+  .hero__breadcrumbs {
+    top: 1.25rem;
   }
   .hero__title, .hero__desc {
     width: 100%;
