@@ -1,32 +1,36 @@
 .breadcrumbs {
     &__list {
         display: flex;
-        gap: 4px;
+        gap: rem(8);
     }
     &__item {
         display: flex;
         align-items: center;
-        opacity: 0.5;
+        opacity: 0.55;
         &:last-child {
+            opacity: 1;
             .breadcrumbs__link {
                 cursor: auto;
                 pointer-events: none;
+                opacity: 1;
             }
         }
-        &:not(:last-child) {
-            &:after {
-                content: "/";
-                font-family: "Nunito", sans-serif;
-                font-size: 1rem;
+        &:not(:first-child) {
+            &:before {
+                content: ">>";
+                font-family: "Inter", sans-serif;
+                font-size: rem(8);
                 display: inline-block;
-                margin-left: 0.25em;
+                margin-right: rem(8);
             }
         }
     }
     &__link {
-        font-size: 1rem;
-        font-weight: 400;
+        font-size: rem(12);
+        font-weight: 500;
+        line-height: calc(20 / 12);
+        letter-spacing: 0.04em;
         white-space: nowrap;
-        opacity: 0.5;
+        text-transform: uppercase;
     }
 }

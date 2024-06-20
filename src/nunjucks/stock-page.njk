@@ -4,13 +4,28 @@
 
 {% block styles %}
     <link rel="stylesheet" href="css/libs/swiper-bundle.min.css">
-    <link rel="stylesheet" href="css/single-stock-page.min.css">
+    <link rel="stylesheet" href="css/stock-page.min.css">
 {% endblock %}
 
 
 {% block content %}
     <section class="stock">
         <img src="images/hero-stock.png" alt="">
+        <nav class="stock__breadcrumbs breadcrumbs">
+            <div class="container">
+                <ol class="breadcrumbs__list">
+                    <li class="breadcrumbs__item">
+                        <a href="./" class="breadcrumbs__link">Главная</a>
+                    </li>
+                    <li class="breadcrumbs__item">
+                        <a href="stocks-page.html" class="breadcrumbs__link">Акции</a>
+                    </li>
+                    <li class="breadcrumbs__item">
+                        <a href="#" class="breadcrumbs__link">Скидка 10% на сбор анализов</a>
+                    </li>
+                </ol>
+            </div>
+        </nav>
         <div class="stock__container container">
             <div class="stock__content">
                 <h1 class="stock__title">Скидка 10% на сбор анализов</h1>

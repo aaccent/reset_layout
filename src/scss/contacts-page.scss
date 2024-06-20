@@ -11,6 +11,7 @@
 @import "ui/button.scss";
 @import "ui/form.scss";
 @import "ui/popup.scss";
+@import "ui/breadcrumbs.scss";
 
 // bem-blocks
 @import "modules/order-call.scss";
@@ -18,7 +19,20 @@
 
 @import "modules/header.scss";
 
+.page {
+    &__nav {
+        .breadcrumbs__item {
+            &:not(:last-child) {
+                color: $grey;
+                opacity: 1;
+            }
+        }
+    }
+}
+
 .contacts {
+    padding: 0 0 rem(140);
+    @include adaptive-value(padding-bottom, 90, 140, 576, $container-width);
     &__header, &__footer {
         &::before {
             border: rem(1) solid #D8E2E5;

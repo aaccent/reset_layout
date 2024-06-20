@@ -143,6 +143,49 @@ body {
     }
 }
 
+.page {
+    padding-top: rem(25);
+    &__nav {
+        margin: 0 0 rem(60);
+    }
+    &__section {
+        padding: 0 0 rem(160);
+        @include adaptive-value(padding-bottom, 70, 160, 576, $container-width);
+        .section__body {
+            .container {
+                position: relative;
+                &::before {
+                    border: rem(1) solid #D8E2E5;
+                    border-bottom: none;
+                    border-top-left-radius: rem(25);
+                    border-top-right-radius: rem(25);
+                    content: "";
+                    display: block;
+                    margin: 0 0 rem(25);
+                    height: rem(15);
+                }
+            }
+        }
+    }
+    @include phone {
+        padding-top: rem(20);
+        &__nav {
+            margin-bottom: rem(40);
+        }
+        &__section {
+            .section__body {
+                .container {
+                    &::before {
+                        margin-bottom: rem(15);
+                        height: rem(10);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
 .swiper-controls {
     display: flex;
     justify-content: center;

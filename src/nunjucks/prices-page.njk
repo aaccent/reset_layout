@@ -9,7 +9,18 @@
 
 {% block content %}
     <div class="page">
-        <div class="page__nav"></div>
+        <nav class="page__nav breadcrumbs">
+            <div class="container">
+                <ol class="breadcrumbs__list">
+                    <li class="breadcrumbs__item">
+                        <a href="./" class="breadcrumbs__link">Главная</a>
+                    </li>
+                    <li class="breadcrumbs__item">
+                        <a href="#" class="breadcrumbs__link">Цены</a>
+                    </li>
+                </ol>
+            </div>
+        </nav>
         {% macro Service(item) %}
             <div class="prices__service service">
                 <div class="service__desc">
@@ -27,7 +38,7 @@
                 </button>
             </div>
         {% endmacro %}
-        <section class="prices">
+        <section class="prices page__section">
             <div class="section__header">
                 <div class="container">
                     <h1 class="section__title">Цены платной медицинской скорой помощи в Москве</h1>

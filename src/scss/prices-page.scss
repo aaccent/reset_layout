@@ -19,15 +19,17 @@
 // bem-blocks
 @import "modules/order-call.scss";
 
-.page {
-    padding-top: rem(25);
-    @include phone {
-        padding-top: rem(20)
-    }
-}
 
 @import "modules/header.scss";
 
+.page {
+    .breadcrumbs__item {
+        &:not(:last-child) {
+            color: $grey;
+            opacity: 1;
+        }
+    }
+}
 
 .service {
     border-bottom: rem(1) solid #D8E2E5;
@@ -97,24 +99,8 @@
         }
     }
 }
+
 .prices {
-    padding: rem(60) 0 rem(160);
-    @include adaptive-value(padding-bottom, 70, 160, 576, $container-width);
-    &__body {
-        .container {
-            position: relative;
-            &::before {
-                border: rem(1) solid #D8E2E5;
-                border-bottom: none;
-                border-top-left-radius: rem(25);
-                border-top-right-radius: rem(25);
-                content: "";
-                display: block;
-                margin: 0 0 rem(25);
-                height: rem(15);
-            }
-        }
-    }
     &__content {
         display: flex;
         align-items: flex-start;
@@ -189,15 +175,6 @@
         }
     }
     @include phone {
-        padding-top: rem(40);
-        &__body {
-            .container {
-                &::before {
-                    margin-bottom: rem(15);
-                    height: rem(10);
-                }
-            }
-        }
         &__services {
             border-radius: rem(15);
             padding: rem(20);

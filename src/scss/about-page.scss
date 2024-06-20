@@ -120,6 +120,11 @@
         padding: calc(55 / 1007 * 100%) calc(60 / 1007 * 100%);
         position: relative;
     }
+    &__breadcrumbs {
+        position: absolute;
+        top: rem(25);
+        left: calc(60 / 1007 * 100%);
+    }
     &__logo {
         top: rem(20);
         right: rem(20);
@@ -177,6 +182,13 @@
         &__desc, &__image {
             border-radius: rem(20);
             height: rem(340);
+        }
+        &__decs {
+            padding: rem(20);
+        }
+        &__breadcrumbs {
+            top: rem(20);
+            left: rem(20);
         }
         &__image {
             &:not(:last-child) {

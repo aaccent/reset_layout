@@ -1,6 +1,6 @@
 {% extends "templates/layout.njk" %}
 
-{% set title = "Типовая" %}
+{% set title = "Типовая страница" %}
 
 {% block styles %}
     <link rel="stylesheet" href="css/typical-page.min.css">
@@ -9,9 +9,19 @@
 
 {% block content %}
     <div class="page">
-        <div class="page__nav"></div>
-
-        <section class="content page__seciton">
+        <nav class="page__nav breadcrumbs">
+            <div class="container">
+                <ol class="breadcrumbs__list">
+                    <li class="breadcrumbs__item">
+                        <a href="./" class="breadcrumbs__link">Главная</a>
+                    </li>
+                    <li class="breadcrumbs__item">
+                        <a href="№" class="breadcrumbs__link">Правовая информация</a>
+                    </li>
+                </ol>
+            </div>
+        </nav>
+        <section class="content page__section">
             <div class="container">
                 <div class="content__column">
                     <div class="content__block" id="one">
@@ -84,7 +94,7 @@
                 </aside>
             </div>
         </section>
-        {% include "pages-blocks/contact-us.njk" %}
+        {% include "pages-blocks/call-us.njk" %}
     </div>
 {% endblock %}
 

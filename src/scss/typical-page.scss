@@ -11,18 +11,20 @@
 @import "ui/button.scss";
 @import "ui/form.scss";
 @import "ui/breadcrumbs.scss";
-@import "ui/accordion.scss";
 @import "ui/popup.scss";
-@import "ui/video.scss";
-@import "ui/article.scss";
+
 
 // bem-blocks
 @import "modules/order-call.scss";
 
 .page {
-    padding-top: rem(25);
-    @include phone {
-        padding-top: rem(20)
+    &__nav {
+        .breadcrumbs__item {
+            &:not(:last-child) {
+                color: $grey;
+                opacity: 1;
+            }
+        }
     }
 }
 
@@ -408,5 +410,5 @@
     }
 }
 
-@import "modules/contact-us.scss";
+@import "modules/call-us.scss";
 @import "modules/footer.scss";

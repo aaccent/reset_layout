@@ -27,6 +27,12 @@
     color: $white;
     position: relative;
     height: rem(490);
+    &__breadcrumbs {
+        position: absolute;
+        top: rem(20);
+        left: 0;
+        z-index: 4;
+    }
     &__container {
         height: 100%;
     }
@@ -79,6 +85,9 @@
     }
     @include phone {
         height: rem(400);
+        &__breadcrumbs {
+            top: rem(20);
+        }
         &__content {
             padding-bottom: rem(40);
             max-width: rem(380);

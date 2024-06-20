@@ -50,9 +50,13 @@
     }
 
     &__breadcrumbs {
+        color: $white;
         position: absolute;
-        top: calc(rem(25) - var(--padding-y));
+        top: rem(25);
         left: 0;
+        max-width: 100%;
+        overflow: hidden;
+        z-index: 2;
     }
 
     &__content {
@@ -126,6 +130,9 @@
 
     @include phone {
         padding-top: 1.25rem;
+        &__breadcrumbs {
+            top: rem(20);
+        }
         &__title, &__desc {
             width: 100%;
         }
