@@ -45,8 +45,10 @@ function openPopup(popup = undefined) {
     }
 }
 
-function closePopup() {
-    let popup = document.querySelector(".popup--open")
+function closePopup(popup = null) {
+    if (!popup) {
+        popup = document.querySelector(".popup--open")
+    }
 
     popup.classList.remove("popup--open");
     popup.addEventListener("transitionend", () =>  {
@@ -1052,14 +1054,15 @@ window.onload = function() {
         locationEl.querySelector(".header__location-title").innerHTML = currentCity.querySelector("span").innerHTML
     })
 
-    document.querySelectorAll(".popup__close").forEach(
-        closeEl => closeEl.addEventListener("click", closePopup)
-    )
+    document.querySelectorAll(".popup__close").forEach(closeEl => {
+        let popupEl = closeEl.closest(".popup")
+        closeEl.addEventListener("click", () => closePopup(popupEl))
+    })
     
     document.querySelectorAll(".popup").forEach(
         popupEl => popupEl.addEventListener("click", e => {
             if (!e.target.closest(".popup__content")) {
-                closePopup()
+                closePopup(popupEl)
             }
         })
     )
