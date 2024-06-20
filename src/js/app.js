@@ -618,6 +618,56 @@ window.onload = function() {
             })
         }
 
+        let contentNavEl = document.querySelector(".content__nav")
+        let pageNavLinksEls = contentNavEl.querySelectorAll(".nav__menu-link")
+        let blockEls = document.querySelectorAll(".content .content__block")
+
+        let lastPosY = 0,  curSection = 0;
+
+        pageNavLinksEls.forEach(navLink => {
+            let sectionId = navLink.getAttribute("href")
+            const target = document.getElementById(sectionId.slice(1))
+            navLink.addEventListener("click", (e) => {
+                e.preventDefault()
+                scroll.scrollTo(target, {
+                        offset: -100,
+                        duration: 800,
+                    }
+                )
+            })
+        })
+
+        window.addEventListener("scroll", () => {
+            let posY = window.pageYOffset;
+            
+            if (posY > lastPosY) {
+                if (curSection === blockEls.length - 1)
+                    return
+                let sectionYOffset = blockEls[curSection + 1].offsetTop
+                if (posY >= sectionYOffset - window.innerHeight / 2) {
+                    pageNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
+                    pageNavLinksEls[curSection + 1].parentElement.classList.add("nav__menu-item--active")
+                    curSection += 1
+                }
+            }  else {
+                if (curSection === 0)
+                    return 
+                let sectionYOffset = blockEls[curSection].offsetTop
+                if (sectionYOffset - window.innerHeight / 2 >= posY) {
+                    pageNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
+                    pageNavLinksEls[curSection - 1].parentElement.classList.add("nav__menu-item--active")
+                    curSection -= 1
+                } 
+                if (curSection == 1 && posY <= 30) {
+                    pageNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
+                    pageNavLinksEls[curSection - 1].parentElement.classList.add("nav__menu-item--active")
+                    curSection -= 1
+                }
+            }
+        
+            lastPosY = posY
+        })
+
         handleLinks(contactsLinkEls, callUsSection)
         handleLinks(aboutLinkEl, aboutSection)
         handleLinks(reviewsLinkEls, reviewsSection)
@@ -901,7 +951,7 @@ window.onload = function() {
         })
     }
 
-    document.querySelector(".form__file-input").addEventListener("change", e => {
+    document.querySelector(".form__file-input")?.addEventListener("change", e => {
         if (e.target.files[0].size > 100 * 1024 * 1024) {
             alert("Размер файла не должен превышать 30 MB")
             return
