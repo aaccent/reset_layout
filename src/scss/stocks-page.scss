@@ -21,6 +21,16 @@
 
 
 @import "modules/header.scss";
+.page {
+    &__nav {
+        .breadcrumbs__item {
+            &:not(:last-child) {
+                color: $grey;
+                opacity: 1;
+            }
+        }
+    }
+}
 
 .stock {
     picture, &__image {
