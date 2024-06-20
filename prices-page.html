@@ -28,7 +28,12 @@
             <img class="logo__title" src="images/logo-title.svg" alt="">
             <img class="logo__subtitle" src="images/logo-subtitle.svg" alt="">
         </a>
-        
+        <div class="header__location">
+            <svg class="header__location-icon">
+                <use xlink:href="#geo"></use>
+            </svg>
+            <span class="header__location-title">Москва</span>
+        </div>
         
         
     <nav class="header__menu header__menu--desktop">
@@ -994,7 +999,11 @@
                         <use xlink:href="#geo"></use>
                     </svg>
                 </div>
-                
+                <div class="header__bvi">
+                    <svg>
+                        <use xlink:href="#bvi"></use>
+                    </svg>
+                </div>
                 <div class="wrapper">
                     <a href="tel:89765432100" class="header__phone button">
                         <svg>
@@ -1012,7 +1021,11 @@
 
 
         <div class="header__actions">
-            
+            <button class="header__bvi" type="button">
+                <svg>
+                    <use xlink:href="#bvi"></use>
+                </svg>
+            </button>
             <a href="tel:89765432100" class="header__phone button">
                 <svg>
                     <use xlink:href="#phone"></use>
@@ -2399,6 +2412,67 @@
     </div>
 </footer>
 
+    <div class="popup popup--cities">
+            <div class="popup__container">
+            <div class="popup__content">
+                <button class="popup__close" type="button"></button>
+                <div class="popup__header">
+                    <div class="popup__title">Выбор города</div>
+                </div>
+                <div class="popup__body">
+                    <form action="#" method="POST" name="" class="popup__form form">
+                        <div class="form__control">
+                            <input type="text" name="name" class="form__input form__input--required" placeholder="Ваше имя" autocomplete="off">
+                        </div>
+                    </form>
+                    <div class="popup__cities">
+                        <div class="popup__city popup__city--active">
+                            <svg class="popup__city-icon">
+                                <use xlink:href="#geo"></use>
+                            </svg>
+                            <span class="popup__city-label">Москва</span>
+                        </div>
+                        <div class="popup__city">
+                            <svg class="popup__city-icon">
+                                <use xlink:href="#geo"></use>
+                            </svg>
+                            <span class="popup__city-label">Краснознаменск</span>
+                        </div>
+                        <div class="popup__city">
+                            <svg class="popup__city-icon">
+                                <use xlink:href="#geo"></use>
+                            </svg>
+                            <span class="popup__city-label">Люберцы</span>
+                        </div>
+                        <div class="popup__city">
+                            <svg class="popup__city-icon">
+                                <use xlink:href="#geo"></use>
+                            </svg>
+                            <span class="popup__city-label">Дзержинский</span>
+                        </div>
+                        <div class="popup__city">
+                            <svg class="popup__city-icon">
+                                <use xlink:href="#geo"></use>
+                            </svg>
+                            <span class="popup__city-label">Жуковский</span>
+                        </div>
+                        <div class="popup__city">
+                            <svg class="popup__city-icon">
+                                <use xlink:href="#geo"></use>
+                            </svg>
+                            <span class="popup__city-label">Мытищи</span>
+                        </div>
+                        <div class="popup__city">
+                            <svg class="popup__city-icon">
+                                <use xlink:href="#geo"></use>
+                            </svg>
+                            <span class="popup__city-label">Лыткарино</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="popup popup--consultation">
         <div class="popup__container">
             <div class="popup__content">
@@ -2637,6 +2711,9 @@
         </symbol>
         <symbol id="download" viewBox="0 0 12 12">
             <path d="M6 9L2.25 5.25L3.3 4.1625L5.25 6.1125V0H6.75V6.1125L8.7 4.1625L9.75 5.25L6 9ZM1.5 12C1.0875 12 0.7345 11.8532 0.441 11.5597C0.1475 11.2662 0.0005 10.913 0 10.5V8.25H1.5V10.5H10.5V8.25H12V10.5C12 10.9125 11.8533 11.2657 11.5597 11.5597C11.2662 11.8537 10.913 12.0005 10.5 12H1.5Z" fill="currentColor" />
+        </symbol>
+        <symbol id="search" viewBox="0 0 17 17">
+            <path d="M15.6249 15.6252L12.1867 12.187M12.1867 12.187C12.7748 11.5988 13.2414 10.9006 13.5596 10.1322C13.8779 9.36381 14.0417 8.54022 14.0417 7.7085C14.0417 6.87677 13.8779 6.05319 13.5596 5.28477C13.2414 4.51636 12.7748 3.81816 12.1867 3.23004C11.5986 2.64192 10.9004 2.1754 10.132 1.85711C9.36356 1.53882 8.53998 1.375 7.70825 1.375C6.87653 1.375 6.05294 1.53882 5.28453 1.85711C4.51611 2.1754 3.81791 2.64192 3.22979 3.23004C2.04203 4.4178 1.37476 6.02875 1.37476 7.7085C1.37476 9.38824 2.04203 10.9992 3.22979 12.187C4.41755 13.3747 6.0285 14.042 7.70825 14.042C9.388 14.042 10.9989 13.3747 12.1867 12.187Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
         </symbol>
     </svg>
 </body>
