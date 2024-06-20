@@ -19,27 +19,63 @@
         }
     }
     &__textarea {
-        box-sizing: content-box;
-        color: rgba($color: $white, $alpha: 0.55);
-        @include txt_medium;
-        padding: 0;
-        width: 100%;
-        height: calc(rem(20) * 2);
-        max-height: rem(280);
-        resize: none;
-        outline: none;
-        overflow: hidden; // ??????? не понял почему сработало;
-        &--hidden {
-            pointer-events: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-            padding: 0;
-            height: 0;
-            width: 100%;
-            opacity: 0;
-            visibility: hidden;
-            overflow: hidden; // нужно для скрытия скроллбара и корректной ширины
+    }
+    &__file {
+        align-self: flex-start;
+        max-width: 100%;
+        &_attached &-field {
+            display: none;
+        }
+        &_attached &-doc {
+            display: flex;
+        }
+    }
+    &__file-input {
+        appearance: none;
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+    }
+    &__file-label,
+    &__file-doc {
+        border: rem(1) solid #E8E8E8;
+        border-radius: rem(35);
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: rem(22) rem(30);
+        .text {
+            @include txt_medium;
+        }
+    }
+    &__file-label {
+        cursor: pointer;
+        display: flex;
+        transition: background-color 0.2s ease 0s;
+        .icon {
+            width: rem(10);
+            height: rem(10);
+        }
+    }
+    &__file-doc {
+        cursor: auto;
+        display: none;
+        align-items: center;
+        gap: 0.5rem;
+        .text {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        button {
+            flex-shrink: 0;
+            position: relative;
+            svg {
+                width: rem(14);
+                height: rem(14);
+            }
         }
     }
     &__submit {

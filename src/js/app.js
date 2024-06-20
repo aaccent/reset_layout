@@ -65,6 +65,11 @@ function closePopup() {
     }, {once: true})
 }
 
+function validateEmail(email) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
 function validateForm(form) {    
     const reqFiedls = form.querySelectorAll("[class$='input--required']")
 
@@ -95,6 +100,14 @@ function validateForm(form) {
                 errors++;
             }
         }
+        const emailField = form.querySelector("input[type='email']")
+
+        if (reqFiedls[i].getAttribute("name") === "mail") {
+            if (reqFiedls[i].value.trim() === "" || (reqFiedls[i].value.trim !== "" && !validateEmail(emailField.value))) {
+                reqFiedls[i].closest(".form__control").classList.add("form__control--error");
+                errors++;
+            }
+        }
     }
 
     if (errors) {
@@ -116,6 +129,39 @@ function validateForm(form) {
     }
 }
 
+function initMap(mapContainerId) {
+    function setMapPin() {
+        let myCollection = new ymaps.GeoObjectCollection();
+        let coords = mapEl?.dataset.mark?.split(',').map(Number) || [55.7954692462696,49.10686513125719];
+        // создание и установка пинов
+        myCollection.add(new ymaps.Placemark(coords, {
+            iconLayout: "default#image",
+            iconImageHref: imagesSrc.pinImage,
+            iconImageSize: [60, 60],
+        }));
+        // добавление пинов на карту
+        map.geoObjects.add(myCollection);
+    }
+
+    async function getCoords () {
+        setTimeout(() => {
+            setMapPin()
+        }, 2000)
+    }
+    
+    let mapEl = document.getElementById(mapContainerId);
+    let center = mapEl?.dataset.center?.split(',').map(Number) || [49.123356, 55.782238];
+
+    // создание карты
+    mapboxgl.accessToken = "pk.eyJ1Ijoic2V2YS1hYWNjZW50IiwiYSI6ImNsd3lubWViZTFwMDAycXNhbm4yN3p4am0ifQ.puvbO9AAr4Jf8ude29ST7g";
+    const map = new mapboxgl.Map({
+        container: mapContainerId, // container ID
+        center: center, 
+        zoom: 12 // starting zoom
+    });
+    
+    let imagesSrc = mapEl.dataset
+}
 
 
 window.onload = function() {
@@ -855,6 +901,20 @@ window.onload = function() {
         })
     }
 
+    document.querySelector(".form__file-input").addEventListener("change", e => {
+        if (e.target.files[0].size > 100 * 1024 * 1024) {
+            alert("Размер файла не должен превышать 30 MB")
+            return
+        }
+        const parentEl = e.target.closest(".form__file");
+        parentEl.querySelector(".form__file-doc .text").innerHTML = e.target.files[0].name
+        parentEl.classList.add("form__file_attached")
+        parentEl.querySelector(".form__file-doc button").addEventListener("click", () => {
+            e.target.value = "";
+            parentEl.classList.remove("form__file_attached")
+        }, { once: true })
+    })
+
     // POPUPs
     document.querySelectorAll(".popup__close").forEach(
         closeEl => closeEl.addEventListener("click", closePopup)
@@ -873,4 +933,8 @@ window.onload = function() {
             closePopup()
         }
     })
+    if (window.mapboxgl) {
+        initMap("map")
+    }
+
 }

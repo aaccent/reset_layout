@@ -1,0 +1,444 @@
+@import "base/_vars.scss";
+@import "base/_fonts.scss";
+@import "base/_functions.scss";
+@import "base/_reset.scss";
+@import "mixins/_breakpoints.scss";
+@import "mixins/_media.scss";
+@import "mixins/_fonts.scss";
+@import "base.scss";
+
+// ui
+@import "ui/button.scss";
+@import "ui/form.scss";
+@import "ui/popup.scss";
+
+// bem-blocks
+@import "modules/order-call.scss";
+
+
+@import "modules/header.scss";
+
+.contact {
+    &__header, &__footer {
+        &::before {
+            border: rem(1) solid #D8E2E5;
+            border-bottom: none;
+            border-top-left-radius: rem(25);
+            border-top-right-radius: rem(25);
+            content: "";
+            display: block;
+        }
+    }
+    &__header {
+        &::before {
+            margin: 0 0 rem(25);
+            height: rem(25);
+        }
+    }
+    
+    &__header-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: rem(40);
+        justify-content: space-between;
+
+    }
+
+    &__info {
+        display: flex;
+        gap: calc(60 / 1520 * 100%);
+        // flex-basis: calc(1007 / 1520 * 100%);
+        flex-basis: rem(1007);
+    }
+
+    &__info-item {
+        display: flex;
+        align-items: center;
+        column-gap: rem(20);
+        &--phone {
+            flex-shrink: 0;
+            svg {
+                width: rem(15.75);
+            }
+            .contact__info-desc {
+                flex-shrink: 0;
+                display: flex;
+                flex-direction: column;
+                row-gap: rem(15);
+                & > span {
+                    &:first-child {
+                        font-size: rem(24);
+                        font-weight: 500;
+                        line-height: calc(30 / 24);
+                        letter-spacing: -0.02em;
+                    }
+                    &:last-child {
+                        color: $grey;
+                        @include txt_regular;
+                    }
+                }
+            }
+        }
+        &--mail {
+            svg {
+                width: rem(17)
+            }
+            .contact__info-desc {
+                font-size: rem(24);
+                font-weight: 500;
+                line-height: calc(30 / 24);
+                letter-spacing: -0.02em;
+            }
+        }
+        &--geo {
+            svg {
+                width: rem(15)
+            }
+            .contact__info-desc {
+                font-size: rem(18);
+                font-weight: 400;
+                line-height: calc(25 / 18);
+                letter-spacing: -0.02em;
+            }
+        }
+    }
+
+    &__info-icon {
+        background-color: $white;
+        border-radius: 50%;
+        color: $primary-color;
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: rem(65);
+        height: rem(65);
+        svg {
+            max-height: 100%;
+        }
+    }
+
+    &__info-desc {
+    }
+
+    &__socials {
+        display: flex;
+        gap: rem(10);
+    }
+
+    &__social-item {
+    }
+
+    &__social-link {
+        background-color: $white;
+        border-radius: 50%;
+        color: $primary-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: rem(65);
+        height: rem(65);
+        svg {
+            max-height: 100%;
+        }
+        &--vk {
+            svg {
+                width: rem(21);
+            }
+        }
+        &--whatsapp {
+            svg {
+                width: rem(17.5);
+            }
+        }
+        &--telegram {
+            svg {
+                width: rem(17.6);
+            }
+        }
+        &--youtube {
+            svg {
+                width: rem(19);
+            }
+        }
+    }
+
+    &__main {
+        background-color: $white;
+        border-radius: rem(40);
+        display: flex;
+        justify-content: space-between;
+        margin: rem(60) 0 0;
+        padding: rem(15);
+    }
+
+    &__form {
+        width: 50%;
+        max-width: rem(660);
+        padding: rem(45) 0 rem(45) rem(45);
+        .form {
+            &__title {
+                font-size: rem(42);
+                font-weight: 500;
+                line-height: calc(50 / 42);
+                letter-spacing: -0.03em;
+                &:not(:last-child) {
+                    margin-bottom: rem(35);
+                }
+            }
+            &__body {
+                display: flex;
+                gap: rem(20);
+                flex-wrap: wrap;
+                & > * {
+                    flex-basis: calc(50% - rem(10));
+                }
+            }
+            &__control {
+                &--full-width {
+                    flex-basis: 100%;
+                }
+            }
+            &__input {
+                background-color: $background;
+                color: $grey;
+            }
+            &__textarea {
+                height: rem(175);
+            }
+            &__file {
+                flex-basis: 100%;
+            }
+        }
+    }
+
+    &__map {
+        border-radius: rem(25);
+        flex-basis: calc(730 / 1520 * 100%);
+        max-height: rem(685);
+        overflow: hidden;
+        .mapboxgl-control-container {
+            display: none;
+        }
+    }
+
+    &__footer {
+        padding-top: rem(40);
+        &::before {
+            margin: 0 0 rem(15);
+            height: rem(25);
+        }
+    }
+    &__footer-cols {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: rem(15);
+
+    }
+    @media screen and (min-width: 992.5px) and (max-width: 1200px) {
+        &__form {
+            padding: rem(20) 0 rem(20) rem(20);
+            .form {
+                &__body {
+                    display: flex;
+                    align-items: flex-start;
+                    gap: rem(20);
+                    flex-wrap: wrap;
+                    & > * {
+                        flex-basis: 100%;
+                    }
+                }
+            }
+        }
+        
+    }
+    @include tablet {
+        &__header {
+            flex-direction: column;
+        }
+        &__info {
+            flex-basis: auto;
+            flex-direction: column;
+            row-gap: rem(20);
+            padding: rem(40);
+        }
+        &__main {
+            flex-direction: column;
+            gap: rem(60);
+        }
+        &__form {
+            padding: 0;
+            width: 100%;
+            max-width: none;
+        }
+        &__map {
+            flex-basis: auto;
+            height: rem(550);
+        }
+        &__footer-cols {
+            grid-template-columns: repeat(3, 1fr);
+            row-gap: rem(50)
+        }
+    }
+    @include gap {
+        &__header, &__footer {
+            &::before {
+                height: rem(10);
+                margin-bottom: rem(15);
+            }
+        }
+        &__header {
+            row-gap: calc(25);
+        }
+        &__info {
+            row-gap: rem(15);
+        }
+        &__info-item {
+            column-gap: rem(15);
+            &--phone {
+                .contact__info-desc {
+                    row-gap: rem(5);
+                    span {
+                        &:first-child {
+                            font-size: rem(18);
+                            line-height: calc(25 / 18);
+                        }
+                    }
+                }
+            }
+            &--mail {
+                .contact__info-desc {
+                    font-size: rem(18);
+                    line-height: calc(25 / 18);
+                }
+            }
+        }
+        &__info-icon {
+            width: rem(55);
+            height: rem(55)
+        }
+        &__socials {
+            gap: rem(5);
+        }
+        &__social-link {
+            width: rem(55);
+            height: rem(55)
+        }
+        &__main {
+            gap: rem(35);
+            padding: rem(25)
+        }
+        &__map {
+            aspect-ratio: 1;
+            width: 100%;
+            height: auto;
+            max-height: rem(480)
+        }
+        &__footer-cols {
+            grid-template-columns: 1fr;
+        }
+    }
+    @include phone {
+        border-radius: rem(20);
+        &__form {
+            .form {
+                &__title {
+                    font-size: rem(24);
+                    line-height: calc(30 / 34);
+                    &:not(:last-child) {
+                        margin-bottom: rem(20);
+                    }
+                }
+                &__body {
+                    gap: rem(15);
+                    & > * {
+                        flex-basis: 100%
+                    }
+                }
+
+            }
+        }
+        &__footer-cols {
+            row-gap: rem(30);
+        }
+    }
+}
+
+.col {
+    &__title {
+       color: $grey;
+       @include txt_regular;
+       &:not(:last-child) {
+            margin-bottom: rem(20)
+       }
+    }
+    &__text-small {
+        @include txt_regular;
+        
+    }
+    &__text-big {
+        font-size: rem(22);
+        font-weight: 500;
+        line-height: calc(25 / 22);
+        letter-spacing: -0.02em
+    }
+    &__link {
+        color: $primary-color;
+        text-decoration: underline;
+    }
+    &__doc {
+        &:not(:last-child) {
+            margin-bottom: rem(5)
+        }
+    }
+    &__company {
+        &:not(:last-child) {
+            margin-bottom: rem(10)
+        }
+    }
+    &__button {
+        aspect-ratio: calc(370 / 135);
+        background-color: $white;
+        border-radius: rem(15);
+        color: $primary-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: rem(8);
+        span {
+            @include txt_medium;
+        }
+        svg {
+            width: rem(12);
+            height: rem(12)
+        }
+    }
+    @include gap {
+        // &__text-big {
+        //     font-size: rem(18)
+        // }
+        &__button {
+            aspect-ratio: unset;
+            padding: 30px;
+            width: auto;
+        }
+    }
+    @include phone {
+        &__title {
+            &:not(:last-child) {
+                margin-bottom: rem(10);
+            }
+        }
+        &__company {
+            &:not(:last-child) {
+                margin-bottom: rem(5);
+            }
+        }
+        &__button {
+            padding: rem(20)
+        }
+    }
+}
+
+
+@import "modules/footer.scss";
