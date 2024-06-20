@@ -2081,6 +2081,11 @@ body._lock {
   }
 }
 
+.page__nav .breadcrumbs__item:not(:last-child) {
+  color: #979797;
+  opacity: 1;
+}
+
 .stock picture, .stock__image {
   aspect-ratio: 1.6233333333;
   border-radius: 1.5625rem;
