@@ -85,6 +85,7 @@
     }
     @include gap {
         align-items: center;
+        cursor: pointer;
         &__button {
             span {
                 display: none;

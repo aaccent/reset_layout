@@ -548,8 +548,6 @@ window.onload = function() {
         }
     })
 
-    // TYPICAL PAGE
-
 
 
     // LOCOMOTIVE SCROLL
@@ -654,6 +652,30 @@ window.onload = function() {
                 lastPosY = posY
             })
         }
+        // PRICES PAGE
+        const pricesCategories = document.querySelector(".prices__content .tab__content")
+        const backCallForm = document.querySelector(".back-call")
+        const hiddenServiceInputEl = backCallForm.querySelector("input[name='service-name']")
+
+        pricesCategories.addEventListener("click", e => {
+            if (window.innerWidth <= 768) {
+                if (e.target.closest(".service")) {
+                    hiddenServiceInputEl.value = e.target.closest(".service").querySelector(".service__name").innerHTML;
+                    scroll.scrollTo(backCallForm, {
+                        offset: -50,
+                        duration: 500,
+                    })
+                }
+            } else {
+                if (e.target.closest(".service__button")) {
+                    hiddenServiceInputEl.value = e.target.closest(".service").querySelector(".service__name").innerHTML;
+                    scroll.scrollTo(backCallForm, {
+                        offset: -50,
+                        duration: 500,
+                    })
+                }
+            }
+        })
     }
 
     // FANCYBOX
@@ -964,20 +986,7 @@ window.onload = function() {
     })
 
     // POPUPs
-    // let doctorCertificatesListEl = document.querySelector(".popup--doctor .doctor-card__certificates-list");
-    
-    // if (doctorCertificatesListEl) {
-    //     doctorCertificatesListEl.addEventListener("click", e => {
-    //         if (!e.target.closest(".swiper-slide")) {
-    //             return
-    //         }
-    
-    //         let galleryPopupEl = document.querySelector(".popup--gallery");
-    //         let currentImgSrc= e.target.closest("img").getAttribute("src");
-    //         galleryPopupEl.querySelector("img").setAttribute("src", currentImgSrc);
-    //         openPopup(galleryPopupEl)
-    //     })
-    // }
+
     let citiesListEl = document.querySelector(".popup__cities")
     let cityEls = citiesPopupEl.querySelectorAll(".popup__city");
 
