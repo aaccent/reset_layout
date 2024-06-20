@@ -166,7 +166,7 @@ function initMap(mapContainerId) {
 
 window.onload = function() {
     let callDoctorPopupEl = document.querySelector(".popup--call-doctor")
-
+    let citiesPopupEl = document.querySelector(".popup--cities")
 
     // HEADER
     const headerEl = document.querySelector(".header");
@@ -175,6 +175,7 @@ window.onload = function() {
     const desktopSubmenuEl = serviceMenuItemEl.querySelector(".header__submenu");
     const mobileMenuEl = headerEl.querySelector(".header__menu--mobile");
 
+    const locationEl = headerEl.querySelector(".header__location");
     const consultationButtonEls = headerEl.querySelectorAll(".header__button");
     const buttonEls = document.querySelectorAll(".header__menu-item--prices, .header__menu-item--stocks, .column__menu-item--prices, .column__menu-item--stocks, .menu__item--stocks, .menu__item--prices")
 
@@ -275,6 +276,10 @@ window.onload = function() {
             mobileMenuEl.classList.remove("menu--open")
             burgerMenuEl.classList.remove("header__burger--open")
         }
+    })
+
+    locationEl.addEventListener("click", e => {
+        openPopup(citiesPopupEl)
     })
 
     // HERO
@@ -618,55 +623,57 @@ window.onload = function() {
             })
         }
 
-        let contentNavEl = document.querySelector(".content__nav")
-        let pageNavLinksEls = contentNavEl.querySelectorAll(".nav__menu-link")
-        let blockEls = document.querySelectorAll(".content .content__block")
-
-        let lastPosY = 0,  curSection = 0;
-
-        pageNavLinksEls.forEach(navLink => {
-            let sectionId = navLink.getAttribute("href")
-            const target = document.getElementById(sectionId.slice(1))
-            navLink.addEventListener("click", (e) => {
-                e.preventDefault()
-                scroll.scrollTo(target, {
-                        offset: -100,
-                        duration: 800,
-                    }
-                )
+        // let contentNavEl = document.querySelector(".content__nav")
+        if (document.querySelector(".content__nav")) {
+            let pageNavLinksEls = document.querySelectorAll(".nav__menu-link")
+            let blockEls = document.querySelectorAll(".content .content__block")
+    
+            let lastPosY = 0,  curSection = 0;
+    
+            pageNavLinksEls.forEach(navLink => {
+                let sectionId = navLink.getAttribute("href")
+                const target = document.getElementById(sectionId.slice(1))
+                navLink.addEventListener("click", (e) => {
+                    e.preventDefault()
+                    scroll.scrollTo(target, {
+                            offset: -100,
+                            duration: 800,
+                        }
+                    )
+                })
             })
-        })
-
-        window.addEventListener("scroll", () => {
-            let posY = window.pageYOffset;
+            window.addEventListener("scroll", () => {
+                let posY = window.pageYOffset;
+                
+                if (posY > lastPosY) {
+                    if (curSection === blockEls.length - 1)
+                        return
+                    let sectionYOffset = blockEls[curSection + 1].offsetTop
+                    if (posY >= sectionYOffset - window.innerHeight / 2) {
+                        pageNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
+                        pageNavLinksEls[curSection + 1].parentElement.classList.add("nav__menu-item--active")
+                        curSection += 1
+                    }
+                }  else {
+                    if (curSection === 0)
+                        return 
+                    let sectionYOffset = blockEls[curSection].offsetTop
+                    if (sectionYOffset - window.innerHeight / 2 >= posY) {
+                        pageNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
+                        pageNavLinksEls[curSection - 1].parentElement.classList.add("nav__menu-item--active")
+                        curSection -= 1
+                    } 
+                    if (curSection == 1 && posY <= 30) {
+                        pageNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
+                        pageNavLinksEls[curSection - 1].parentElement.classList.add("nav__menu-item--active")
+                        curSection -= 1
+                    }
+                }
             
-            if (posY > lastPosY) {
-                if (curSection === blockEls.length - 1)
-                    return
-                let sectionYOffset = blockEls[curSection + 1].offsetTop
-                if (posY >= sectionYOffset - window.innerHeight / 2) {
-                    pageNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
-                    pageNavLinksEls[curSection + 1].parentElement.classList.add("nav__menu-item--active")
-                    curSection += 1
-                }
-            }  else {
-                if (curSection === 0)
-                    return 
-                let sectionYOffset = blockEls[curSection].offsetTop
-                if (sectionYOffset - window.innerHeight / 2 >= posY) {
-                    pageNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
-                    pageNavLinksEls[curSection - 1].parentElement.classList.add("nav__menu-item--active")
-                    curSection -= 1
-                } 
-                if (curSection == 1 && posY <= 30) {
-                    pageNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
-                    pageNavLinksEls[curSection - 1].parentElement.classList.add("nav__menu-item--active")
-                    curSection -= 1
-                }
-            }
-        
-            lastPosY = posY
-        })
+                lastPosY = posY
+            })
+        }
+
 
         handleLinks(contactsLinkEls, callUsSection)
         handleLinks(aboutLinkEl, aboutSection)
@@ -966,6 +973,40 @@ window.onload = function() {
     })
 
     // POPUPs
+    let citiesListEl = document.querySelector(".popup__cities")
+    let cityEls = citiesPopupEl.querySelectorAll(".popup__city");
+
+    citiesPopupEl.querySelector(".form__input").addEventListener("input", e => {
+        let newArray = Array.from(cityEls).filter(cityEl => {
+            let cityLabel = cityEl.querySelector("span").innerHTML
+            return  cityLabel.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1
+        })
+
+        citiesListEl.innerHTML = "";
+        if (newArray.length) {
+            newArray.forEach(item => citiesListEl.insertAdjacentElement("beforeend", item))
+        } else {
+            citiesListEl.innerHTML = `
+                <div>По вашему запросу ничего не найдено</div>
+            `
+        }
+    })
+
+    citiesListEl.addEventListener("click", e => {
+        if (!e.target.closest(".popup__city")) {
+            return
+        }
+        
+        let currentCity = e.target.closest(".popup__city")
+
+        citiesListEl.querySelector(".popup__city--active").classList.remove("popup__city--active");
+        currentCity.classList.add("popup__city--active");
+
+        closePopup()
+
+        locationEl.querySelector(".header__location-title").innerHTML = currentCity.querySelector("span").innerHTML
+    })
+
     document.querySelectorAll(".popup__close").forEach(
         closeEl => closeEl.addEventListener("click", closePopup)
     )
@@ -983,6 +1024,7 @@ window.onload = function() {
             closePopup()
         }
     })
+
     if (window.mapboxgl) {
         initMap("map")
     }

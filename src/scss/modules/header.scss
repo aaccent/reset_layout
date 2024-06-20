@@ -47,6 +47,7 @@
         display: flex;
         align-items: center;
         gap: rem(8);
+        cursor: pointer;
     }
 
     &__location-icon {
@@ -64,9 +65,9 @@
 
     &__menu {
         &--desktop {
-            margin-left: rem(163);
+            margin-left: rem(66);
             margin-right: rem(57);
-            @include adaptive-value(margin-left, 0, 163, 1440, $container-width);
+            @include adaptive-value(margin-left, 0, 66, 1440, $container-width);
             @include adaptive-value(margin-right, 0, 57, 1440, $container-width);
             .header__menu-list {
                 display: flex;
@@ -241,6 +242,7 @@
     &__phone {
         background-color: $white;
         color: $primary-color;
+        flex-shrink: 0;
         padding-left: rem(22);
         span {
             color: $text-color;
@@ -309,9 +311,14 @@
     }
 
     @media (max-width: #{$container-width}px) {
+        &__container {
+            gap: rem(20);
+        }
         &__menu {
             &--desktop {
-                gap: rem(16);
+                .header__menu-list {
+                    gap: rem(16);
+                }
             }
         }
         &__actions {
@@ -340,6 +347,9 @@
         }
     }
     @include desktop {
+        &__container {
+            gap: rem(30);
+        }
         &__menu {
             &--desktop {
                 display: none;
