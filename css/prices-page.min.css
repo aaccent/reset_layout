@@ -2160,6 +2160,7 @@ body._lock {
 @media (max-width: 768px) {
   .service {
     align-items: center;
+    cursor: pointer;
   }
   .service__button span {
     display: none;

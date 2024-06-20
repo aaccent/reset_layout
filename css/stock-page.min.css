@@ -2173,6 +2173,15 @@ body._lock {
   }
 }
 
+@media (max-width: 992px) {
+  .content .container {
+    display: block;
+  }
+  .content__aside {
+    display: none;
+  }
+}
+
 .content .container {
   display: flex;
   align-items: flex-start;
@@ -2416,14 +2425,6 @@ body._lock {
   .content__form .form__input,
   .content__form .form__submit {
     padding: 1rem 1.5rem;
-  }
-}
-@media (max-width: 992px) {
-  .content .container {
-    display: block;
-  }
-  .content__form {
-    display: none;
   }
 }
 @media (max-width: 576px) {
