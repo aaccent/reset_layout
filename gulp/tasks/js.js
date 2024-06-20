@@ -9,7 +9,7 @@ const js = () => {
         .pipe(webpack({
             mode: app.isDev ? "development" : "production",
             optimization: {
-                minimize: false
+                minimize: app.isDev
             },
             entry: {
                 // script: "./src/js/script.js",
