@@ -511,6 +511,7 @@ body._lock {
 .breadcrumbs__item {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
   opacity: 0.55;
 }
 .breadcrumbs__item:last-child {
@@ -520,13 +521,6 @@ body._lock {
   cursor: auto;
   pointer-events: none;
   opacity: 1;
-}
-.breadcrumbs__item:not(:first-child):before {
-  content: ">>";
-  font-family: "Inter", sans-serif;
-  font-size: 0.5rem;
-  display: inline-block;
-  margin-right: 0.5rem;
 }
 .breadcrumbs__link {
   font-size: 0.75rem;
