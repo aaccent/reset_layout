@@ -408,6 +408,7 @@
             }
         }
         &__map {
+            border-radius: rem(10);
             .marker {
                 width: rem(47);
                 vertical-align: top;

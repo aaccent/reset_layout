@@ -100,7 +100,7 @@
         &__row {
             border-radius: rem(20);
             row-gap: rem(30);
-            padding: rem(20);
+            padding: rem(20) rem(20) rem(10);
             &:not(:last-child) {
                 margin-bottom: rem(10);
             }

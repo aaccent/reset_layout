@@ -11,10 +11,7 @@
 @import "ui/button.scss";
 @import "ui/form.scss";
 @import "ui/breadcrumbs.scss";
-@import "ui/accordion.scss";
 @import "ui/popup.scss";
-@import "ui/video.scss";
-@import "ui/article.scss";
 
 // bem-blocks
 @import "modules/bem-blocks/order-call.scss";
@@ -47,8 +44,6 @@
         letter-spacing: -0.02em;
     }
     &__about {
-        display: flex;
-        gap: rem(4);
         margin-right: auto;
     }
     &__id {
@@ -93,6 +88,7 @@
         }
     }
     @include phone {
+        column-gap: rem(20);
         padding-bottom: rem(15);
         &__desc {
             font-size: rem(16);

@@ -265,6 +265,7 @@
 .value {
     background-color: $background;
     border-radius: calc(40 / 377 * 100%) / calc(40 / 460 * 100%);
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     padding: rem(35) rem(40);

@@ -575,8 +575,8 @@ window.onload = function() {
         // let aboutLinkEl = document.querySelectorAll(".header__menu-item--about, .column__menu-item--about, .menu__item--about")
         // let aboutSection = document.querySelector("section.our-advantages")
 
-        let reviewsLinkEls = document.querySelectorAll(".header__menu-item--reviews, .column__menu-item--reviews, .menu__item--reviews")
-        let reviewsSection = document.querySelector("section.about-us")
+        // let reviewsLinkEls = document.querySelectorAll(".header__menu-item--reviews, .column__menu-item--reviews, .menu__item--reviews")
+        // let reviewsSection = document.querySelector("section.about-us")
 
         function handleLinks(linkEls, section) {
             Array.from(linkEls).forEach(linkEl => {
@@ -602,7 +602,7 @@ window.onload = function() {
 
         // handleLinks(contactsLinkEls, callUsSection)
         // handleLinks(aboutLinkEl, aboutSection)
-        handleLinks(reviewsLinkEls, reviewsSection)
+        // handleLinks(reviewsLinkEls, reviewsSection)
 
         // let contentNavEl = document.querySelector(".content__nav")
         if (document.querySelector(".content__nav")) {
