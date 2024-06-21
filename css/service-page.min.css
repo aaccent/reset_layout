@@ -504,6 +504,10 @@ body._lock {
   }
 }
 
+.breadcrumbs {
+  max-width: 100%;
+  overflow: hidden;
+}
 .breadcrumbs__list {
   display: flex;
   gap: 0.5rem;
