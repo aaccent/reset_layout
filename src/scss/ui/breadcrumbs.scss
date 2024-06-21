@@ -6,6 +6,7 @@
     &__item {
         display: flex;
         align-items: center;
+        gap: rem(8);
         opacity: 0.55;
         &:last-child {
             opacity: 1;
@@ -15,15 +16,15 @@
                 opacity: 1;
             }
         }
-        &:not(:first-child) {
-            &:before {
-                content: ">>";
-                font-family: "Inter", sans-serif;
-                font-size: rem(8);
-                display: inline-block;
-                margin-right: rem(8);
-            }
-        }
+        // &:not(:first-child) {
+        //     &:before {
+        //         content: ">>";
+        //         font-family: "Inter", sans-serif;
+        //         font-size: rem(8);
+        //         display: inline-block;
+        //         margin-right: rem(8);
+        //     }
+        // }
     }
     &__link {
         font-size: rem(12);

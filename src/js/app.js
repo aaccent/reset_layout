@@ -538,6 +538,21 @@ window.onload = function() {
         })
     }
 
+    // BREADCRUMBS 
+    if (document.querySelector(".breadcrumbs")) {
+        Array.from(document.querySelectorAll(".breadcrumbs__item:not(:first-child)")).forEach(breadcrumbsItemEl => {
+            breadcrumbsItemEl.insertAdjacentHTML("afterbegin", `
+                    <span style="display:flex">
+                        <svg width="4" height="8">
+                            <use xlink:href="#arrow"></use>
+                        </svg>
+                        <svg width="4" height="8">
+                            <use xlink:href="#arrow"></use>
+                        </svg>
+                    </span>
+                `)
+        })
+    }
     // FOOTER
     const footerEl = document.querySelector(".footer")
     const footerMenuEl = footerEl.querySelector(".footer__menu")
@@ -578,27 +593,27 @@ window.onload = function() {
         // let reviewsLinkEls = document.querySelectorAll(".header__menu-item--reviews, .column__menu-item--reviews, .menu__item--reviews")
         // let reviewsSection = document.querySelector("section.about-us")
 
-        function handleLinks(linkEls, section) {
-            Array.from(linkEls).forEach(linkEl => {
-                linkEl.addEventListener("click", (e) => {
-                    e.preventDefault();
-                    if (mobileMenuEl.classList.contains("menu--open")) {
-                        mobileMenuEl.classList.remove("menu--open")
-                        burgerMenuEl.classList.remove("header__burger--open")
-                        unlockBody()
-                        mobileMenuEl.addEventListener("transitionend", () => {
-                            scroll.scrollTo(section, {
-                                duration: 800,
-                            })
-                        }, { once: true })
-                    } else {
-                        scroll.scrollTo(section, {
-                            duration: 800,
-                        })
-                    }
-                })
-            })
-        }
+        // function handleLinks(linkEls, section) {
+        //     Array.from(linkEls).forEach(linkEl => {
+        //         linkEl.addEventListener("click", (e) => {
+        //             e.preventDefault();
+        //             if (mobileMenuEl.classList.contains("menu--open")) {
+        //                 mobileMenuEl.classList.remove("menu--open")
+        //                 burgerMenuEl.classList.remove("header__burger--open")
+        //                 unlockBody()
+        //                 mobileMenuEl.addEventListener("transitionend", () => {
+        //                     scroll.scrollTo(section, {
+        //                         duration: 800,
+        //                     })
+        //                 }, { once: true })
+        //             } else {
+        //                 scroll.scrollTo(section, {
+        //                     duration: 800,
+        //                 })
+        //             }
+        //         })
+        //     })
+        // }
 
         // handleLinks(contactsLinkEls, callUsSection)
         // handleLinks(aboutLinkEl, aboutSection)
