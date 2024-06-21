@@ -58,7 +58,7 @@
                 counter-increment: counter 1;
                 display: flex;
                 gap: rem(15);
-                align-items: flex-start;
+                align-items: center;
                 @include txt_regular;
                 &::before {
                     background-color: $white;
@@ -68,6 +68,7 @@
                     font-weight: 600;
                     line-height: 2;
                     letter-spacing: -0.02em;
+                    align-self: flex-start;
                     display: flex;
                     justify-content: center;
                     align-items: center;
