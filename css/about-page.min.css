@@ -496,6 +496,9 @@ body._lock {
   .form__input {
     padding: 1.125rem 1.375rem;
   }
+  .form__textarea {
+    border-radius: 1.5625rem;
+  }
   .form__agreement {
     line-height: 1rem;
   }
@@ -1582,7 +1585,7 @@ body._lock {
   transition: color 0.2s ease 0s;
 }
 .header__bvi svg {
-  width: 1.1875rem 511F12;
+  width: 1.1875rem;
   height: 0.8125rem;
 }
 @media screen and (any-hover: hover) {
@@ -2164,6 +2167,11 @@ body._lock {
   }
   .about__logo {
     display: none;
+  }
+  .about__swiper {
+    margin-left: -1.25rem;
+    margin-right: -1.25rem;
+    width: auto;
   }
 }
 
@@ -2822,7 +2830,8 @@ body._lock {
     min-height: 15rem;
   }
   .our-advantages__about-col:first-child .our-advantages__about-swiper {
-    width: 100%;
+    margin-left: -1.25rem;
+    margin-right: -1.25rem;
     min-width: 0;
   }
   .our-advantages__about-col:first-child .our-advantages__about-swiper .swiper-slide {

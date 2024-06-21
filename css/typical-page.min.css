@@ -496,6 +496,9 @@ body._lock {
   .form__input {
     padding: 1.125rem 1.375rem;
   }
+  .form__textarea {
+    border-radius: 1.5625rem;
+  }
   .form__agreement {
     line-height: 1rem;
   }
@@ -1535,7 +1538,7 @@ body._lock {
   transition: color 0.2s ease 0s;
 }
 .header__bvi svg {
-  width: 1.1875rem 511F12;
+  width: 1.1875rem;
   height: 0.8125rem;
 }
 @media screen and (any-hover: hover) {
@@ -2003,6 +2006,23 @@ body._lock {
   justify-content: space-between;
   gap: 3.75rem;
 }
+.content__column > div:not(:first-child) h2 {
+  font-size: 2.625rem;
+  font-weight: 500;
+  line-height: 1.1904761905;
+  letter-spacing: -0.03em;
+  margin: 0 0 1.5625rem;
+}
+@media screen and (max-width: 1680px) and (min-width: 576px) {
+  .content__column > div:not(:first-child) h2 {
+    font-size: calc(24px + 18 * (100vw - 576px) / (1680 - 576));
+  }
+}
+@media screen and (max-width: 576px) {
+  .content__column > div:not(:first-child) h2 {
+    font-size: 24px;
+  }
+}
 .content__column > div:not(:last-child) {
   margin-bottom: 3.75rem;
 }
@@ -2074,7 +2094,7 @@ body._lock {
   counter-increment: counter 1;
   display: flex;
   gap: 0.9375rem;
-  align-items: center;
+  align-items: flex-start;
   font-size: 0.9375rem;
   line-height: 1.25rem;
   font-weight: 400;
@@ -2216,19 +2236,30 @@ body._lock {
   width: 100%;
 }
 .content__form .form__input {
+  background-color: #F5F5F5;
   color: #979797;
 }
-.content__column > picture, .content__block > picture {
+.content__column > picture, .content__column > div > picture {
   border-radius: 1.5625rem;
   display: block;
   margin: 2.5rem 0 0;
   overflow: hidden;
   aspect-ratio: 1.8772277228;
 }
-.content__column > picture img, .content__block > picture img {
+.content__column > picture img, .content__column > div > picture img {
   height: 100%;
   width: 100%;
   object-fit: cover;
+}
+@media screen and (max-width: 1440px) {
+  .content__form {
+    padding: 1.5625rem;
+    width: 21.25rem;
+  }
+  .content__form .form__input,
+  .content__form .form__submit {
+    padding: 1rem 1.5rem;
+  }
 }
 @media (max-width: 1280px) {
   .content__aside {

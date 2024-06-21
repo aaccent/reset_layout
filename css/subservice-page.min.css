@@ -496,6 +496,9 @@ body._lock {
   .form__input {
     padding: 1.125rem 1.375rem;
   }
+  .form__textarea {
+    border-radius: 1.5625rem;
+  }
   .form__agreement {
     line-height: 1rem;
   }
@@ -1707,7 +1710,7 @@ body._lock {
   transition: color 0.2s ease 0s;
 }
 .header__bvi svg {
-  width: 1.1875rem 511F12;
+  width: 1.1875rem;
   height: 0.8125rem;
 }
 @media screen and (any-hover: hover) {
@@ -2567,6 +2570,9 @@ body._lock {
     row-gap: 1.875rem;
     padding: 1.25rem;
   }
+  .desc__row:not(:last-child) {
+    margin-bottom: 0.625rem;
+  }
   .desc__info-title {
     width: 100%;
   }
@@ -3011,28 +3017,31 @@ body._lock {
 
 .content .container {
   display: flex;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 3.75rem;
+}
+.content__column > div:not(:first-child) h2 {
+  font-size: 2.625rem;
+  font-weight: 500;
+  line-height: 1.1904761905;
+  letter-spacing: -0.03em;
+  margin: 0 0 1.5625rem;
+}
+@media screen and (max-width: 1680px) and (min-width: 576px) {
+  .content__column > div:not(:first-child) h2 {
+    font-size: calc(24px + 18 * (100vw - 576px) / (1680 - 576));
+  }
+}
+@media screen and (max-width: 576px) {
+  .content__column > div:not(:first-child) h2 {
+    font-size: 24px;
+  }
 }
 .content__column > div:not(:last-child) {
   margin-bottom: 3.75rem;
 }
-.content__form {
-  background-color: #FFFFFF;
-  border-radius: 1.5625rem;
-  padding: 1.875rem 2.1875rem;
-  width: 23.25rem;
-}
-.content__form .form__control:not(:last-child), .content__form .form__submit:not(:last-child) {
-  margin-bottom: 1.25rem;
-}
-.content__form .form__submit {
-  width: 100%;
-}
-.content__form .form__input {
-  color: #979797;
-}
-.content h2 {
+.content__column h2 {
   color: #26292A;
   font-size: 3.625rem;
   font-weight: 500;
@@ -3041,16 +3050,16 @@ body._lock {
   margin: 0 0 2.5rem;
 }
 @media screen and (max-width: 1680px) and (min-width: 576px) {
-  .content h2 {
+  .content__column h2 {
     font-size: calc(32px + 26 * (100vw - 576px) / (1680 - 576));
   }
 }
 @media screen and (max-width: 576px) {
-  .content h2 {
+  .content__column h2 {
     font-size: 32px;
   }
 }
-.content h4 {
+.content__column h4 {
   font-size: 2.625rem;
   font-weight: 500;
   line-height: 1.1904761905;
@@ -3058,62 +3067,59 @@ body._lock {
   margin: 0 0 1.5625rem;
 }
 @media screen and (max-width: 1680px) and (min-width: 576px) {
-  .content h4 {
+  .content__column h4 {
     font-size: calc(24px + 18 * (100vw - 576px) / (1680 - 576));
   }
 }
 @media screen and (max-width: 576px) {
-  .content h4 {
+  .content__column h4 {
     font-size: 24px;
   }
 }
-.content h5 {
+.content__column h5 {
   font-size: 1.5rem;
   font-weight: 500;
   line-height: 1.25;
   margin: 0 0 1.5625rem;
 }
-.content h5 span {
-  color: #672C1D;
-}
-.content h5:not(:first-child) {
+.content__column h5:not(:first-child) {
   margin-top: 2.5rem;
 }
-.content p {
+.content__column p {
   font-size: 0.9375rem;
   line-height: 1.25rem;
   font-weight: 400;
 }
 @media (max-width: 576px) {
-  .content p {
+  .content__column p {
     font-size: 0.875rem;
   }
 }
-.content p span {
+.content__column p span {
   color: #672C1D;
   text-decoration: underline;
 }
-.content p + p {
+.content__column p + p {
   margin-top: 1.25rem;
 }
-.content ol {
+.content__column ol {
   counter-reset: counter 0;
 }
-.content ol li {
+.content__column ol li {
   counter-increment: counter 1;
   display: flex;
   gap: 0.9375rem;
-  align-items: center;
+  align-items: flex-start;
   font-size: 0.9375rem;
   line-height: 1.25rem;
   font-weight: 400;
 }
 @media (max-width: 576px) {
-  .content ol li {
+  .content__column ol li {
     font-size: 0.875rem;
   }
 }
-.content ol li::before {
+.content__column ol li::before {
   background-color: #FFFFFF;
   border-radius: 50%;
   color: #672C1D;
@@ -3129,10 +3135,10 @@ body._lock {
   width: 2.5rem;
   height: 2.5rem;
 }
-.content ul {
+.content__column ul {
   margin: 2.5rem 0;
 }
-.content ul li {
+.content__column ul li {
   background-image: url(../images/cross-red.svg);
   background-position: 0.125rem 0.125rem;
   background-repeat: no-repeat;
@@ -3143,45 +3149,33 @@ body._lock {
   text-transform: uppercase;
 }
 @media (max-width: 576px) {
-  .content ul li {
+  .content__column ul li {
     font-size: 0.875rem;
   }
 }
-.content ul li:not(:last-child), .content ol li:not(:last-child) {
+.content__column ul li:not(:last-child), .content__column ol li:not(:last-child) {
   margin-bottom: 0.9375rem;
 }
-.content__column > picture, .content__block > picture {
-  border-radius: 1.5625rem;
-  display: block;
-  margin: 2.5rem 0 0;
-  overflow: hidden;
-  aspect-ratio: 1.8772277228;
-}
-.content__column > picture img, .content__block > picture img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-.content blockquote {
+.content__column blockquote {
   background-color: #FFFFFF;
   border-radius: 1.5625rem;
   margin: 2.5rem 0 0;
   padding: 1.5625rem 1.875rem 1.875rem;
 }
-.content blockquote p {
+.content__column blockquote p {
   font-size: 0.9375rem;
   line-height: 1.25rem;
   font-weight: 400;
 }
 @media (max-width: 576px) {
-  .content blockquote p {
+  .content__column blockquote p {
     font-size: 0.875rem;
   }
 }
-.content blockquote footer {
+.content__column blockquote footer {
   margin: 1.5625rem 0 0;
 }
-.content blockquote footer::before {
+.content__column blockquote footer::before {
   border-top-left-radius: 1.5625rem;
   border-top-right-radius: 1.5625rem;
   border: 0.0625rem solid #D8E2E5;
@@ -3192,12 +3186,12 @@ body._lock {
   width: 100%;
   height: 0.9375rem;
 }
-.content blockquote .author {
+.content__column blockquote .author {
   display: grid;
   justify-content: start;
   gap: 0.625rem 0.9375rem;
 }
-.content blockquote .author__image {
+.content__column blockquote .author__image {
   background-color: #FFFFFF;
   border-radius: 50%;
   grid-column: 1/2;
@@ -3206,19 +3200,19 @@ body._lock {
   height: 3.75rem;
   overflow: hidden;
 }
-.content blockquote .author__image img {
+.content__column blockquote .author__image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.content blockquote .author__name {
+.content__column blockquote .author__name {
   grid-row: 1/2;
   grid-column: 2/3;
   font-size: 1.125rem;
   font-weight: 600;
   line-height: 1.1111111111;
 }
-.content blockquote .author__position {
+.content__column blockquote .author__position {
   color: #979797;
   grid-row: 2/3;
   grid-column: 2/3;
@@ -3227,9 +3221,50 @@ body._lock {
   font-weight: 400;
 }
 @media (max-width: 576px) {
-  .content blockquote .author__position {
+  .content__column blockquote .author__position {
     font-size: 0.875rem;
   }
+}
+.content__aside {
+  flex: 0 0 23.25rem;
+  position: sticky;
+  top: 6.25rem;
+}
+.content__form {
+  background-color: #FFFFFF;
+  border-radius: 1.5625rem;
+  padding: 1.875rem 2.1875rem;
+}
+.content__form .form__title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.25;
+  margin: 0 0 1.5625rem;
+}
+.content__form .form__title span {
+  color: #672C1D;
+}
+.content__form .form__control:not(:last-child), .content__form .form__submit:not(:last-child) {
+  margin-bottom: 1.25rem;
+}
+.content__form .form__submit {
+  width: 100%;
+}
+.content__form .form__input {
+  background-color: #F5F5F5;
+  color: #979797;
+}
+.content__column > picture, .content__column > div > picture {
+  border-radius: 1.5625rem;
+  display: block;
+  margin: 2.5rem 0 0;
+  overflow: hidden;
+  aspect-ratio: 1.8772277228;
+}
+.content__column > picture img, .content__column > div > picture img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 @media screen and (max-width: 1440px) {
   .content__form {
@@ -3241,75 +3276,88 @@ body._lock {
     padding: 1rem 1.5rem;
   }
 }
-@media (max-width: 992px) {
-  .content .container {
-    display: block;
+@media (max-width: 1280px) {
+  .content__aside {
+    flex-basis: 20rem;
   }
   .content__form {
-    display: none;
+    padding: 1.5625rem;
+  }
+  .content__form .form__input,
+  .content__form .form__submit {
+    padding: 1rem 1.5rem;
   }
 }
 @media (max-width: 576px) {
   .content__column > div:not(:last-child) {
     margin-bottom: 2.1875rem;
   }
-  .content h2 {
+  .content__column h2 {
     margin-bottom: 1.5625rem;
   }
-  .content h4 {
+  .content__column h4 {
     margin-bottom: 1.25rem;
   }
-  .content h5 {
+  .content__column h5 {
     font-size: 1.125rem;
     line-height: 1.3888888889;
     margin-bottom: 0.9375rem;
   }
-  .content p + p {
+  .content__column p + p {
     margin-top: 0.625rem;
   }
-  .content ul {
+  .content__column ul {
     margin-top: 1.25rem;
     margin-bottom: 1.25rem;
   }
-  .content ul li:not(:last-child) {
+  .content__column ul li:not(:last-child) {
     margin-top: 0.625rem;
   }
-  .content ol li {
+  .content__column ol li {
     gap: 0.625rem;
   }
-  .content ol li::before {
+  .content__column ol li::before {
     font-size: 0.875rem;
     width: 1.875rem;
     height: 1.875rem;
   }
-  .content ol li:not(:last-child) {
+  .content__column ol li:not(:last-child) {
     margin-top: 0.9375rem;
   }
-  .content picture {
+  .content__column picture {
     aspect-ratio: 1;
     margin-top: 1.5625rem;
   }
-  .content blockquote {
+  .content__column blockquote {
     border-radius: 0.9375rem;
     margin-top: 1.5625rem;
     padding: 1.25rem;
   }
-  .content blockquote footer {
+  .content__column blockquote footer {
     margin-top: 1.25rem;
   }
-  .content blockquote footer::before {
+  .content__column blockquote footer::before {
     height: 0.625rem;
   }
-  .content blockquote footer .author {
+  .content__column blockquote footer .author {
     gap: 0.3125rem 0.75rem;
   }
-  .content blockquote footer .author__name {
+  .content__column blockquote footer .author__name {
     font-size: 1rem;
     line-height: 1.25;
   }
-  .content blockquote footer .author__image {
+  .content__column blockquote footer .author__image {
     width: 3.125rem;
     height: 3.125rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .content .container {
+    display: block;
+  }
+  .content__aside {
+    display: none;
   }
 }
 
@@ -3843,7 +3891,8 @@ body._lock {
     min-height: 15rem;
   }
   .our-advantages__about-col:first-child .our-advantages__about-swiper {
-    width: 100%;
+    margin-left: -1.25rem;
+    margin-right: -1.25rem;
     min-width: 0;
   }
   .our-advantages__about-col:first-child .our-advantages__about-swiper .swiper-slide {

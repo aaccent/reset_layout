@@ -496,6 +496,9 @@ body._lock {
   .form__input {
     padding: 1.125rem 1.375rem;
   }
+  .form__textarea {
+    border-radius: 1.5625rem;
+  }
   .form__agreement {
     line-height: 1rem;
   }
@@ -1530,7 +1533,7 @@ body._lock {
   transition: color 0.2s ease 0s;
 }
 .header__bvi svg {
-  width: 1.1875rem 511F12;
+  width: 1.1875rem;
   height: 0.8125rem;
 }
 @media screen and (any-hover: hover) {
@@ -1910,17 +1913,7 @@ body._lock {
 }
 
 .contacts {
-  padding: 0 0 8.75rem;
-}
-@media screen and (max-width: 1680px) and (min-width: 576px) {
-  .contacts {
-    padding-bottom: calc(90px + 50 * (100vw - 576px) / (1680 - 576));
-  }
-}
-@media screen and (max-width: 576px) {
-  .contacts {
-    padding-bottom: 90px;
-  }
+  padding: 0 0 3.75rem;
 }
 .contacts__header::before, .contacts__footer::before {
   border: 0.0625rem solid #D8E2E5;
@@ -1936,19 +1929,25 @@ body._lock {
 }
 .contacts__header-wrapper {
   display: flex;
-  flex-wrap: wrap;
   gap: 2.5rem;
   justify-content: space-between;
 }
 .contacts__info {
   display: flex;
-  gap: 3.9473684211%;
-  flex-basis: 62.9375rem;
+  column-gap: 3.9473684211%;
+  row-gap: 1.5625rem;
+  flex-basis: 62.625rem;
 }
 .contacts__info-item {
   display: flex;
   align-items: center;
   column-gap: 1.25rem;
+}
+.contacts__info-item a {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
 }
 .contacts__info-item--phone {
   flex-shrink: 0;
@@ -1956,42 +1955,30 @@ body._lock {
 .contacts__info-item--phone svg {
   width: 0.984375rem;
 }
-.contacts__info-item--phone .contact__info-desc {
+.contacts__info-item--phone .contacts__info-desc {
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   row-gap: 0.9375rem;
 }
-.contacts__info-item--phone .contact__info-desc > span:first-child {
-  font-size: 1.5rem;
-  font-weight: 500;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
-}
-.contacts__info-item--phone .contact__info-desc > span:last-child {
+.contacts__info-item--phone .contacts__info-desc span:last-child {
   color: #979797;
   font-size: 0.9375rem;
   line-height: 1.25rem;
   font-weight: 400;
 }
 @media (max-width: 576px) {
-  .contacts__info-item--phone .contact__info-desc > span:last-child {
+  .contacts__info-item--phone .contacts__info-desc span:last-child {
     font-size: 0.875rem;
   }
 }
 .contacts__info-item--mail svg {
   width: 1.0625rem;
 }
-.contacts__info-item--mail .contact__info-desc {
-  font-size: 1.5rem;
-  font-weight: 500;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
-}
 .contacts__info-item--geo svg {
   width: 0.9375rem;
 }
-.contacts__info-item--geo .contact__info-desc {
+.contacts__info-item--geo .contacts__info-desc {
   font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.3888888889;
@@ -2083,6 +2070,9 @@ body._lock {
 .contacts__form .form__file {
   flex-basis: 100%;
 }
+.contacts__form .form__submit {
+  align-self: flex-start;
+}
 .contacts__map {
   border-radius: 1.5625rem;
   flex-basis: 48.0263157895%;
@@ -2104,6 +2094,20 @@ body._lock {
   grid-template-columns: repeat(4, 1fr);
   column-gap: 0.9375rem;
 }
+@media screen and (max-width: 1440px) {
+  .contacts__info {
+    flex-wrap: wrap;
+  }
+  .contacts__info-item {
+    gap: 0.625rem;
+  }
+  .contacts__info-item a {
+    font-size: 1.125rem;
+  }
+  .contacts__info-item--geo .contacts__info-desc {
+    font-size: 1rem;
+  }
+}
 @media screen and (min-width: 992.5px) and (max-width: 1200px) {
   .contacts__form {
     padding: 1.25rem 0 1.25rem 1.25rem;
@@ -2119,21 +2123,17 @@ body._lock {
   }
 }
 @media (max-width: 992px) {
-  .contacts__header {
-    flex-direction: column;
-  }
   .contacts__info {
     flex-basis: auto;
     flex-direction: column;
     row-gap: 1.25rem;
-    padding: 2.5rem;
   }
   .contacts__main {
     flex-direction: column;
     gap: 3.75rem;
   }
   .contacts__form {
-    padding: 0;
+    padding: 2.5rem 2.5rem 0;
     width: 100%;
     max-width: none;
   }
@@ -2151,23 +2151,20 @@ body._lock {
     height: 0.625rem;
     margin-bottom: 0.9375rem;
   }
-  .contacts__header {
-    row-gap: 25;
-  }
   .contacts__info {
     row-gap: 0.9375rem;
   }
   .contacts__info-item {
     column-gap: 0.9375rem;
   }
-  .contacts__info-item--phone .contact__info-desc {
+  .contacts__info-item--phone .contacts__info-desc {
     row-gap: 0.3125rem;
   }
-  .contacts__info-item--phone .contact__info-desc span:first-child {
+  .contacts__info-item--phone .contacts__info-desc span:first-child {
     font-size: 1.125rem;
     line-height: 1.3888888889;
   }
-  .contacts__info-item--mail .contact__info-desc {
+  .contacts__info-item--mail .contacts__info-desc {
     font-size: 1.125rem;
     line-height: 1.3888888889;
   }
@@ -2186,6 +2183,12 @@ body._lock {
     gap: 2.1875rem;
     padding: 1.5625rem;
   }
+  .contacts__form {
+    padding: 0.9375rem 0.9375rem 0rem;
+  }
+  .contacts__form .form__title {
+    font-size: 2rem;
+  }
   .contacts__map {
     aspect-ratio: 1;
     width: 100%;
@@ -2199,6 +2202,22 @@ body._lock {
 @media (max-width: 576px) {
   .contacts {
     border-radius: 1.25rem;
+    padding-bottom: 4.375rem;
+  }
+  .contacts__header-wrapper {
+    flex-direction: column;
+    gap: 1.5625rem;
+  }
+  .contacts__info-item--phone {
+    column-gap: 0.3125rem;
+  }
+  .contacts__info-item--geo .contacts__info-desc {
+    font-size: 0.875rem;
+  }
+  .contacts__main {
+    border-radius: 1.25rem;
+    margin-top: 1.875rem;
+    padding: 0.625rem;
   }
   .contacts__form .form__title {
     font-size: 1.5rem;
@@ -2213,8 +2232,21 @@ body._lock {
   .contacts__form .form__body > * {
     flex-basis: 100%;
   }
+  .contacts__form .form__file-label, .contacts__form .form__file-doc {
+    padding: 1rem 1.5625rem;
+  }
+  .contacts__map .marker {
+    width: 2.9375rem;
+    vertical-align: top;
+  }
+  .contacts__footer {
+    padding-top: 1.875rem;
+  }
   .contacts__footer-cols {
-    row-gap: 1.875rem;
+    row-gap: 1.5625rem;
+  }
+  .contacts__footer-cols .col__button {
+    margin-top: 0.3125rem;
   }
 }
 
@@ -2245,7 +2277,7 @@ body._lock {
 .col__text-big {
   font-size: 1.375rem;
   font-weight: 500;
-  line-height: 1.1363636364;
+  line-height: 1.5625rem;
   letter-spacing: -0.02em;
 }
 .col__link {
@@ -2295,6 +2327,9 @@ body._lock {
   }
   .col__company:not(:last-child) {
     margin-bottom: 0.3125rem;
+  }
+  .col__text-big {
+    font-size: 1.125rem;
   }
   .col__button {
     padding: 1.25rem;
