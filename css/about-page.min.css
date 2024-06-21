@@ -725,10 +725,10 @@ body._lock {
   padding: 2.5rem;
   max-width: 70.75rem;
 }
-.popup--call-doctor .popup__content, .popup--gallery .popup__content, .popup--consultation .popup__content, .popup--cities .popup__content {
+.popup--call-doctor .popup__content, .popup--gallery .popup__content, .popup--consultation .popup__content, .popup--cities .popup__content, .popup--doctor .popup__content {
   transform: scale(0.4);
 }
-.popup--call-doctor.popup--open .popup__content, .popup--gallery.popup--open .popup__content, .popup--consultation.popup--open .popup__content, .popup--cities.popup--open .popup__content {
+.popup--call-doctor.popup--open .popup__content, .popup--gallery.popup--open .popup__content, .popup--consultation.popup--open .popup__content, .popup--cities.popup--open .popup__content, .popup--doctor.popup--open .popup__content {
   transform: scale(1);
 }
 @media (max-width: 768px) {
@@ -2232,6 +2232,7 @@ body._lock {
 .value {
   background-color: #F5F5F5;
   border-radius: 10.6100795756%/8.6956521739%;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   padding: 2.1875rem 2.5rem;
@@ -2532,6 +2533,7 @@ body._lock {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  object-position: bottom;
 }
 .doctor__image:not(:last-child) {
   margin-bottom: 1.5625rem;

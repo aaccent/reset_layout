@@ -725,10 +725,10 @@ body._lock {
   padding: 2.5rem;
   max-width: 70.75rem;
 }
-.popup--call-doctor .popup__content, .popup--gallery .popup__content, .popup--consultation .popup__content, .popup--cities .popup__content {
+.popup--call-doctor .popup__content, .popup--gallery .popup__content, .popup--consultation .popup__content, .popup--cities .popup__content, .popup--doctor .popup__content {
   transform: scale(0.4);
 }
-.popup--call-doctor.popup--open .popup__content, .popup--gallery.popup--open .popup__content, .popup--consultation.popup--open .popup__content, .popup--cities.popup--open .popup__content {
+.popup--call-doctor.popup--open .popup__content, .popup--gallery.popup--open .popup__content, .popup--consultation.popup--open .popup__content, .popup--cities.popup--open .popup__content, .popup--doctor.popup--open .popup__content {
   transform: scale(1);
 }
 @media (max-width: 768px) {
