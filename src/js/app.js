@@ -624,13 +624,15 @@ window.onload = function() {
 
             const contentNavEl = document.querySelector(".content__nav")
             const contentBlockEls = document.querySelectorAll(".content__column > div")
-    
+            const contentTitleEls = document.querySelectorAll(".content h1, .content h2")
             let lastPosY = 0,  curSection = 0, contentNavLinksEls = null;
 
-            Array.from(contentBlockEls).forEach((blockEl, index) => {
+            Array.from(contentTitleEls).forEach((titleEl, index) => {
+                let uuid = crypto.randomUUID();
+                titleEl.setAttribute("id", uuid)
                 contentNavEl.querySelector(".nav__menu").insertAdjacentHTML("beforeend", `
                     <li class="nav__menu-item ${ index === 0 ? "nav__menu-item--active" : ''}">
-                        <a href="#${ blockEl.getAttribute("id") } " class="nav__menu-link">${ blockEl.querySelector("h2").innerHTML }</a>
+                        <a href="#${ uuid }" class="nav__menu-link">${ titleEl.innerHTML }</a>
                     </li>
                 `)
             })
@@ -646,14 +648,15 @@ window.onload = function() {
                 }
             })
 
-            Array.from(contentNavLinksEls).forEach(navLink => {
+            Array.from(contentNavLinksEls).forEach((navLink, index) => {
                 let sectionId = navLink.getAttribute("href")
                 const target = document.getElementById(sectionId.slice(1))
+                
                 navLink.addEventListener("click", (e) => {
                     e.preventDefault()
                     e.target.closest(".nav--open")?.classList.remove("nav--open")
                     scroll.scrollTo(target, {
-                            offset: -100,
+                            offset: index === 0 ? -210 : -100,
                             duration: 800,
                         }
                     )
@@ -665,9 +668,9 @@ window.onload = function() {
                 let posY = window.pageYOffset;
                 
                 if (posY > lastPosY) {
-                    if (curSection === contentBlockEls.length - 1)
+                    if (curSection === contentTitleEls.length - 1)
                         return
-                    let sectionYOffset = contentBlockEls[curSection + 1].offsetTop
+                    let sectionYOffset = contentTitleEls[curSection + 1].offsetTop
                     if (posY >= sectionYOffset - window.innerHeight / 2) {
                         contentNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
                         contentNavLinksEls[curSection + 1].parentElement.classList.add("nav__menu-item--active")
@@ -676,7 +679,7 @@ window.onload = function() {
                 }  else {
                     if (curSection === 0)
                         return 
-                    let sectionYOffset = contentBlockEls[curSection].offsetTop
+                    let sectionYOffset = contentTitleEls[curSection].offsetTop
                     if (sectionYOffset - window.innerHeight / 2 >= posY) {
                         contentNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
                         contentNavLinksEls[curSection - 1].parentElement.classList.add("nav__menu-item--active")

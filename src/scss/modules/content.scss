@@ -7,21 +7,12 @@
     }
     &__column {
         & > div {
-            &:not(:first-child) {
-                h2 {
-                    font-size: rem(42);
-                    @include adaptive-value(font-size, 24, 42, 576, $container-width);
-                    font-weight: 500;
-                    line-height: calc(50 / 42);
-                    letter-spacing: -0.03em;
-                    margin: 0 0 rem(25);
-                }
-            }
-            &:not(:last-child) {
-                margin-bottom: rem(60);
-            }
+            // &:not(:last-child) {
+            //     margin-bottom: rem(60);
+            // }
         }
-        h2 {
+
+        h1, h2:first-child {
             color: #26292A;
             font-size: rem(58);
             @include adaptive-value(font-size, 32, 58, 576, $container-width);
@@ -30,13 +21,17 @@
             letter-spacing: -0.03em;
             margin: 0 0 rem(40);
         }
-        h4 {
+
+        h2 {
             font-size: rem(42);
             @include adaptive-value(font-size, 24, 42, 576, $container-width);
             font-weight: 500;
             line-height: calc(50 / 42);
             letter-spacing: -0.03em;
-            margin: 0 0 rem(25);
+            margin-bottom: rem(25);
+            &:not(:first-child) {
+                margin-top: rem(60);
+            }
         }
         h5 {
             font-size: rem(24);
@@ -225,13 +220,11 @@
     }
     @include phone {
         &__column {
-            & > div {
-                &:not(:last-child) {
-                    margin-bottom: rem(35);
-                }
-            }
             h2 {
                 margin-bottom: rem(25);
+                &:not(:first-child) {
+                    margin-top: rem(35);
+                }
             }
             h4 {
                 margin-bottom: rem(20);
