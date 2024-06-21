@@ -31,8 +31,7 @@
 }
 
 .contacts {
-    padding: 0 0 rem(140);
-    @include adaptive-value(padding-bottom, 90, 140, 576, $container-width);
+    padding: 0 0 rem(60);
     &__header, &__footer {
         &::before {
             border: rem(1) solid #D8E2E5;
@@ -52,7 +51,6 @@
     
     &__header-wrapper {
         display: flex;
-        flex-wrap: wrap;
         gap: rem(40);
         justify-content: space-between;
 
@@ -60,32 +58,33 @@
 
     &__info {
         display: flex;
-        gap: calc(60 / 1520 * 100%);
+        column-gap: calc(60 / 1520 * 100%);
+        row-gap: rem(25);
         // flex-basis: calc(1007 / 1520 * 100%);
-        flex-basis: rem(1007);
+        flex-basis: rem(1002);
     }
 
     &__info-item {
         display: flex;
         align-items: center;
         column-gap: rem(20);
+        a {
+            font-size: rem(24);
+            font-weight: 500;
+            line-height: calc(30 / 24);
+            letter-spacing: -0.02em;
+        }
         &--phone {
             flex-shrink: 0;
             svg {
                 width: rem(15.75);
             }
-            .contact__info-desc {
+            .contacts__info-desc {
                 flex-shrink: 0;
                 display: flex;
                 flex-direction: column;
                 row-gap: rem(15);
-                & > span {
-                    &:first-child {
-                        font-size: rem(24);
-                        font-weight: 500;
-                        line-height: calc(30 / 24);
-                        letter-spacing: -0.02em;
-                    }
+                span {
                     &:last-child {
                         color: $grey;
                         @include txt_regular;
@@ -97,18 +96,12 @@
             svg {
                 width: rem(17)
             }
-            .contact__info-desc {
-                font-size: rem(24);
-                font-weight: 500;
-                line-height: calc(30 / 24);
-                letter-spacing: -0.02em;
-            }
         }
         &--geo {
             svg {
                 width: rem(15)
             }
-            .contact__info-desc {
+            .contacts__info-desc {
                 font-size: rem(18);
                 font-weight: 400;
                 line-height: calc(25 / 18);
@@ -130,9 +123,6 @@
         svg {
             max-height: 100%;
         }
-    }
-
-    &__info-desc {
     }
 
     &__socials {
@@ -223,6 +213,9 @@
             &__file {
                 flex-basis: 100%;
             }
+            &__submit {
+                align-self: flex-start;
+            }
         }
     }
 
@@ -247,7 +240,23 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         column-gap: rem(15);
-
+    }
+    @media screen and (max-width: 1440px) {
+        &__info {
+            flex-wrap: wrap;
+            // gap: rem(30);
+        }
+        &__info-item {
+            gap: rem(10);
+            a {
+                font-size: rem(18);
+            }
+            &--geo {
+                .contacts__info-desc {
+                    font-size: rem(16);
+                }
+            }
+        }
     }
     @media screen and (min-width: 992.5px) and (max-width: 1200px) {
         &__form {
@@ -267,21 +276,21 @@
         
     }
     @include tablet {
-        &__header {
-            flex-direction: column;
-        }
+        // &__header {
+        //     flex-direction: column;
+        // }
         &__info {
             flex-basis: auto;
             flex-direction: column;
             row-gap: rem(20);
-            padding: rem(40);
+            // padding: rem(40);
         }
         &__main {
             flex-direction: column;
             gap: rem(60);
         }
         &__form {
-            padding: 0;
+            padding: rem(40) rem(40) 0;
             width: 100%;
             max-width: none;
         }
@@ -301,16 +310,13 @@
                 margin-bottom: rem(15);
             }
         }
-        &__header {
-            row-gap: calc(25);
-        }
         &__info {
             row-gap: rem(15);
         }
         &__info-item {
             column-gap: rem(15);
             &--phone {
-                .contact__info-desc {
+                .contacts__info-desc {
                     row-gap: rem(5);
                     span {
                         &:first-child {
@@ -321,7 +327,7 @@
                 }
             }
             &--mail {
-                .contact__info-desc {
+                .contacts__info-desc {
                     font-size: rem(18);
                     line-height: calc(25 / 18);
                 }
@@ -342,6 +348,12 @@
             gap: rem(35);
             padding: rem(25)
         }
+        &__form {
+            padding: rem(15) rem(15) rem(0);
+            .form__title {
+                font-size: rem(32);
+            }
+        }
         &__map {
             aspect-ratio: 1;
             width: 100%;
@@ -354,6 +366,26 @@
     }
     @include phone {
         border-radius: rem(20);
+        padding-bottom: rem(70);
+        &__header-wrapper {
+            flex-direction: column;
+            gap: rem(25);
+        }
+        &__info-item {
+            &--phone {
+                column-gap: rem(5);
+            }
+            &--geo {
+                .contacts__info-desc {
+                    font-size: rem(14);
+                }
+            }
+        }
+        &__main {
+            border-radius: rem(20);
+            margin-top: rem(30);
+            padding: rem(10);
+        }
         &__form {
             .form {
                 &__title {
@@ -369,11 +401,20 @@
                         flex-basis: 100%
                     }
                 }
+                &__file-label, &__file-doc {
+                    padding: rem(16) rem(25);
+                }
 
             }
         }
+        &__footer {
+            padding-top: rem(30);
+        }
         &__footer-cols {
-            row-gap: rem(30);
+            row-gap: rem(25);
+            .col__button {
+                margin-top: rem(5);
+            }
         }
     }
 }
@@ -393,7 +434,7 @@
     &__text-big {
         font-size: rem(22);
         font-weight: 500;
-        line-height: calc(25 / 22);
+        line-height: rem(25);
         letter-spacing: -0.02em
     }
     &__link {
@@ -447,6 +488,9 @@
             &:not(:last-child) {
                 margin-bottom: rem(5);
             }
+        }
+        &__text-big {
+            font-size: rem(18);
         }
         &__button {
             padding: rem(20)
