@@ -1,0 +1,121 @@
+.review {
+    background-color: $white;
+    border-radius: rem(25);
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-columns: 28% calc(752 / 1264 * 100%);
+    justify-content: space-between;
+    gap: rem(40) rem(60);
+    padding: rem(35) rem(40) rem(40);
+    &__author {
+        display: flex;
+        align-items: flex-start;
+        gap: rem(37);
+    }
+
+    &__author-icon {
+        background-color: $grey;
+        border-radius: rem(20);
+        flex-shrink: 0;
+        width: rem(100);
+        height: rem(100);
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__author-name {
+        font-size: rem(24);
+        font-weight: 500;
+        line-height: calc(30 / 24);
+        letter-spacing: -0.02em;
+    }
+
+    &__text {
+        max-width: rem(752);
+        p {
+            font-size: rem(18);
+            font-weight: 400;
+            line-height: calc(25 / 18);
+            &:not(:last-child) {
+                margin-bottom: rem(25);
+            }
+        }
+    }
+
+    &__date {
+        grid-column:  2 / 3;
+        font-weight: 400;
+        line-height: rem(45);
+        letter-spacing: -0.02em;
+    }
+    
+    &__day {
+        font-size: rem(42);
+    }
+
+    &__month {
+        color: $grey;
+        font-size: rem(24);
+    }
+    @include tablet {
+        grid-template-columns: 1fr;
+        &__author {
+            gap: rem(28);
+        }
+    
+        &__author-icon {
+            width: rem(85);
+            height: rem(85);
+        }
+        &__text, &__date {
+            grid-column: 1 / 2;
+        }
+        &__text {
+            max-width: none;
+        }
+    }
+    @include phone {
+        border-radius: rem(20);
+        gap: 0;
+        padding: rem(20);
+        &__author {
+            gap: rem(20);
+            &:not(:last-child) {
+                margin-bottom: rem(25);
+            }
+        }
+        &__author-icon {
+            border-radius: rem(10);
+            width: rem(70);
+            height: rem(70);
+        }
+        &__author-name {
+            font-size: rem(18);
+        }
+        &__text {
+            p {
+                font-size: rem(14);
+                font-weight: 400;
+                line-height: calc(25 / 18);
+                &:not(:last-child) {
+                    margin-bottom: rem(15);
+                }
+            }
+            &:not(:last-child) {
+                margin-bottom: rem(14);
+            }
+        }
+        
+        &__day {
+            font-size: rem(32);
+        }
+    
+        &__month {
+            font-size: rem(18);
+        }
+    }
+}

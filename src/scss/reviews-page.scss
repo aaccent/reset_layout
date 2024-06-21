@@ -1,0 +1,76 @@
+@import "base/_functions.scss";
+@import "base/_vars.scss";
+@import "base/_fonts.scss";
+@import "base/_reset.scss";
+@import "mixins/_breakpoints.scss";
+@import "mixins/_media.scss";
+@import "mixins/_fonts.scss";
+@import "base.scss";
+
+// ui
+@import "ui/button.scss";
+@import "ui/form.scss";
+@import "ui/breadcrumbs.scss";
+@import "ui/popup.scss";
+
+// bem-blocks
+@import "modules/order-call.scss";
+
+
+@import "modules/header.scss";
+.page {
+    &__nav {
+        .breadcrumbs__item {
+            &:not(:last-child) {
+                color: $grey;
+                opacity: 1;
+            }
+        }
+    }
+}
+
+@import "modules/bem-blocks/reviews.scss";
+.reviews {
+    &__list {}
+    &__review-item {
+        &:not(:last-child) {
+            margin-bottom: rem(20)
+        }
+    }
+    &__button {
+        background-color: $white;
+        border-radius: rem(15);
+        color: $primary-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: rem(8);
+        margin: rem(60) 0 0;
+        padding: rem(30);
+        width: 100%;
+        span {
+            @include txt_medium;
+        }
+        svg {
+            width: rem(8);
+            height: rem(8);
+        }
+    }
+    @include phone {
+        &__list {}
+        &__review-item {
+            &:not(:last-child) {
+                margin-bottom: rem(10)
+            }
+        }
+        &__button {
+            border-radius: rem(10);
+            padding: rem(20);
+            margin-top: rem(30)
+        }
+    }
+}
+
+@import "modules/call-us.scss";
+
+@import "modules/footer.scss";
