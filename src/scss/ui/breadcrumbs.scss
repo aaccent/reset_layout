@@ -1,4 +1,6 @@
 .breadcrumbs {
+    max-width: 100%;
+    overflow: hidden;
     &__list {
         display: flex;
         gap: rem(8);
