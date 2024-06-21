@@ -623,7 +623,6 @@ window.onload = function() {
         if (document.querySelector(".content__nav")) {
 
             const contentNavEl = document.querySelector(".content__nav")
-            const contentBlockEls = document.querySelectorAll(".content__column > div")
             const contentTitleEls = document.querySelectorAll(".content h1, .content h2")
             let lastPosY = 0,  curSection = 0, contentNavLinksEls = null;
 
@@ -656,7 +655,7 @@ window.onload = function() {
                     e.preventDefault()
                     e.target.closest(".nav--open")?.classList.remove("nav--open")
                     scroll.scrollTo(target, {
-                            offset: index === 0 ? -210 : -100,
+                            offset: -100,
                             duration: 800,
                         }
                     )
@@ -671,7 +670,7 @@ window.onload = function() {
                     if (curSection === contentTitleEls.length - 1)
                         return
                     let sectionYOffset = contentTitleEls[curSection + 1].offsetTop
-                    if (posY >= sectionYOffset - window.innerHeight / 2) {
+                    if (posY >= sectionYOffset - window.innerHeight / 4) {
                         contentNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
                         contentNavLinksEls[curSection + 1].parentElement.classList.add("nav__menu-item--active")
                         curSection += 1
@@ -680,7 +679,7 @@ window.onload = function() {
                     if (curSection === 0)
                         return 
                     let sectionYOffset = contentTitleEls[curSection].offsetTop
-                    if (sectionYOffset - window.innerHeight / 2 >= posY) {
+                    if (sectionYOffset - window.innerHeight / 4 >= posY) {
                         contentNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
                         contentNavLinksEls[curSection - 1].parentElement.classList.add("nav__menu-item--active")
                         curSection -= 1
