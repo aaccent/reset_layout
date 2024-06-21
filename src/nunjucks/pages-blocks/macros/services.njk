@@ -1,5 +1,5 @@
-{% macro Service(service, index) %}
-    <a href="#" class="services__service-item service swiper-slide">
+{% macro Service(service, index, subservice = false) %}
+    <a href="{{ 'subservice-page.html' if subservice == true else 'service-page.html' }}" class="services__service-item service swiper-slide">
         {% if service.icon %}
             <span class="service__icon">
                 <svg>
@@ -29,7 +29,7 @@
             <div class="services__swiper swiper">
                 <div class="services__list swiper-wrapper">
                     {% for item in content.services %}
-                        {{ Service(item, loop.index) }}
+                        {{ Service(item, loop.index, content.subservice) }}
                     {% endfor %}
                     .
                 </div>

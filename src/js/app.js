@@ -193,13 +193,13 @@ window.onload = function() {
         buttonEl.addEventListener("click", e => openPopup(popupEl))
     })
 
-    desktopSubmenuEl.addEventListener("click", (e) => {
-        if (!e.target.closest(".submenu__service-link")) {
-            return
-        }
-        e.preventDefault();
-        openPopup(callDoctorPopupEl)
-    })
+    // desktopSubmenuEl.addEventListener("click", (e) => {
+    //     if (!e.target.closest(".submenu__service-link")) {
+    //         return
+    //     }
+    //     e.preventDefault();
+    //     openPopup(callDoctorPopupEl)
+    // })
 
     serviceMenuItemEl.addEventListener("click", (e) => {
         if (e.target.closest(".submenu__backdrop")) {
@@ -244,13 +244,13 @@ window.onload = function() {
     
     mobileMenuEl.addEventListener("click", (e) => {
         let hasSubmenu = e.target.closest(".menu__item").childElementCount === 3;
-        let lastSubmenu = e.target.closest(".menu__item").childElementCount === 1 && e.target.closest(".menu__submenu")
+        // let lastSubmenu = e.target.closest(".menu__item").childElementCount === 1 && e.target.closest(".menu__submenu")
         
-        if (lastSubmenu) {
-            e.preventDefault()
-            openPopup(callDoctorPopupEl)
-            return
-        }
+        // if (lastSubmenu) {
+        //     e.preventDefault()
+        //     openPopup(callDoctorPopupEl)
+        //     return
+        // }
 
         if (!hasSubmenu) {
             return 
@@ -293,16 +293,16 @@ window.onload = function() {
     })
 
     // SERVICES
-    let servicesListEl = document.querySelector(".services__list")
-    if (servicesListEl) {
-        servicesListEl.addEventListener("click", e => {
-            if (!e.target.closest(".services__service-item")) {
-                return
-            }
-            e.preventDefault()
-            openPopup(callDoctorPopupEl)
-        })
-    }
+    // let servicesListEl = document.querySelector(".services__list")
+    // if (servicesListEl) {
+    //     servicesListEl.addEventListener("click", e => {
+    //         if (!e.target.closest(".services__service-item")) {
+    //             return
+    //         }
+    //         e.preventDefault()
+    //         openPopup(callDoctorPopupEl)
+    //     })
+    // }
 
     // DOCTORS
     let doctorsListEl = document.querySelector(".our-doctors .swiper-wrapper")
@@ -410,6 +410,7 @@ window.onload = function() {
                 }
             } 
         }
+
     
         checkElemHeight(articleEl);
     
@@ -535,10 +536,6 @@ window.onload = function() {
                 targetEl.closest(".column").classList.toggle("column--open")
             }
         }
-        if (targetEl.closest(".column__menu-link")) {
-            e.preventDefault()
-            openPopup(callDoctorPopupEl)
-        }
     })
 
     gapMeidaQuery.addEventListener("change", e => {
@@ -653,29 +650,31 @@ window.onload = function() {
             })
         }
         // PRICES PAGE
-        const pricesCategories = document.querySelector(".prices__content .tab__content")
-        const backCallForm = document.querySelector(".back-call")
-        const hiddenServiceInputEl = backCallForm.querySelector("input[name='service-name']")
-
-        pricesCategories.addEventListener("click", e => {
-            if (window.innerWidth <= 768) {
-                if (e.target.closest(".service")) {
-                    hiddenServiceInputEl.value = e.target.closest(".service").querySelector(".service__name").innerHTML;
-                    scroll.scrollTo(backCallForm, {
-                        offset: -50,
-                        duration: 500,
-                    })
+        if (document.querySelector("section.prices")) {
+            const pricesCategories = document.querySelector(".prices__content .tab__content")
+            const backCallForm = document.querySelector(".back-call")
+            const hiddenServiceInputEl = backCallForm.querySelector("input[name='service-name']")
+    
+            pricesCategories.addEventListener("click", e => {
+                if (window.innerWidth <= 768) {
+                    if (e.target.closest(".service")) {
+                        hiddenServiceInputEl.value = e.target.closest(".service").querySelector(".service__name").innerHTML;
+                        scroll.scrollTo(backCallForm, {
+                            offset: -50,
+                            duration: 500,
+                        })
+                    }
+                } else {
+                    if (e.target.closest(".service__button")) {
+                        hiddenServiceInputEl.value = e.target.closest(".service").querySelector(".service__name").innerHTML;
+                        scroll.scrollTo(backCallForm, {
+                            offset: -50,
+                            duration: 500,
+                        })
+                    }
                 }
-            } else {
-                if (e.target.closest(".service__button")) {
-                    hiddenServiceInputEl.value = e.target.closest(".service").querySelector(".service__name").innerHTML;
-                    scroll.scrollTo(backCallForm, {
-                        offset: -50,
-                        duration: 500,
-                    })
-                }
-            }
-        })
+            })
+        }
     }
 
     // FANCYBOX
