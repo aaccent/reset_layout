@@ -304,7 +304,7 @@ window.onload = function() {
         });
     }))
     // HERO
-    Array.from(document.querySelectorAll(".hero-slide__call-doctor, .hero__button")).forEach(buttonEl => {
+    Array.from(document.querySelectorAll(".hero__call-doctor, .hero__button")).forEach(buttonEl => {
         buttonEl.addEventListener("click", e => {
             openPopup(callDoctorPopupEl)
         })

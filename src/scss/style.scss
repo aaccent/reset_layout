@@ -1,6 +1,6 @@
+@import "base/_functions.scss";
 @import "base/_vars.scss";
 @import "base/_fonts.scss";
-@import "base/_functions.scss";
 @import "base/_reset.scss";
 @import "mixins/_breakpoints.scss";
 @import "mixins/_media.scss";
@@ -16,12 +16,135 @@
 @import "ui/article.scss";
 
 // bem-blocks
-@import "modules/order-call.scss";
+@import "modules/bem-blocks/order-call.scss";
 
 
 @import "modules/header.scss";
 
 @import "modules/hero.scss";
+.hero {
+    &__swiper {
+        position: relative;
+        .swiper-controls {
+            pointer-events: none;
+            position: absolute;
+            right: 0;
+            bottom: rem(80);
+            width: 100%;
+            z-index: 2;
+            .container {
+                display: flex;
+                justify-content: flex-end;
+                gap: rem(10);
+            }
+            .swiper-button-prev, .swiper-button-next {
+                background-color: rgba($color: $white, $alpha: 0.1);
+                backdrop-filter: blur(14px);
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                pointer-events: auto;
+                position: static;
+                margin: 0;
+                width: rem(65);
+                height: rem(65);
+                &::after {
+                    content: none
+                }
+                svg {
+                    width: rem(8);
+                    height: rem(13);
+                }
+                @include ishover {
+                    &:not(.swiper-button-disabled) {
+                        background-color: rgba($color: $white, $alpha: 0.16);
+                    }
+                }
+            }
+        }
+        .swiper-pagination-bullets {
+            bottom: rem(20);
+        }
+    }
+    @include desktop {
+        &__swiper {
+            .swiper-controls {
+                bottom: rem(60);
+            }
+        }
+    }
+    @include gap {
+        &__swiper {
+            .swiper-controls {
+                display: none;
+            }
+            .swiper-pagination-bullet {
+                flex-basis: calc(65);
+            }
+        }
+    }
+}
+
+.hero {
+    position: static;
+    padding: 0;
+    &::before {
+        content: none;
+    }
+    &__title {
+        width: auto;
+        &:not(:last-child) {
+            margin-bottom: calc(40 / 58 * 1em);
+        }
+    }
+
+    &__desc {
+        &:not(:last-child) {
+            margin-bottom: calc(75 / 15 * 1em);
+        }
+    }
+
+    @include gap {
+        &__title {
+            line-height: calc(35 / 32 * 100%);
+            &:not(:last-child) {
+                margin-bottom: rem(20);
+            }
+        }
+        &__desc {
+            &:not(:last-child) {
+                margin-bottom: rem(50)
+            }
+        }
+    }
+    @media (max-width: 480px) {
+        &__buttons {
+            border-top: none;
+            padding-top: 0;
+        }
+    }
+}
+
+.hero-slide {
+    --padding-y: 5rem;
+    padding: var(--padding-y, 5rem) 0;
+    position: relative;
+    @include desktop {
+        --padding-y: 3.75rem;
+    }
+    @include gap {
+        padding-top: rem(40);
+        padding-bottom: rem(60);
+        &::after {
+            background-color: rgba($color: $black, $alpha: 0.45);
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+    }
+}
 
 @import "modules/services.scss";
 @import "modules/why-we.scss";

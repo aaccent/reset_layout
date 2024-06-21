@@ -14,7 +14,8 @@
 @import "ui/popup.scss";
 
 // bem-blocks
-@import "modules/order-call.scss";
+@import "modules/bem-blocks/order-call.scss";
+@import "modules/bem-blocks/reviews.scss";
 
 
 @import "modules/header.scss";
@@ -29,7 +30,6 @@
     }
 }
 
-@import "modules/bem-blocks/reviews.scss";
 .reviews {
     &__list {}
     &__review-item {

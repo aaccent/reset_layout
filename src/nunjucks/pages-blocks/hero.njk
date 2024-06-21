@@ -1,10 +1,10 @@
 {% macro HeroSlide(index) %}
     <div class="hero__slide hero-slide swiper-slide">
-        <img src="images/hero-slider.png" alt="" class="hero-slide__img">
-        <div class="hero-slide__container container">
-            <div class="hero-slide__content">
-                <div class="hero-slide__tag">
-                    <span class="hero-slide__tag-icon">
+        <img src="images/hero-slider.png" alt="" class="hero__img">
+        <div class="hero__container container">
+            <div class="hero__content">
+                <div class="hero__tag">
+                    <span class="hero__tag-icon">
                         <svg>
                             <use xlink:href="#hero-tag">
                         </svg>
@@ -15,16 +15,16 @@
                     <span>выезд в течении 20 минут</span>
                 </div>
                 {% if index == 1 %}
-                    <h1 class="hero-slide__title" data-swiper-parallax="-80%">Комплексная платная скорая помощь <span>в Москве</span></h1>
+                    <h1 class="hero__title" data-swiper-parallax="-80%">Комплексная платная скорая помощь <span>в Москве</span></h1>
                 {% else  %}
-                    <div class="hero-slide__title" data-swiper-parallax="-80%">Комплексная платная скорая помощь <span>в Москве</span></div>
+                    <div class="hero__title" data-swiper-parallax="-80%">Комплексная платная скорая помощь <span>в Москве</span></div>
                 {% endif %}
-                <div class="hero-slide__desc" data-swiper-parallax="-57%">Современный подход к оказанию круглосуточной экстренноймедицинской помощи пациентам соответствует единым медицинским алгоритмам, высокому профессионализму.</div>
-                <div class="hero-slide__buttons">
-                    <button class="hero-slide__button hero-slide__call-doctor button button--primary" type="button">
+                <div class="hero__desc" data-swiper-parallax="-57%">Современный подход к оказанию круглосуточной экстренноймедицинской помощи пациентам соответствует единым медицинским алгоритмам, высокому профессионализму.</div>
+                <div class="hero__buttons">
+                    <button class="hero__button hero__call-doctor button button--primary" type="button">
                         <span>Вызвать врача</span>
                     </button>
-                    <div class="hero-slide__price button">
+                    <div class="hero__price button">
                         <span>от 3000 ₽</span>
                     </div>
                 </div>
