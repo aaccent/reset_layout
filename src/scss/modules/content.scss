@@ -7,6 +7,16 @@
     }
     &__column {
         & > div {
+            &:not(:first-child) {
+                h2 {
+                    font-size: rem(42);
+                    @include adaptive-value(font-size, 24, 42, 576, $container-width);
+                    font-weight: 500;
+                    line-height: calc(50 / 42);
+                    letter-spacing: -0.03em;
+                    margin: 0 0 rem(25);
+                }
+            }
             &:not(:last-child) {
                 margin-bottom: rem(60);
             }
@@ -53,7 +63,7 @@
                 counter-increment: counter 1;
                 display: flex;
                 gap: rem(15);
-                align-items: center;
+                align-items: flex-start;
                 @include txt_regular;
                 &::before {
                     background-color: $white;
@@ -174,11 +184,12 @@
             width: 100%;
         }
         .form__input {
+            background-color: $background;
             color: $grey;
         }
     }
     &__column > picture,
-    &__block > picture {
+    &__column > div > picture {
         border-radius: rem(25);
         display: block;
         margin: rem(40) 0 0;

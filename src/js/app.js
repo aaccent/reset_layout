@@ -133,16 +133,15 @@ function validateForm(form) {
 
 function initMap(mapContainerId) {
     function setMapPin() {
-        let myCollection = new ymaps.GeoObjectCollection();
-        let coords = mapEl?.dataset.mark?.split(',').map(Number) || [55.7954692462696,49.10686513125719];
+        let coords = mapEl?.dataset.mark?.split(',').map(Number) || [49.10686513125719, 55.7954692462696];
         // создание и установка пинов
-        myCollection.add(new ymaps.Placemark(coords, {
-            iconLayout: "default#image",
-            iconImageHref: imagesSrc.pinImage,
-            iconImageSize: [60, 60],
-        }));
+        let marker = document.createElement("div")
+        marker.insertAdjacentHTML("beforeend", `<img src="images/map-marker.svg" alt="">`)
+
         // добавление пинов на карту
-        map.geoObjects.add(myCollection);
+        new mapboxgl.Marker(marker)
+            .setLngLat(center)
+            .addTo(map);
     }
 
     async function getCoords () {
@@ -158,11 +157,20 @@ function initMap(mapContainerId) {
     mapboxgl.accessToken = "pk.eyJ1Ijoic2V2YS1hYWNjZW50IiwiYSI6ImNsd3lubWViZTFwMDAycXNhbm4yN3p4am0ifQ.puvbO9AAr4Jf8ude29ST7g";
     const map = new mapboxgl.Map({
         container: mapContainerId, // container ID
+        style: 'mapbox://styles/mapbox/light-v11',
         center: center, 
-        zoom: 12 // starting zoom
+        zoom: 12, // starting zoom
+        dragRotate: false,
+        cooperativeGestures: true,
+        locale: {
+            "ScrollZoomBlocker.CtrlMessage": "ctrl + scroll для увеличения масштаба карты",
+            "ScrollZoomBlocker.CmdMessage" : "⌘ + scroll для увеличения масштаба карты",
+            'TouchPanBlocker.Message': 'Используйте два пальца чтобы подвинуть карту',
+            'NavigationControl.ZoomIn': 'Увеличить',
+            'NavigationControl.ZoomOut': 'Уменьшить',
+        },
     });
-    
-    let imagesSrc = mapEl.dataset
+    getCoords()
 }
 
 
@@ -177,8 +185,9 @@ window.onload = function() {
     const desktopSubmenuEl = serviceMenuItemEl.querySelector(".header__submenu");
     const mobileMenuEl = headerEl.querySelector(".header__menu--mobile");
 
-    const locationEl = headerEl.querySelector(".header__location");
+    const locationEls = headerEl.querySelectorAll(".header__location");
     const consultationButtonEls = headerEl.querySelectorAll(".header__button");
+    const bviEls = document.querySelectorAll(".header__bvi")
     // const buttonEls = document.querySelectorAll(".header__menu-item--prices, .header__menu-item--stocks, .column__menu-item--prices, .column__menu-item--stocks, .menu__item--stocks, .menu__item--prices")
 
     // Array.from(buttonEls).forEach(buttonEl => {
@@ -243,6 +252,10 @@ window.onload = function() {
 
     
     mobileMenuEl.addEventListener("click", (e) => {
+        if (!e.target.closest(".menu__list")) {
+            return
+        }
+
         let hasSubmenu = e.target.closest(".menu__item").childElementCount === 3;
         // let lastSubmenu = e.target.closest(".menu__item").childElementCount === 1 && e.target.closest(".menu__submenu")
         
@@ -280,13 +293,18 @@ window.onload = function() {
         }
     })
 
-    locationEl.addEventListener("click", e => {
+    Array.from(locationEls).forEach(locationEl => locationEl.addEventListener("click", e => {
         openPopup(citiesPopupEl)
-    })
+    }))
 
-
+    Array.from(bviEls).forEach(bviEl => bviEl.addEventListener("click", e => {
+        new isvek.Bvi({
+            fontSize: 28,
+            theme: "brown"
+        });
+    }))
     // HERO
-    Array.from(document.querySelectorAll(".hero-slide__call-doctor")).forEach(buttonEl => {
+    Array.from(document.querySelectorAll(".hero-slide__call-doctor, .hero__button")).forEach(buttonEl => {
         buttonEl.addEventListener("click", e => {
             openPopup(callDoctorPopupEl)
         })
@@ -590,11 +608,20 @@ window.onload = function() {
         if (document.querySelector(".content__nav")) {
 
             const contentNavEl = document.querySelector(".content__nav")
-            let contentNavLinksEls = contentNavEl.querySelectorAll(".nav__menu-link")
-            let contentBlockEls = document.querySelectorAll(".content .content__block")
+            const contentBlockEls = document.querySelectorAll(".content__column > div")
     
-            let lastPosY = 0,  curSection = 0;
-    
+            let lastPosY = 0,  curSection = 0, contentNavLinksEls = null;
+
+            Array.from(contentBlockEls).forEach((blockEl, index) => {
+                contentNavEl.querySelector(".nav__menu").insertAdjacentHTML("beforeend", `
+                    <li class="nav__menu-item ${ index === 0 ? "nav__menu-item--active" : ''}">
+                        <a href="#${ blockEl.getAttribute("id") } " class="nav__menu-link">${ blockEl.querySelector("h2").innerHTML }</a>
+                    </li>
+                `)
+            })
+
+            contentNavLinksEls = contentNavEl.querySelectorAll(".nav__menu-link")
+
             contentNavEl.addEventListener("click", e => {
                 if (!window.matchMedia("(max-width: 992px").matches) {
                     return
@@ -831,6 +858,8 @@ window.onload = function() {
         new Swiper(".our-advantages__about-swiper", {
             slidesPerView: "auto",
             spaceBetween: 10,
+            slidesOffsetAfter: 20,
+            slidesOffsetBefore: 20,
             observeParents: true,
             observeSlideChildren: true,
             observer: true
@@ -872,17 +901,25 @@ window.onload = function() {
 
         new Swiper(".about__swiper", {
             slidesPerView: 1.4,
+            slidesOffsetAfter: 20,
+            slidesOffsetBefore: 20,
             spaceBetween: 10,
             breakpoints: {
-                576: {
-                    slidesPerView: 2
+                577: {
+                    slidesPerView: 2,
+                    slidesOffsetAfter: 0,
+                    slidesOffsetBefore: 0,
                 },
                 768: {
-                    slidesPerView: 2.35
+                    slidesPerView: 2.35,
+                    // slidesOffsetAfter: 0,
+                    // slidesOffsetBefore: 0,
                 },
                 992: {
                     slidesPerView: 5,
-                    spaceBetween: 0
+                    spaceBetween: 0,
+                    // slidesOffsetAfter: 0,
+                    // slidesOffsetBefore: 0,
                 }
             }
         })
@@ -1017,7 +1054,7 @@ window.onload = function() {
 
         closePopup()
 
-        locationEl.querySelector(".header__location-title").innerHTML = currentCity.querySelector("span").innerHTML
+        locationEls[0].querySelector(".header__location-title").innerHTML = currentCity.querySelector("span").innerHTML
     })
 
     document.querySelectorAll(".popup__close").forEach(closeEl => {

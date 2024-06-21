@@ -407,6 +407,12 @@
 
             }
         }
+        &__map {
+            .marker {
+                width: rem(47);
+                vertical-align: top;
+            }
+        }
         &__footer {
             padding-top: rem(30);
         }

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
+    <link href="css/libs/bvi.min.css" rel="stylesheet">
     {% block styles %}
     {% endblock %}
 </head>
@@ -243,6 +244,15 @@
             </div>
         </div>
     </div>
+    
+    <script src="js/libs/bvi.min.js"></script>
+    <script>
+        new isvek.Bvi({
+            target: ".header__bvi",
+            fontSize: 28,
+            theme: "brown"
+        });
+    </script>
     {% block scripts %}
         <script src="js/app.min.js"></script>
     {% endblock %}

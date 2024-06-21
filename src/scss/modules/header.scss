@@ -232,7 +232,7 @@
         height: calc(2 * var(--radius, 2.03125rem));
         transition: color 0.2s ease 0s;
         svg {
-            width: rem(19)511F12;
+            width: rem(19);
             height: rem(13);
         }
         @include ishover {

@@ -101,6 +101,9 @@
             border-radius: rem(20);
             row-gap: rem(30);
             padding: rem(20);
+            &:not(:last-child) {
+                margin-bottom: rem(10);
+            }
         }
         &__info-title {
             width: 100%;

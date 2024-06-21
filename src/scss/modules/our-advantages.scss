@@ -191,7 +191,9 @@
                     min-height: rem(240);
                 }
                 .our-advantages__about-swiper {
-                    width: 100%;
+                    margin-left: rem(-20);
+                    margin-right: rem(-20);
+                    // width: 100%;
                     min-width: 0;
                     .swiper-slide {
                         border-top-left-radius: rem(15);

@@ -198,6 +198,11 @@
         &__logo {
             display: none
         }
+        &__swiper {
+            margin-left: rem(-20);
+            margin-right: rem(-20);
+            width: auto;
+        }
     }
 }
 
