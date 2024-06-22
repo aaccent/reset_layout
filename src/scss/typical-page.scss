@@ -43,11 +43,11 @@
         justify-content: space-between;
         align-items: center;
         gap: rem(8);
-        padding: rem(30) rem(35);
+        padding: rem(25);
         width: 100%;
         span {
             @include txt_semibold;
-            font-size: rem(18)
+            font-size: rem(16)
         }
         svg {
             width: rem(16);
