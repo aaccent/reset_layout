@@ -628,6 +628,35 @@ window.onload = function() {
             const contentTitleEls = document.querySelectorAll(".content h1, .content h2")
             let lastPosY = 0,  curSection = 0, contentNavLinksEls = null;
 
+            function changeOnScroll() {
+                let posY = window.pageYOffset;
+                
+                if (posY > lastPosY) {
+                    if (curSection === contentTitleEls.length - 1)
+                        return
+                    let sectionYOffset = contentTitleEls[curSection + 1].offsetTop
+                    if (posY >= sectionYOffset - window.innerHeight / 2) {
+                        contentNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
+                        contentNavLinksEls[curSection + 1].parentElement.classList.add("nav__menu-item--active")
+                        curSection += 1
+                    }
+                }  else {
+                    if (curSection === 0)
+                        return 
+                    let sectionYOffset = contentTitleEls[curSection].offsetTop
+                    if (sectionYOffset - window.innerHeight * 0.75 >= posY) {
+                        contentNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
+                        contentNavLinksEls[curSection - 1].parentElement.classList.add("nav__menu-item--active")
+                        curSection -= 1
+                    } 
+                    if (curSection == 1 && posY <= 200 ) {
+                        contentNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
+                        contentNavLinksEls[curSection - 1].parentElement.classList.add("nav__menu-item--active")
+                        curSection -= 1
+                    }
+                }
+                lastPosY = posY
+            }
             Array.from(contentTitleEls).forEach((titleEl, index) => {
                 let uuid = crypto.randomUUID();
                 titleEl.setAttribute("id", uuid)
@@ -664,36 +693,20 @@ window.onload = function() {
                 })
             })
 
+            let tabletMediaQuery = window.matchMedia("(max-width: 992px)")
 
-            window.addEventListener("scroll", () => {
-                let posY = window.pageYOffset;
-                
-                if (posY > lastPosY) {
-                    if (curSection === contentTitleEls.length - 1)
-                        return
-                    let sectionYOffset = contentTitleEls[curSection + 1].offsetTop
-                    if (posY >= sectionYOffset - window.innerHeight / 2) {
-                        contentNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
-                        contentNavLinksEls[curSection + 1].parentElement.classList.add("nav__menu-item--active")
-                        curSection += 1
-                    }
-                }  else {
-                    if (curSection === 0)
-                        return 
-                    let sectionYOffset = contentTitleEls[curSection].offsetTop
-                    if (sectionYOffset - window.innerHeight / 2 >= posY) {
-                        contentNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
-                        contentNavLinksEls[curSection - 1].parentElement.classList.add("nav__menu-item--active")
-                        curSection -= 1
-                    } 
-                    if (curSection == 1 && posY <= 30 ) {
-                        contentNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
-                        contentNavLinksEls[curSection - 1].parentElement.classList.add("nav__menu-item--active")
-                        curSection -= 1
-                    }
+            tabletMediaQuery.addEventListener("change", e => {
+                if (!e.matches) {
+                    window.addEventListener("scroll", changeOnScroll)
+                } else {
+                    window.removeEventListener("scroll", changeOnScroll)
                 }
-                lastPosY = posY
             })
+
+            if (tabletMediaQuery.matches) {
+                window.addEventListener("scroll", changeOnScroll)
+            }
+
         }
         // PRICES PAGE
         if (document.querySelector("section.prices")) {
