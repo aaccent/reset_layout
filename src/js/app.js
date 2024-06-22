@@ -480,12 +480,14 @@ window.onload = function() {
         entries.forEach(entry => {
             const targetEl = entry.target;
             const digitCounter = targetEl.querySelector("[data-digit-counter]")
-            if (digitCounter) {
+            if (digitCounter && entry.isIntersecting) {
                 initDigitCounter(digitCounter)
-            }
-            if (entry.isIntersecting) {
                 observer.unobserve(targetEl)
+
             }
+            // if (entry.isIntersecting) {
+            //     observer.unobserve(targetEl)
+            // }
         })
     }, { threshold: 0.3 })
 
@@ -670,7 +672,7 @@ window.onload = function() {
                     if (curSection === contentTitleEls.length - 1)
                         return
                     let sectionYOffset = contentTitleEls[curSection + 1].offsetTop
-                    if (posY >= sectionYOffset - window.innerHeight / 4) {
+                    if (posY >= sectionYOffset - window.innerHeight / 2) {
                         contentNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
                         contentNavLinksEls[curSection + 1].parentElement.classList.add("nav__menu-item--active")
                         curSection += 1
@@ -679,12 +681,12 @@ window.onload = function() {
                     if (curSection === 0)
                         return 
                     let sectionYOffset = contentTitleEls[curSection].offsetTop
-                    if (sectionYOffset - window.innerHeight / 4 >= posY) {
+                    if (sectionYOffset - window.innerHeight / 2 >= posY) {
                         contentNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
                         contentNavLinksEls[curSection - 1].parentElement.classList.add("nav__menu-item--active")
                         curSection -= 1
                     } 
-                    if (curSection == 1 && posY <= 30) {
+                    if (curSection == 1 && posY <= 30 ) {
                         contentNavLinksEls[curSection].parentElement.classList.remove("nav__menu-item--active")
                         contentNavLinksEls[curSection - 1].parentElement.classList.add("nav__menu-item--active")
                         curSection -= 1
@@ -1097,4 +1099,14 @@ window.onload = function() {
         initMap("map")
     }
 
+    // COOKIES
+    const cookiesEl = document.querySelector(".cookies");
+    setTimeout(() => {
+        cookiesEl.classList.add("cookies--show");
+        cookiesEl.addEventListener("transitionend", () => {
+            cookiesEl.querySelector("button").addEventListener("click", () => {
+                cookiesEl.classList.remove("cookies--show")
+            })
+        }, { once: true })
+    }, 2000)
 }
