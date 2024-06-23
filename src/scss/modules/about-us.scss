@@ -1,13 +1,16 @@
 
 .about-us {
     .section__ellipse {
+        &--top-right {
+            top: calc(-335 / 1815 * 100%);
+        }
         &--bottom-right {
             left: calc(1032 / 1680 * 100%);
-            bottom: calc(64 / 1430 * 100%);
+            bottom: calc(66 / 1815 * 100%);
         }
         &--bottom-left {
             right: calc(843 / 1680 * 100%);
-            bottom: calc(-190 / 1430 * 100% );
+            bottom: calc(-190 / 1815 * 100% );
         }
     }
     & > .container {
@@ -17,6 +20,22 @@
         @include adaptive-value(gap, 70, 160, 576, $container-width);
     }
     &__reviews {
+    }
+    @include phone {
+        .section__ellipse {
+            &--top-right {
+                top: calc(-210 / 1135 * 100%);
+                left: calc(-851 / 380 * 100%);
+                rotate: -5deg;
+            }
+            &--bottom-right {
+                left: calc(10 / 380 * 100%);
+                bottom: calc(193 / 1135 * 100%);
+            }
+            &--bottom-left {
+                display: none;
+            }   
+        }
     }
 }
 

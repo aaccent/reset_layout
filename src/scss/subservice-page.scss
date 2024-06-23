@@ -36,12 +36,26 @@
 .back-call {
     position: relative;
     .section__ellipse {
-        height: calc(615 / 775 * 100%);
         &--bottom-right {
+            left: calc(1050 / 1680 * 100%);
             bottom: calc(-240 / 775 * 100%);
         }
         &--bottom-left {
+            right: calc(1005 / 1680 * 100%);
             bottom: calc(-410 / 775 * 100%);
+        }
+    }
+    @include phone {
+        .section__ellipse {
+            &--bottom-right {
+                left: calc(184 / 380 * 100%);
+                bottom: calc(-410 / 860 * 100%);
+            }
+            &--bottom-left {
+                rotate: 31deg;
+                right: calc(10 / 380 * 100%);
+                bottom: calc(802 / 860 * 100%);
+            }
         }
     }
 }

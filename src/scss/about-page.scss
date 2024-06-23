@@ -338,5 +338,21 @@
 @import "modules/our-advantages.scss";
 @import "modules/about-us.scss";
 @import "modules/call-us.scss";
+.call-us {
+    .section__ellipse {
+        display: none;
+    }
+    @include phone {
+        .section__ellipse {
+            &--bottom-left {
+                display: block;
+                rotate: -5deg;
+                left: auto;
+                right: calc(15 / 380 * 100%);
+                bottom: calc(-170 / 884 * 100%)
+            }
+        }
+    }
+}
 
 @import "modules/footer.scss";

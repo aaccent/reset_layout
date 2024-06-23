@@ -8,6 +8,7 @@
 
 {% endblock %}
 
+{% from "pages-blocks/why-we.njk" import WhyWe %}
 {% from "pages-blocks/macros/about.njk" import About %}
 {% from "pages-blocks/macros/faq.njk" import Faq  %}
 {% from "pages-blocks/macros/services.njk" import Services %}
@@ -28,7 +29,8 @@
         ]
     } %}
     {{ Services(service_content) }}
-    {% include "pages-blocks/why-we.njk" %}
+    {{ WhyWe(true) }}
+    {# {% include "pages-blocks/why-we.njk" %} #}
     {% include "pages-blocks/our-company.njk" %}
     <section class="help section section--multirow">
         {% include "pages-blocks/modules/help-how.njk" %}

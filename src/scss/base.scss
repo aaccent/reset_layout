@@ -98,27 +98,24 @@ body {
             background: hsl(0deg 0% 100% / 30%);
             &--top-right {
                 fill: rgba(6, 145, 175, 0.1);
-                top: calc(-355 / 1430 * 100% );
                 left: calc(784 / 1680 * 100%);
             }
             &--bottom-right {
                 fill: rgba(255, 255, 255, 0.1); 
-                left: calc(1050 / 1680 * 100%);
-                bottom: calc(-240 / 1430 * 100% );
+                rotate: 31deg;
             }
             &--bottom-left {
                 fill: rgba(6, 145, 175, 0.1);
                 rotate: 7deg;
-                right: calc(1005 / 1680 * 100%);
-                bottom: calc(-410 / 1430 * 100% );
                 width: calc(2180 / 1680 * 100%);
-                height: calc(615 / 1430 * 100%);
+                aspect-ratio: calc(2180 / 615);
                 max-width: rem(2180);
-                max-height: rem(615) ;
+                max-height: rem(615);
+                rotate: 7deg;
             }
             &--top-right, &--bottom-right {
                 width: calc(1970 / 1680 * 100%);
-                height: calc(615 / 1430 * 100%);
+                aspect-ratio: calc(1970 / 615);
                 max-width: rem(1970);
                 max-height: rem(615);
                 rotate: 31deg;
@@ -135,9 +132,8 @@ body {
     @include phone {
         &--dark {
             .section__ellipse {
-                &--top-right, &--bottom-left {
-                    display: none;
-                }
+                aspect-ratio: calc(1154 / 360);
+                width: calc(1154 / 380 * 100%);
             }
         }
     }

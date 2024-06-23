@@ -48,10 +48,10 @@
 {% macro WhyWe(subsection = false) %}
     {% if subsection %}
         <section class="why-we section section--dark section--multirow">
-            <div class="section__ellipse section__ellipse--top-right"></div>
             <div class="section__ellipse section__ellipse--bottom-right"></div>
             <div class="section__ellipse section__ellipse--bottom-left"></div>
-            <article class="why-we__our-advantages our-advantages">
+            <article class="why-we__our-advantages">
+                <div class="section__ellipse section__ellipse--top-right"></div>
                 {{ content | safe}}
             </article>
             <aside class="why-we__aside">
