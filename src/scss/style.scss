@@ -67,6 +67,9 @@
             bottom: rem(20);
         }
     }
+    &__slide {
+        overflow: hidden;
+    }
     @include desktop {
         &__swiper {
             .swiper-controls {

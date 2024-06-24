@@ -781,6 +781,7 @@ window.onload = function() {
             speed: 800,
             loop: true,
             parallax: true,
+            preventInteractionOnTransition: true,
             navigation: {
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev",
