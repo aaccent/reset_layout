@@ -703,7 +703,7 @@ window.onload = function() {
                 }
             })
 
-            if (tabletMediaQuery.matches) {
+            if (!tabletMediaQuery.matches) {
                 window.addEventListener("scroll", changeOnScroll)
             }
 
