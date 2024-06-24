@@ -2105,6 +2105,9 @@ body._lock {
     flex-direction: column;
     align-items: stretch;
   }
+  .prices__categories {
+    max-width: initial;
+  }
 }
 @media screen and (min-width: 768.5px) and (max-width: 992px) {
   .prices__categories-list {
