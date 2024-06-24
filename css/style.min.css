@@ -2343,6 +2343,9 @@ body._lock {
 .hero__swiper .swiper-pagination-bullets {
   bottom: 1.25rem;
 }
+.hero__slide {
+  overflow: hidden;
+}
 @media (max-width: 1280px) {
   .hero__swiper .swiper-controls {
     bottom: 3.75rem;
