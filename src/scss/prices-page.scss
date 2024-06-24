@@ -149,6 +149,9 @@
         .tab__content {
         
         }
+        &__categories {
+            max-width: initial;
+        }
     }
     @media screen and (min-width: 768.5px) and (max-width: 992px) {
         &__categories-list {
