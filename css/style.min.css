@@ -1296,7 +1296,7 @@ body._lock {
 }
 @media (max-width: 576px) {
   .article__text {
-    max-height: 11.875rem;
+    max-height: 12.5rem;
   }
   .article__more:not(:first-child) {
     margin-top: 1.25rem;
