@@ -56,14 +56,6 @@ function closePopup(popup = null) {
             unlockBody() 
         }
 
-        // if (popup.querySelector(".form-block_sent")) {
-        //     popup.classList.remove("popup_white")
-        //     popup.querySelector(".form-block_sent").classList.remove("form-block_sent")
-        // }
-
-        // if (popup.querySelector("form")) {
-        //     popup.querySelector("form").reset()
-        // }
     }, {once: true})
 }
 
@@ -74,19 +66,6 @@ function validateEmail(email) {
 
 function validateForm(form) {    
     const reqFiedls = form.querySelectorAll("[class$='input--required']")
-
-    // function changeContentPage(form) {
-    //     const formBlockEl = form.closest(".form-block__body");
-        
-    //     formBlockEl.style.opacity = "0"
-    //     if (formBlockEl.closest(".popup")) {
-    //         formBlockEl.closest(".popup").classList.add("popup_white")
-    //     }
-    //     formBlockEl.addEventListener("transitionend", () => {
-    //         form.closest(".form-block").classList.add("form-block_sent")
-    //         formBlockEl.style.opacity = "1"
-    //     }, { once: true })
-    // }
 
     let errors = 0;
     for (let i = 0; i < reqFiedls.length; i++) {
@@ -188,27 +167,12 @@ window.onload = function() {
     const locationEls = headerEl.querySelectorAll(".header__location");
     const consultationButtonEls = headerEl.querySelectorAll(".header__button");
     const bviEls = document.querySelectorAll(".header__bvi")
-    // const buttonEls = document.querySelectorAll(".header__menu-item--prices, .header__menu-item--stocks, .column__menu-item--prices, .column__menu-item--stocks, .menu__item--stocks, .menu__item--prices")
-
-    // Array.from(buttonEls).forEach(buttonEl => {
-    //     buttonEl.addEventListener("click", e => {
-    //         e.preventDefault();
-    //         openPopup(callDoctorPopupEl)
-    //     })
-    // })
 
     Array.from(consultationButtonEls).forEach(buttonEl => {
         let popupEl = document.querySelector(".popup--consultation")
         buttonEl.addEventListener("click", e => openPopup(popupEl))
     })
 
-    // desktopSubmenuEl.addEventListener("click", (e) => {
-    //     if (!e.target.closest(".submenu__service-link")) {
-    //         return
-    //     }
-    //     e.preventDefault();
-    //     openPopup(callDoctorPopupEl)
-    // })
 
     serviceMenuItemEl.addEventListener("click", (e) => {
         if (e.target.closest(".submenu__backdrop")) {
@@ -257,13 +221,6 @@ window.onload = function() {
         }
 
         let hasSubmenu = e.target.closest(".menu__item").childElementCount === 3;
-        // let lastSubmenu = e.target.closest(".menu__item").childElementCount === 1 && e.target.closest(".menu__submenu")
-        
-        // if (lastSubmenu) {
-        //     e.preventDefault()
-        //     openPopup(callDoctorPopupEl)
-        //     return
-        // }
 
         if (!hasSubmenu) {
             return 
@@ -310,17 +267,6 @@ window.onload = function() {
         })
     })
 
-    // SERVICES
-    // let servicesListEl = document.querySelector(".services__list")
-    // if (servicesListEl) {
-    //     servicesListEl.addEventListener("click", e => {
-    //         if (!e.target.closest(".services__service-item")) {
-    //             return
-    //         }
-    //         e.preventDefault()
-    //         openPopup(callDoctorPopupEl)
-    //     })
-    // }
 
     // DOCTORS
     let doctorsListEl = document.querySelector(".our-doctors .swiper-wrapper")
@@ -586,42 +532,6 @@ window.onload = function() {
     if (window.LocomotiveScroll) {
         let scroll = new LocomotiveScroll();
 
-        // let contactsLinkEls = document.querySelectorAll(".header__menu-item--contacts a, .column__menu-item--contacts, .menu__item--contacts")
-        // let callUsSection = document.querySelector("section.call-us");
-
-        // let aboutLinkEl = document.querySelectorAll(".header__menu-item--about, .column__menu-item--about, .menu__item--about")
-        // let aboutSection = document.querySelector("section.our-advantages")
-
-        // let reviewsLinkEls = document.querySelectorAll(".header__menu-item--reviews, .column__menu-item--reviews, .menu__item--reviews")
-        // let reviewsSection = document.querySelector("section.about-us")
-
-        // function handleLinks(linkEls, section) {
-        //     Array.from(linkEls).forEach(linkEl => {
-        //         linkEl.addEventListener("click", (e) => {
-        //             e.preventDefault();
-        //             if (mobileMenuEl.classList.contains("menu--open")) {
-        //                 mobileMenuEl.classList.remove("menu--open")
-        //                 burgerMenuEl.classList.remove("header__burger--open")
-        //                 unlockBody()
-        //                 mobileMenuEl.addEventListener("transitionend", () => {
-        //                     scroll.scrollTo(section, {
-        //                         duration: 800,
-        //                     })
-        //                 }, { once: true })
-        //             } else {
-        //                 scroll.scrollTo(section, {
-        //                     duration: 800,
-        //                 })
-        //             }
-        //         })
-        //     })
-        // }
-
-        // handleLinks(contactsLinkEls, callUsSection)
-        // handleLinks(aboutLinkEl, aboutSection)
-        // handleLinks(reviewsLinkEls, reviewsSection)
-
-        // let contentNavEl = document.querySelector(".content__nav")
         if (document.querySelector(".content__nav")) {
 
             const contentNavEl = document.querySelector(".content__nav")
@@ -945,14 +855,14 @@ window.onload = function() {
                 },
                 768: {
                     slidesPerView: 2.35,
-                    // slidesOffsetAfter: 0,
-                    // slidesOffsetBefore: 0,
+                    slidesOffsetAfter: 0,
+                    slidesOffsetBefore: 0,
                 },
                 992: {
                     slidesPerView: 5,
                     spaceBetween: 0,
-                    // slidesOffsetAfter: 0,
-                    // slidesOffsetBefore: 0,
+                    slidesOffsetAfter: 0,
+                    slidesOffsetBefore: 0,
                 }
             }
         })
