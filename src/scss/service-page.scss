@@ -35,47 +35,7 @@
 
 @import "modules/why-we.scss";
 @import "modules/our-company.scss";
-.back-call {
-    position: relative;
-    .section__ellipse {
-        &--bottom-right {
-            left: calc(1050 / 1680 * 100%);
-            bottom: calc(-240 / 775 * 100%);
-        }
-        &--bottom-left {
-            right: calc(1005 / 1680 * 100%);
-            bottom: calc(-410 / 775 * 100%);
-        }
-    }
-    @include phone {
-        .section__ellipse {
-            &--bottom-right {
-                left: calc(184 / 380 * 100%);
-                bottom: calc(-410 / 860 * 100%);
-            }
-            &--bottom-left {
-                rotate: 31deg;
-                right: calc(10 / 380 * 100%);
-                bottom: calc(802 / 860 * 100%);
-            }
-        }
-    }
-}
-.order-call {
-    background-color: rgba($color: #0D191F, $alpha: 0.85);
-    &__image {
-        right: rem(184);
-        @include adaptive-value(right, 85, 184, 1280, $container-width);
-        bottom: 0;
-        width: calc(339 / 1520 * 100%);
-    }
-    @include tablet {
-        .order-call__image {
-            align-self: center;
-            width: rem(180);
-        }
-    }
-}
+@import "modules/back-call.scss";
 
 @import "modules/services.scss";
 @import "modules/help.scss";
