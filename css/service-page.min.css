@@ -1794,6 +1794,8 @@ body._lock {
   color: #672C1D;
 }
 .header__burger {
+  background-color: #FFFFFF;
+  border-radius: 50%;
   box-sizing: content-box;
   display: none;
   cursor: pointer;
@@ -1808,7 +1810,7 @@ body._lock {
   transition: transform 0.3s ease 0s;
 }
 .header__burger:before, .header__burger:after, .header__burger span {
-  background-color: var(--black);
+  background-color: #672C1D;
   position: absolute;
   left: 12px;
   width: calc(100% - 24px);
@@ -3442,6 +3444,7 @@ body._lock {
 @media (max-width: 992px) {
   .contact-us .order-call__image {
     align-self: center;
+    position: static;
     width: 60%;
     max-width: 23.75rem;
   }
