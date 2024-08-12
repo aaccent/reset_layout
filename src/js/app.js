@@ -930,7 +930,7 @@ window.onload = function() {
                     break;
             }
         })
-        inputEl.addEventListener("input", e => {e.target.value.length === 3 && (e.target.value = "")})
+        inputEl.addEventListener("input", e => {e.target.value.length === 4 && (e.target.value = "")})
     })
 
     Array.from(nameInputEls).forEach(inputEl => {

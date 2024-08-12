@@ -265,26 +265,24 @@
     }
 
     &__burger {
-        background-color: $white;
-        border-radius: 50%;
-        box-sizing: border-box;
+        box-sizing: content-box;
         display: none;
         cursor: pointer;
         position: relative;
-        width: rem(55);
-        height: rem(55);
+        padding: 18px 12px;
+        width: 42px;
+        height: 28px;
         &:before, &:after {
             content: "";
             transform-origin: center center;
             transition: transform 0.3s ease 0s;
         }
         &:before, &:after, span {
-            background-color: $primary-color;
-            border-radius: 4px;
+            background-color: var(--black);
             position: absolute;
-            left: 13.5px;
-            width: 28px;
-            height: 3px
+            left: 12px;
+            width: calc(100% - 24px);
+            height: 4px
         }
         &:before { 
             top: 18px
@@ -293,16 +291,16 @@
             bottom: 18px;
         }
         span {
-            top: calc(50% - 1.5px);
+            top: calc(50% - 2px);
             opacity: 1;
             transition: opacity 0.2s ease 0s;
         }
         &--open {
             &:before {
-                transform: translateY(8px) rotate(45deg);
+                transform: translateY(7px) rotate(45deg);
             }
             &:after {
-                transform: translateY(-8px) rotate(-45deg);
+                transform: translateY(-7px) rotate(-45deg);
             }
             span {
                 opacity: 0;

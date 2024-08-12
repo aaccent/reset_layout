@@ -70,6 +70,36 @@
                 @include adaptive-value(right, 85, 184, 1280, $container-width);
                 bottom: 0;
                 width: calc(339 / 1520 * 100%);
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    position: absolute;
+                    top: calc(106 / 475 * 100%);
+                    width: 100%;
+                    img {
+                        width: calc(155 / 334 * 100%);
+                        height: auto;
+                        margin-bottom: calc(40 / 334 * 100%);
+                    }
+                    span {
+                        color: $grey;
+                        margin-bottom: calc(15 / 334 * 100%);
+                        max-width: calc(248 / 334 * 100%);
+                        text-align: center;
+                        @include desktop {
+                            font-size: rem(14);
+                        }
+                    }
+                    a {
+                        color: $text-color;
+                        font-size: rem(24);
+                        @include adaptive-value(font-size, 16, 24, 992, $container-width);
+                        font-weight: 500;
+                        line-height: calc(30 / 24);
+                        letter-spacing: -0.02em;
+                    }
+                }
             }
         }
     }
@@ -98,7 +128,9 @@
         &__aside {
             .order-call__image {
                 align-self: center;
-                width: rem(180);
+                position: relative;
+                right: 0;
+                width: rem(225);
             }
         }
     }
