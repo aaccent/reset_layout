@@ -28,6 +28,7 @@
     @include tablet {
         .order-call__image {
             align-self: center;
+            position: static;
             width: 60%;
             max-width: rem(380);
         }
