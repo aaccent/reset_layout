@@ -2186,20 +2186,24 @@ body._lock {
   }
 }
 .hero__tag {
+  background-color: #FFFFFF;
+  border-radius: 31.25rem;
+  align-self: flex-start;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-}
-.hero__tag:first-child {
-  margin-bottom: auto;
+  padding: 0.75rem 1.25rem;
 }
 .hero__tag span {
-  color: #F7F1F1;
+  color: #222222;
   font-size: 0.8125rem;
   font-weight: 600;
   line-height: 1.5384615385;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+.hero__tag:first-child {
+  margin: 0 0 1.5625rem;
 }
 .hero__tag-icon {
   display: flex;
@@ -2276,12 +2280,6 @@ body._lock {
   }
   .hero__tag {
     gap: 0.375rem;
-  }
-  .hero__tag-icon svg {
-    color: #FFFFFF;
-  }
-  .hero__tag-icon svg:last-child {
-    fill-opacity: 0.45;
   }
   .hero__title {
     line-height: 109.375%;
