@@ -12,21 +12,34 @@
                             <use xlink:href="#hero-tag">
                         </svg>
                     </span>
-                    <span>выезд в течении 20 минут</span>
+                    <span>прибудем на адрес в течении 20 минут</span>
                 </div>
                 {% if index == 1 %}
                     <h1 class="hero__title" data-swiper-parallax="-80%">Комплексная платная скорая помощь <span>в Москве</span></h1>
                 {% else  %}
                     <div class="hero__title" data-swiper-parallax="-80%">Комплексная платная скорая помощь <span>в Москве</span></div>
                 {% endif %}
-                <div class="hero__desc" data-swiper-parallax="-57%">Современный подход к оказанию круглосуточной экстренноймедицинской помощи пациентам соответствует единым медицинским алгоритмам, высокому профессионализму.</div>
+                {# <div class="hero__desc" data-swiper-parallax="-57%">Современный подход к оказанию круглосуточной экстренноймедицинской помощи пациентам соответствует единым медицинским алгоритмам, высокому профессионализму.</div> #}
                 <div class="hero__buttons">
-                    <button class="hero__button hero__call-doctor button button--primary" type="button">
+                    {# <button class="hero__button hero__call-doctor button button--primary" type="button">
                         <span>Вызвать врача</span>
-                    </button>
-                    <div class="hero__price button">
+                    </button> #}
+                    <a href="tel:+79765432100" class="hero__phone button button--primary"><span>8 (976) 543 21 00</span></a>
+                    {# <div class="hero__price button">
                         <span>от 3000 ₽</span>
-                    </div>
+                    </div> #}
+                </div>
+                <div class="hero__text">
+                    <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.75996 1.07066C6.52607 -0.281302 8.47393 -0.2813 9.24005 1.07067L14.3079 10.014C15.0634 11.3472 14.1003 13 12.5679 13H2.43212C0.899671 13 -0.0634377 11.3472 0.692081 10.014L5.75996 1.07066Z" fill="white" />
+                    </svg>
+                    <div class="hero__text-title">Вам окажут помощь:</div>
+                    <ul class="hero__text-list">
+                        <li class="hero__text-list-item">Реаниматологи</li>
+                        <li class="hero__text-list-item">Кардиологи</li>
+                        <li class="hero__text-list-item">Педиатры</li>
+                        <li class="hero__text-list-item">Врачи общего профиля</li>
+                    </ul>
                 </div>
             </div>
         </div>

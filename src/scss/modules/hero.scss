@@ -43,14 +43,15 @@
     }
 
     &__tag {
+        background-color: $white;
+        border-radius: rem(500);
+        align-self: flex-start;
         display: flex;
         align-items: center;
         gap: rem(8);
-        &:first-child {
-            margin-bottom: auto;
-        }
+        padding: rem(12) rem(20);
         span {
-            color: #F7F1F1;
+            color: $text-color;
             font-size: rem(13);
             font-weight: 600;
             line-height: calc(20 / 13);
@@ -66,6 +67,9 @@
             //     //     animation: anim2 0.8s ease 0.4s infinite;
             //     // }
             // }
+        }
+        &:first-child {
+            margin: 0 0 rem(25);
         }
     }
     &__tag-icon {
@@ -130,12 +134,12 @@
             gap: rem(6);
             }
         &__tag-icon {
-            svg {
-                color: $white;
-                &:last-child {
-                    fill-opacity: 0.45;
-                }
-            }
+            // svg {
+            //     color: $white;
+            //     &:last-child {
+            //         fill-opacity: 0.45;
+            //     }
+            // }
         }
         &__title {
             line-height: calc(35 / 32 * 100%);
@@ -145,9 +149,9 @@
             align-items: flex-start;
             gap: rem(25);
         }
-        &__desc {
+        // &__desc {
 
-        }
+        // }
     }
 
     @include phone {
@@ -156,6 +160,7 @@
             top: rem(20);
         }
         &__title, &__desc {
+        // &__title {
             width: 100%;
         }
     }
