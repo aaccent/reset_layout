@@ -1739,8 +1739,8 @@ body._lock {
   cursor: pointer;
   position: relative;
   padding: 18px 12px;
-  width: 42px;
-  height: 28px;
+  width: 3.4375rem;
+  height: 3.4375rem;
 }
 .header__burger:before, .header__burger:after {
   content: "";

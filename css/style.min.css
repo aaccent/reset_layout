@@ -1770,8 +1770,8 @@ body._lock {
   cursor: pointer;
   position: relative;
   padding: 18px 12px;
-  width: 42px;
-  height: 28px;
+  width: 3.4375rem;
+  height: 3.4375rem;
 }
 .header__burger:before, .header__burger:after {
   content: "";
@@ -2421,7 +2421,17 @@ body._lock {
   width: 0.375rem;
   height: 0.375rem;
 }
+@media screen and (min-width: 768.02px) and (max-width: 1200px) {
+  .hero__text {
+    display: none;
+  }
+}
 @media (max-width: 768px) {
+  .hero__tag {
+    gap: 0.375rem;
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+  }
   .hero__tag:first-child {
     margin-bottom: auto;
   }
