@@ -272,8 +272,10 @@
         cursor: pointer;
         position: relative;
         padding: 18px 12px;
-        width: 42px;
-        height: 28px;
+        // width: 42px;
+        // height: 28px;
+        width: rem(55);
+        height: rem(55);
         &:before, &:after {
             content: "";
             transform-origin: center center;
